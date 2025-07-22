@@ -15,7 +15,6 @@
   };
 
   networking = {
-  	hostName = "TS140-PC"; # Define your hostname.
   	networkmanager = {
       enable = true;  # Easiest to use and most distros use this by default.
       plugins = with pkgs; [ networkmanager-openvpn ];
@@ -111,7 +110,7 @@
 
     p7zip unzip unrar
 
-    (pkgs.callPackage ./extra/kshift.nix {})
+    (pkgs.callPackage ../extrapkgs/kshift.nix {})
     
     cmake ninja
     clang clang-tools lldb

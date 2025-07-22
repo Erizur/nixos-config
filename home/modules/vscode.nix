@@ -23,7 +23,7 @@
 			ms-vscode.live-server
 			mkhl.direnv
 			
-			vscode-extensions.asvetliakov.vscode-neovim
+			asvetliakov.vscode-neovim
 		];
 	};
 }

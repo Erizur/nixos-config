@@ -1,6 +1,6 @@
-{ pkgs, ... }: 
+{ config, pkgs, system, inputs, ... }: 
 {
-  home.username = "Erizur";
+  home.username = "erizur";
   home.homeDirectory = "/home/erizur";
   home.stateVersion = "25.05";
   

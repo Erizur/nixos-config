@@ -29,7 +29,7 @@
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { inherit inputs; inherit system; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
@@ -51,7 +51,7 @@
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { inherit inputs; inherit system; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
