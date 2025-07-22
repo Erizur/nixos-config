@@ -2,7 +2,7 @@
 {
 	programs.vscode = {
 		enable = true;
-		extensions = with pkgs.vscode-extensions; [
+		profiles.default.extensions = with pkgs.vscode-extensions; [
 			ms-vscode.cpptools
 			ms-python.python
 
@@ -13,9 +13,17 @@
 
 			bbenoist.nix
 			brettm12345.nixfmt-vscode
+			jnoortheen.nix-ide
+
+			esbenp.prettier-vscode
+			ms-toolsai.jupyter
+			ms-toolsai.jupyter-renderers
+			dbaeumer.vscode-eslint
 
 			ms-vscode.live-server
 			mkhl.direnv
+			
+			vscode-extensions.asvetliakov.vscode-neovim
 		];
 	};
 }

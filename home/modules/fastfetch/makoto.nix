@@ -23,6 +23,10 @@
 				"break"
 				"colors"
 			];
+			logo = {
+				source = "~/.nixcfg/img/makoto.jpg";
+				type = "chafa";
+			};
 		};
 	};
 }

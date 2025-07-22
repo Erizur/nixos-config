@@ -1,44 +1,33 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, ... }:
-
 {
-  imports = [ 
-      ./hardware-configuration.nix
-    ];
-
   # Use the GRand Unified Bootloader
   boot.loader = {
-    	efi = {
-		canTouchEfiVariables = true;
-		efiSysMountPoint = "/boot";
-    	};
-	grub = {
-		enable = true;
-		efiSupport = true;
-		device = "nodev";
-		useOSProber = true;
-	};
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+    };
   };
 
   networking = {
   	hostName = "TS140-PC"; # Define your hostname.
   	networkmanager = {
-	  	enable = true;  # Easiest to use and most distros use this by default.
-		plugins = with pkgs; [
-		  networkmanager-openvpn
-		];
-	}
-	firewall.enable = true;
-	firewall.trustedInterfaces = [ "tailscale0" ];
-  	nameservers = [
-		"1.1.1.1"
-		"1.0.0.1"
-		"8.8.8.8"
-		"8.8.4.4"
-  	];
+      enable = true;  # Easiest to use and most distros use this by default.
+      plugins = with pkgs; [ networkmanager-openvpn ];
+    };
+    firewall.enable = true;
+    firewall.trustedInterfaces = [ "tailscale0" ];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
   };
 
   # Time zone & dualboot shenanigans.
@@ -58,7 +47,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
   	enable = true;
-	xkb.layout = "es";
+    xkb.layout = "es";
   };
 
   # Enable sound.
@@ -71,13 +60,14 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     jack.enable = true;
+
     extraConfig.pipewire."92-low-latency" = {
       "context.properties" = {
-	    "default.clock.quantum" = 1024;
-	    "default.clock.min-quantum" = 1024;
-        };
-     };
-     extraConfig.pipewire-pulse."92-low-latency" = {
+        "default.clock.quantum" = 1024;
+        "default.clock.min-quantum" = 1024;
+      };
+    };
+    extraConfig.pipewire-pulse."92-low-latency" = {
       context.modules = [
         {
           name = "libpipewire-module-protocol-pulse";
@@ -97,9 +87,9 @@
     raopOpenFirewall = true;
     extraConfig.pipewire."10-airplay" = {
       "context.modules" = [
-          {
-          name = "libpipewire-module-raop-discover";
-          }
+        {
+        name = "libpipewire-module-raop-discover";
+        }
       ];
     };
   };
@@ -120,10 +110,7 @@
   
   # Packages
   environment.systemPackages = with pkgs; [
-    git
-    neovim
-    wget
-    tree
+    git neovim wget tree
 
     p7zip unzip unrar
 
@@ -136,8 +123,7 @@
     wineWowPackages.staging
     winetricks
 
-    keyd
-    fortune
+    keyd fortune cowsay
 
     libpulseaudio
     lact
@@ -156,16 +142,14 @@
     jdk17 jdk8
     uutils-coreutils-noprefix
   ];
-  environment.variables = {
-    EDITOR = "nvim";
-    ROC_ENABLE_PRE_VEGA = "1"; 
-  };
+
+  environment.variables.EDITOR = "nvim";
 
   programs.steam = {
   	enable = true;
-	remotePlay.openFirewall = false;
-	dedicatedServer.openFirewall = false;
-	localNetworkGameTransfers.openFirewall = true;
+    remotePlay.openFirewall = false;
+    dedicatedServer.openFirewall = false;
+    localNetworkGameTransfers.openFirewall = true;
   };
 
   programs.zsh.enable = true;
@@ -182,12 +166,10 @@
   programs.dconf.enable = true;
 
   hardware.bluetooth = {
-  	enable = true;
-	powerOnBoot = true;
+    enable = true;
+    powerOnBoot = true;
   };
   services.blueman.enable = true;
-
-  hardware.graphics.enable = true;
 
   fonts = {
   	packages = with pkgs; [
@@ -237,21 +219,20 @@
   services.keyd = {
     enable = true;
     keyboards = {
-	default = {
-	  ids = ["*"];
-	  settings = {
-	    alt = {
-	      "`" = "hiragana";
-              capslock = "muhenkan";
-	      home = "katakanahiragana";
-	    };
-	  };
-	};
+      default = {
+        ids = ["*"];
+        settings = {
+          alt = {
+            "`" = "hiragana";
+            capslock = "muhenkan";
+            home = "katakanahiragana";
+          };
+        };
+      };
     };
   };
   
   nix.gc.options = "--delete-older-than 7d";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "25.05" # Don't change this unless fully reinstalling
+  system.stateVersion = "25.05"; # Don't change this unless fully reinstalling
 }
-

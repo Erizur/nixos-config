@@ -1,34 +1,41 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+{
   home.username = "Erizur";
   home.homeDirectory = "/home/erizur";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
   
   imports = [
-    ./modules/fastfetch/default.nix
     ./modules/nvim/default.nix
-    ./modules/zsh/default.nix
-    ./modules/vscode/default.nix
+    ./modules/zsh.nix
+    ./modules/vscode.nix
   ];
 
   home.packages = with pkgs; [
-    lolcat cowsay
+    lolcat
     figlet fortune cmatrix hollywood jp2a
     jetbrains.clion
-    wine winetricks lutris bottles
-    obsidian
+    lutris bottles
 	
-    inputs.marble-browser.packages."${system}".default
+    (
+      inputs.marble-browser.packages."${system}".default.override {
+        nativeMessagingHosts = [pkgs.firefoxpwa pkgs.kdePackages.plasma-browser-integration];
+      }
+    )
     chromium
     vesktop
     zoom-us
+    obsidian
 
     vlc
     fooyin
-    soulseekqt
+    memento
+    tenacity
+    obs-studio
 
     kdePackages.kcalc
     kdePackages.kolourpaint
     krita
+    gimp3
 
     nil # Soporte para nix
     alejandra
@@ -47,14 +54,12 @@
     pcsx2
     duckstation
     prismlauncher
+    scummvm
+    mame
 
-    zip
-    xz
+    zip xz
 
-    bat
-    gh
-    ripgrep
-    fd
+    bat gh ripgrep fd
     
     mame-tools
     any-nix-shell
@@ -69,7 +74,9 @@
       init.defaultBranch = "main";
     };
   };
+
+  home.file.".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";
   
   programs.home-manager.enable = true;
- }
+}
 
