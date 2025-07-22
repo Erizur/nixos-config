@@ -25,6 +25,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./bones/configuration.nix
+            ./bones/nixos/configuration.nix
             ./bones/nixos/ts140/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
@@ -47,6 +48,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./bones/configuration.nix
+            ./bones/nixos/configuration.nix
             ./bones/nixos/sjdks/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             {
