@@ -36,9 +36,6 @@
   	hardwareClockInLocalTime = true;
   };
 
-  # Locale settings.
-  i18n.defaultLocale = "ja_JP.UTF-8";
-
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true; # use xkb.options in tty.
@@ -186,34 +183,35 @@
   	];
 
   	fontconfig = {
-		useEmbeddedBitmaps = true;
-		defaultFonts = {
-		     monospace = [
-		      "JetBrainsMono Nerd Font"
-		      "IPAGothic"
-		     ];
-		     sansSerif = [
-		      "Noto Sans"
-		      "IPAGothic"
-		     ];
-		     serif = [
-		      "Noto Serif"
-		      "IPAPMincho"
-		     ];
-		};
-	};
+      useEmbeddedBitmaps = true;
+      defaultFonts = {
+          monospace = [
+            "JetBrainsMono Nerd Font"
+            "IPAGothic"
+          ];
+          sansSerif = [
+            "Noto Sans"
+            "IPAGothic"
+          ];
+          serif = [
+            "Noto Serif"
+            "IPAPMincho"
+          ];
+      };
+    };
   };
 
+  # Locale settings.
   i18n = {
-	defaultLocale = "ja_JP.UTF-8";
-  	inputMethod = {
-		enable = true;
-  		type = "fcitx5";
-  		fcitx5.addons = with pkgs; [
-     			fcitx5-mozc
-     			kdePackages.fcitx5-qt
-  		];
-	};
+    defaultLocale = "ja_JP.UTF-8";
+      inputMethod = {
+      enable = true;
+        type = "fcitx5";
+        fcitx5.addons = with pkgs; [
+            fcitx5-mozc
+            kdePackages.fcitx5-qt
+        ];
+    };
   };
 
   services.keyd = {
