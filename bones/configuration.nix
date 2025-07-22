@@ -15,7 +15,7 @@
   };
 
   networking = {
-  	networkmanager = {
+    networkmanager = {
       enable = true;  # Easiest to use and most distros use this by default.
       plugins = with pkgs; [ networkmanager-openvpn ];
     };
@@ -32,7 +32,6 @@
   # Time zone & dualboot shenanigans.
   time = {
   	timeZone = "America/Lima";
-  	hardwareClockInLocalTime = true;
   };
 
   console = {
