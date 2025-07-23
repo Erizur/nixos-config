@@ -1,4 +1,4 @@
-{ pkgs, lib, config, stdenv, ... }:
+{ pkgs, lib, config, ... }:
 {
   programs.mpv = {
     enable = true;
@@ -17,7 +17,7 @@
         ];
 
         mpv = pkgs.mpv-unwrapped.override {
-          waylandSupport = if stdenv.isLinux then true else false;
+          waylandSupport = if pkgs.stdenv.isLinux then true else false;
           ffmpeg = pkgs.ffmpeg-full;
         };
       }

@@ -37,7 +37,7 @@
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: 
     let
-      system = if nixpkgs.pkgs.stdenv.isLinux then "x86_64-linux" else "x86_64-darwin";
+      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
@@ -90,6 +90,7 @@
 
       darwinConfigurations = {
         ts140 = nix-darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
           specialArgs = { inherit inputs; };
           modules = [
             ./bones/configuration.nix
@@ -113,15 +114,15 @@
                 enable = true;
                 user = "erizur";
                 taps = {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                  "homebrew/homebrew-core" = inputs.homebrew-core;
+                  "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                  "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
                 };
                 mutableTaps = false;
               };
             }
           ];
-        }
+        };
       };
 
       devShells.${system}.default = pkgs.mkShell {

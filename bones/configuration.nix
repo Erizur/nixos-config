@@ -1,4 +1,4 @@
-{ config, lib, pkgs, stdenv, ... }:
+{ config, lib, pkgs, ... }:
 {
   # Enable tailscale
   services.tailscale.enable = true;
@@ -20,7 +20,7 @@
 
     jdk17 jdk8
     uutils-coreutils-noprefix
-  ] ++ lib.optionals stdenv.isLinux [
+  ] ++ lib.optionals pkgs.stdenv.isLinux [
     wineWowPackages.staging
     winetricks
 
