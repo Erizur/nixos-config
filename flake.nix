@@ -57,7 +57,7 @@
                 backupFileExtension = "backup";
                 users.erizur.imports = [
                   ./home/main-user.nix
-                  ./home/modules/fastfetch/makoto.nix
+                  ./home/modules/branding/makoto.nix
                 ];
               };
             }
@@ -80,7 +80,7 @@
                 backupFileExtension = "backup";
                 users.erizur.imports = [
                   ./home/main-user.nix
-                  ./home/modules/fastfetch/pitcher56.nix
+                  ./home/modules/branding/pitcher56.nix
                 ];
               };
             }
@@ -104,7 +104,7 @@
                 backupFileExtension = "backup";
                 users.erizur.imports = [
                   ./home/darwin-user.nix
-                  ./home/modules/fastfetch/makoto.nix
+                  ./home/modules/branding/makoto.nix
                 ];
               };
             }

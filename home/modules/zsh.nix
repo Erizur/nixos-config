@@ -7,10 +7,10 @@
 		syntaxHighlighting.enable = true;
 		shellAliases = {
 			ll = "ls -l";
-			nixcgrs = "sudo nix-collect-garbage -d && sudo nixos-rebuild switch --flake ~/.nixconfig/";
-			editnixcfg = "sudoedit ~/.nixconfig/configuration.nix";
-			editnixflake = "sudoedit ~/.nixconfig/flake.nix";
-			editnixhome = "sudoedit ~/.nixconfig/home.nix";
+			nixcgrs = "sudo nixos-rebuild switch --flake ~/.nixcfg#ts140";
+			editnixcfg = "sudoedit ~/.nixcfg/bones/configuration.nix";
+			editnixflake = "sudoedit ~/.nixcfg/flake.nix";
+			editnixhome = if pkgs.stdenv.isLinux then "sudoedit ~/.nixcfg/home/main-user.nix" else "sudoedit ~/.nixcfg/home/darwin-user.nix";
 		};
 
 		oh-my-zsh = {

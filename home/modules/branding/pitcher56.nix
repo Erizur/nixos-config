@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+	programs.zsh.shellAliases.nixcgrs = "sudo nixos-rebuild switch --flake ~/.nixcfg#sjdks";
+
 	programs.fastfetch = {
 		enable = true;
 		settings = {
@@ -20,11 +22,12 @@
 				"gpu"
 				"memory"
 				"disk"
+				"battery"
 				"break"
 				"colors"
 			];
 			logo = {
-				source = "~/.nixcfg/img/makoto.jpg";
+				source = "~/.nixcfg/img/pitcher56.jpg";
 				type = "chafa";
 			};
 		};
