@@ -119,7 +119,6 @@
     enable = true;
     powerOnBoot = true;
   };
-  services.blueman.enable = true;
 
   fonts.fontconfig = {
     useEmbeddedBitmaps = true;
