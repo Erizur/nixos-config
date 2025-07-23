@@ -12,11 +12,32 @@
       url = "github:Erizur/marble-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Homebrew package manager support
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs: 
     let
-      system = "x86_64-linux";
+      system = if nixpkgs.pkgs.stdenv.isLinux then "x86_64-linux" else "x86_64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
@@ -65,6 +86,42 @@
             }
           ];
         };
+      };
+
+      darwinConfigurations = {
+        ts140 = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./bones/configuration.nix
+            ./bones/darwin/configuration.nix
+            inputs.home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                extraSpecialArgs = { inherit inputs; inherit system; };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.erizur.imports = [
+                  ./home/darwin-user.nix
+                  ./home/modules/fastfetch/makoto.nix
+                ];
+              };
+            }
+            inputs.nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                user = "erizur";
+                taps = {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                };
+                mutableTaps = false;
+              };
+            }
+          ];
+        }
       };
 
       devShells.${system}.default = pkgs.mkShell {

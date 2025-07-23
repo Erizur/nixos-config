@@ -1,14 +1,15 @@
 { config, pkgs, ... }:
 {
-    imports = [
-        ./hardware-configuration.nix
-    ];
+  nixpkgs.hostPlatform = "x86_64-darwin";
 
-    networking.hostName = "ts140";
-    environment.variables.ROC_ENABLE_PRE_VEGA = "1";
-    
-    hardware.graphics = {
-        extraPackages = with pkgs; [ amdvlk rocmPackages.clr.icd mesa ];
-        extraPackages32 = with pkgs.pkgsi686Linux; [ amdvlk mesa ];
-    };
+  # Define the current user.
+  users.users.erizur = {
+    name = "erizur";
+    shell = pkgs.zsh;
+    home = "/Users/erizur";
+  };
+
+  homebrew = {
+    enable = true;
+  };
 }

@@ -32,7 +32,6 @@
   # Time zone & dualboot shenanigans.
   time = {
   	timeZone = "America/Lima";
-  	hardwareClockInLocalTime = true;
   };
 
   console = {
@@ -97,4 +96,77 @@
     extraGroups = [ "networkmanager" "wheel" "bluetooth" "audio" "uinput" ]; # Uinput might be unsafe, but required for some gamepad projects I use.
     home = "/home/erizur";
   };
+
+  programs.steam = {
+  	enable = true;
+    remotePlay.openFirewall = false;
+    dedicatedServer.openFirewall = false;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+
+  services.displayManager.sddm = {
+  	enable = true;
+  	wayland.enable = true;
+  };
+
+  services.desktopManager.plasma6.enable = true;
+  programs.dconf.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+
+  fonts.fontconfig = {
+    useEmbeddedBitmaps = true;
+    defaultFonts = {
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "IPAGothic"
+        ];
+        sansSerif = [
+          "Noto Sans"
+          "IPAGothic"
+        ];
+        serif = [
+          "Noto Serif"
+          "IPAPMincho"
+        ];
+    };
+  };
+
+  # Locale settings.
+  i18n = {
+    defaultLocale = "ja_JP.UTF-8";
+      inputMethod = {
+      enable = true;
+        type = "fcitx5";
+        fcitx5.addons = with pkgs; [
+            fcitx5-mozc
+            kdePackages.fcitx5-qt
+        ];
+    };
+  };
+
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = ["*"];
+        settings = {
+          alt = {
+            "`" = "hiragana";
+            capslock = "muhenkan";
+            home = "katakanahiragana";
+          };
+        };
+      };
+    };
+  };
+
+  system.stateVersion = "25.05"; # Don't change this unless fully reinstalling
 }

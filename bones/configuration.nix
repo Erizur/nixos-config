@@ -1,8 +1,4 @@
-{ config, lib, pkgs, ... }:
-let
-  inherit (pkgs) stdenv;
-  inherit (lib) mkIf;
-in
+{ config, lib, pkgs, stdenv, ... }:
 {
   # Enable tailscale
   services.tailscale.enable = true;
@@ -15,23 +11,18 @@ in
     git neovim wget tree
 
     p7zip unzip unrar
-
-    (mkIf stdenv.isLinux (pkgs.callPackage ../extrapkgs/kshift.nix {}))
     
     cmake ninja
     clang clang-tools lldb
     direnv
-    
+
+    fortune cowsay
+
+    jdk17 jdk8
+    uutils-coreutils-noprefix
+  ] ++ lib.optionals stdenv.isLinux [
     wineWowPackages.staging
     winetricks
-
-    keyd fortune cowsay
-
-    libpulseaudio
-    lact
-
-    xdg-utils
-    alsa-utils
 
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
@@ -40,38 +31,14 @@ in
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
     gst_all_1.gst-vaapi
-
-    jdk17 jdk8
-    uutils-coreutils-noprefix
+    
+    keyd libpulseaudio lact xdg-utils alsa-utils 
+    (pkgs.callPackage ../extrapkgs/kshift.nix {}) 
   ];
 
   environment.variables.EDITOR = "nvim";
 
-  programs.steam = {
-  	enable = true;
-    remotePlay.openFirewall = false;
-    dedicatedServer.openFirewall = false;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
   programs.zsh.enable = true;
-
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
-
-  services.displayManager.sddm = {
-  	enable = true;
-  	wayland.enable = true;
-  };
-
-  services.desktopManager.plasma6.enable = true;
-  programs.dconf.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
 
   fonts = {
   	packages = with pkgs; [
@@ -86,56 +53,8 @@ in
 	    carlito dejavu_fonts ipafont kochi-substitute source-code-pro
 	    ttf_bitstream_vera
   	];
-
-  	fontconfig = {
-      useEmbeddedBitmaps = true;
-      defaultFonts = {
-          monospace = [
-            "JetBrainsMono Nerd Font"
-            "IPAGothic"
-          ];
-          sansSerif = [
-            "Noto Sans"
-            "IPAGothic"
-          ];
-          serif = [
-            "Noto Serif"
-            "IPAPMincho"
-          ];
-      };
-    };
-  };
-
-  # Locale settings.
-  i18n = {
-    defaultLocale = "ja_JP.UTF-8";
-      inputMethod = {
-      enable = true;
-        type = "fcitx5";
-        fcitx5.addons = with pkgs; [
-            fcitx5-mozc
-            kdePackages.fcitx5-qt
-        ];
-    };
-  };
-
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = ["*"];
-        settings = {
-          alt = {
-            "`" = "hiragana";
-            capslock = "muhenkan";
-            home = "katakanahiragana";
-          };
-        };
-      };
-    };
   };
   
   nix.gc.options = "--delete-older-than 7d";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "25.05"; # Don't change this unless fully reinstalling
 }

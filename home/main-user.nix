@@ -8,6 +8,8 @@
     ./modules/nvim/default.nix
     ./modules/zsh.nix
     ./modules/vscode.nix
+    ./modules/git.nix
+    ./modules/mpv.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,6 +23,7 @@
         nativeMessagingHosts = [pkgs.firefoxpwa pkgs.kdePackages.plasma-browser-integration];
       }
     )
+    qbittorrent
     chromium
     vesktop
     zoom-us
@@ -43,7 +46,6 @@
 
     wl-clipboard
     cmake-language-server
-    keepassxc
     ardour
 
     superTuxKart
@@ -58,25 +60,13 @@
     mame
 
     zip xz
-
     bat gh ripgrep fd
     
     mame-tools
     any-nix-shell
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "AM_Erizur";
-    userEmail = "sjdks@outlook.com";
-    
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-  };
-
   home.file.".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";
-  
   programs.home-manager.enable = true;
 }
 
