@@ -15,7 +15,9 @@
   home.packages = with pkgs; [
     lolcat
     figlet fortune cmatrix hollywood jp2a
-    jetbrains.clion
+    (jetbrains.clion.override {
+      jdk = pkgs.openjdk21;
+    })
     lutris bottles
 	
     (

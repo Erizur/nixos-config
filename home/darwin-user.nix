@@ -14,7 +14,9 @@
   home.packages = with pkgs; [
     lolcat fortune
     figlet cmatrix hollywood jp2a
-    jetbrains.clion
+    (jetbrains.clion.override {
+      jdk = pkgs.openjdk21;
+    })
 	
     qbittorrent
     chromium
