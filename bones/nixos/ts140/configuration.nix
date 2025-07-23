@@ -17,9 +17,9 @@
             insmod chain
             insmod part_gpt
             insmod fat
-            set root=(hd3,gpt1)
+            set root=(hd4,gpt1)
             chainloader /efi/boot/BOOTx64.efi
-            set root=(hd3,gpt1)/efi
+            set root=(hd4,gpt1)/efi
         }
     '';
 }
