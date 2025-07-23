@@ -44,11 +44,13 @@
   	packages = with pkgs; [
 	    noto-fonts noto-fonts-cjk-sans noto-fonts-emoji liberation_ttf
 	    aileron fragment-mono comic-mono work-sans hubot-sans eurofurence
-	    dosis manrope montserrat helvetica-neue-lt-std
+	    dosis manrope montserrat helvetica-neue-lt-std mplus-outline-fonts.githubRelease
+      fira-code fira-code-symbols
 	    nerd-fonts.fira-code
 	    nerd-fonts.ubuntu
 	    nerd-fonts.hack
 	    nerd-fonts.comic-shanns-mono
+      nerd-fonts.jetbrains-mono
 	
 	    carlito dejavu_fonts ipafont kochi-substitute source-code-pro
 	    ttf_bitstream_vera
