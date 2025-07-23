@@ -62,7 +62,7 @@
     mame
 
     zip xz
-    bat gh ripgrep fd
+    bat ripgrep fd
     
     mame-tools
     any-nix-shell

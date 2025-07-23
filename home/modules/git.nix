@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 {
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
+  };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -9,11 +16,6 @@
     userEmail = "sjdks@outlook.com";
     
     extraConfig = {
-      credential = {
-        helper = "manager";
-        "https://github.com".username = "Erizur";
-        credentialStore = "cache";
-      };
       init.defaultBranch = "main";
     };
   };
