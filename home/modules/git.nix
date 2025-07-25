@@ -16,7 +16,7 @@ in
     package = pkgs.gitFull;
 
     userName = "AM_Erizur";
-    userEmail = "sjdks@outlook.com";
+    userEmail = "sajoudks@outlook.com";
     
     extraConfig = {
       init.defaultBranch = "main";
