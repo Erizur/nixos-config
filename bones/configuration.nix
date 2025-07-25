@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   # Enable tailscale
   services.tailscale.enable = true;
@@ -61,7 +61,7 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      nix-vscode-extensions.overlays.default
+      inputs.nix-vscode-extensions.overlays.default
     ];
   };
 }
