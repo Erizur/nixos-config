@@ -20,7 +20,7 @@ in
     
     extraConfig = {
       init.defaultBranch = "main";
-
+      commit.signoff = true;
       commit.gpgsign = true;
       gpg.format = "ssh";
       user.signingkey = "${homeDirectory}/.ssh/sign_ed25519.pub";
