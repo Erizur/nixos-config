@@ -11,10 +11,9 @@
           visualizer
           thumbfast
           mpv-discord
-          mpris
           mpv-osc-modern
           memo
-        ];
+        ] ++ lib.optionals pkgs.stdenv.isLinux [ mpris ];
 
         mpv = pkgs.mpv-unwrapped.override {
           waylandSupport = if pkgs.stdenv.isLinux then true else false;
@@ -27,8 +26,8 @@
       profile = "high-quality";
       ytdl-format = "bestvideo+bestaudio";
       cache-default = 4000000;
-      osd = "no";
-      osd-bar = "no";
+      osc = "no";
+      osc-bar = "no";
     };
   };
 }

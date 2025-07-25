@@ -8,12 +8,11 @@
     ./modules/vscode.nix
     ./modules/git.nix
     ./modules/mpv.nix
-    inputs.marble-browser.homeModules.marble
   ];
 
   home.packages = with pkgs; [
     lolcat fortune
-    figlet cmatrix hollywood jp2a
+    figlet cmatrix
     (jetbrains.clion.override {
       jdk = pkgs.openjdk21;
     })
@@ -31,7 +30,6 @@
     wl-clipboard
     cmake-language-server
 
-    superTuxKart
     pcsx2-bin
     duckstation-bin
     prismlauncher
@@ -44,9 +42,6 @@
     mame-tools
     any-nix-shell
   ];
-
-  # Enable Marble for macOS
-  programs.marble-browser.enable = true;
 
   programs.home-manager.enable = true;
 }

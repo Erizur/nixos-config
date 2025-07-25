@@ -2,9 +2,10 @@
 {
 	programs.vscode = {
 		enable = true;
-		profiles.default.extensions = with pkgs.vscode-extensions; [
-			ms-vscode.cpptools
+		profiles.default.extensions = with pkgs.vscode-marketplace; [
+			ms-vscode.cpptools-extension-pack
 			ms-python.python
+			ms-python.vscode-pylance
 
 			llvm-vs-code-extensions.vscode-clangd
 			vadimcn.vscode-lldb
@@ -22,8 +23,17 @@
 
 			ms-vscode.live-server
 			mkhl.direnv
+
+			ms-vscode.makefile-tools
+			ms-vsliveshare.ms-vsliveshare
 			
 			asvetliakov.vscode-neovim
 		];
+
+		userSettings = {
+			"editor.formatOnSave" = false;
+			"editor.fontFamily" = "'JetBrains Mono Nerd Font', 'monospace', monospace";
+			"workbench.colorTheme" = "Tomorrow Night Blue";
+		};
 	};
 }

@@ -5,6 +5,7 @@
 
   # Flake support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.gc.options = "--delete-older-than 7d";
   
   # Packages
   environment.systemPackages = with pkgs; [
@@ -56,7 +57,11 @@
 	    ttf_bitstream_vera
   	];
   };
-  
-  nix.gc.options = "--delete-older-than 7d";
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      nix-vscode-extensions.overlays.default
+    ];
+  };
 }

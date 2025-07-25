@@ -4,12 +4,13 @@
 
   # Define the current user.
   users.users.erizur = {
-    name = "erizur";
+    name = "Erizur";
     shell = pkgs.zsh;
     home = "/Users/erizur";
   };
 
   homebrew = {
     enable = true;
+    casks = [ "supertuxkart" "supertux" ];
   };
 }
