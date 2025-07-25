@@ -9,7 +9,7 @@
 				ms-python.vscode-pylance
 
 				llvm-vs-code-extensions.vscode-clangd
-				vadimcn.vscode-lldb
+				pkgs.vscode-extensions.vadimcn.vscode-lldb
 
 				rust-lang.rust-analyzer
 
