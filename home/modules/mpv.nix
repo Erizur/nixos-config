@@ -6,7 +6,6 @@
     package = (
       pkgs.mpv-unwrapped.wrapper {
         scripts = with pkgs.mpvScripts; [
-          uosc
           sponsorblock
           visualizer
           thumbfast
