@@ -91,7 +91,6 @@
 
   # Define the current user.
   users.users.erizur = {
-    name = "Erizur";
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "bluetooth" "audio" "uinput" ]; # Uinput might be unsafe, but required for some gamepad projects I use.
