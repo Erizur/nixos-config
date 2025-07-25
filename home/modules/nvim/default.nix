@@ -75,6 +75,8 @@
       }
 
       if vim.g.vscode then
+        -- do something here?
+      else
         -- C/C++ LSP
         local lspconfig = require('lspconfig')
         lspconfig.clangd.setup {
