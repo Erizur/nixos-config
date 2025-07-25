@@ -95,11 +95,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1753396333,
-        "narHash": "sha256-SvFLOLOjzdzSMXMSZz9aKPpFbAJCHN7eM3jm/OUG3pg=",
+        "lastModified": 1753421190,
+        "narHash": "sha256-EQ/c8u/xVPcXCcY5vj07Igi9+j815NOT94tTGvvn0yo=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "dc2d4447f67ada62d4ae21b2545727206285903b",
+        "rev": "26cf4e5600706b78e9c1e2a903b7a2df8c56c3e9",
         "type": "github"
       },
       "original": {
@@ -111,11 +111,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1753402023,
-        "narHash": "sha256-gXn6mWbUA7/cjK2mESix2h9t9rzXhzp7pEqKB95Crxg=",
+        "lastModified": 1753420728,
+        "narHash": "sha256-8ErMcrW1hR0xBO5RmDZV5t37dfnxlU7vCb/U4lPIl3g=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "cc5d4ac6cb9f13078da5f173c50988be6681da06",
+        "rev": "98e9ffe271648269326b375604ec75b8495de4c1",
         "type": "github"
       },
       "original": {
@@ -190,11 +190,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1753323218,
-        "narHash": "sha256-U4fomCfnCPhQo2R/XWXdHQ9VATFlqVpPEG52Ve6ukm4=",
+        "lastModified": 1753409666,
+        "narHash": "sha256-bFjln7BkIGOlLHeUzUxfEho2GnrIrQE6O59plpvPiYY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "66e002729c889c5b881c3128dc3fa31a8418d95a",
+        "rev": "38a251b6e95659b12dfb3b9fdc237d1ba2ac3786",
         "type": "github"
       },
       "original": {
@@ -245,7 +245,28 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "sops-nix": "sops-nix"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752544651,
+        "narHash": "sha256-GllP7cmQu7zLZTs9z0J2gIL42IZHa9CBEXwBY9szT0U=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "2c8def626f54708a9c38a5861866660395bb3461",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "systems": {
