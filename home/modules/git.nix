@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+let
+  inherit (config.home) homeDirectory;
+in
 {
   programs.gh = {
     enable = true;
@@ -20,17 +23,25 @@
 
       commit.gpgsign = true;
       gpg.format = "ssh";
-      user.signingkey = "${config.home.homeDirectory}/.ssh/sign_ed25519.pub";
+      user.signingkey = "${homeDirectory}/.ssh/sign_ed25519.pub";
     };
   };
 
   programs.ssh = {
     enable = true;
+    forwardAgent = true;
     addKeysToAgent = "yes";
+
+    matchBlocks =
+      {
+        "github.com" = {
+          identitiesOnly = true;
+          identityFile = "${homeDirectory}/.ssh/id_ed25519";
+        };
+      };
   };
 
   services.ssh-agent = {
     enable = true;
-    identities = [ config.sops.secrets."git/private_key".path ];
   };
 }
