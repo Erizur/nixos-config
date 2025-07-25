@@ -27,7 +27,7 @@
 				"colors"
 			];
 			logo = {
-				source = "~/.nixcfg/img/pitcher56.jpg";
+				source = "${config.home.homeDirectory}/.nixcfg/img/pitcher56.jpg";
 				type = "chafa";
 			};
 		};

@@ -15,6 +15,11 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
+    sops-nix= {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -37,7 +42,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, nix-darwin, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -51,6 +56,7 @@
             ./bones/nixos/configuration.nix
             ./bones/nixos/ts140/configuration.nix
             inputs.home-manager.nixosModules.home-manager
+            inputs.sops-nix.nixosModules.sops
             {
               home-manager = {
                 extraSpecialArgs = { inherit inputs; inherit system; };
@@ -61,6 +67,7 @@
                   ./home/main-user.nix
                   ./home/modules/branding/makoto.nix
                 ];
+                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
               };
             }
           ];
@@ -74,6 +81,7 @@
             ./bones/nixos/configuration.nix
             ./bones/nixos/sjdks/configuration.nix
             inputs.home-manager.nixosModules.home-manager
+            inputs.sops-nix.nixosModules.sops
             {
               home-manager = {
                 extraSpecialArgs = { inherit inputs; inherit system; };
@@ -84,6 +92,7 @@
                   ./home/main-user.nix
                   ./home/modules/branding/pitcher56.nix
                 ];
+                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
               };
             }
           ];
@@ -98,6 +107,7 @@
             ./bones/configuration.nix
             ./bones/darwin/configuration.nix
             inputs.home-manager.darwinModules.home-manager
+            inputs.sops-nix.darwinModules.sops
             {
               home-manager = {
                 extraSpecialArgs = { inherit inputs; inherit system; };
@@ -108,6 +118,7 @@
                   ./home/darwin-user.nix
                   ./home/modules/branding/makoto.nix
                 ];
+                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
               };
             }
             inputs.nix-homebrew.darwinModules.nix-homebrew

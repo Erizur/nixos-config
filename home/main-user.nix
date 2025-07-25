@@ -5,11 +5,8 @@
   home.stateVersion = "25.05";
   
   imports = [
-    ./modules/nvim/default.nix
-    ./modules/zsh.nix
-    ./modules/vscode.nix
-    ./modules/git.nix
-    ./modules/mpv.nix
+    ./modules
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   home.packages = with pkgs; [

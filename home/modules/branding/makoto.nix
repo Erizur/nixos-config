@@ -26,7 +26,7 @@
 				"colors"
 			];
 			logo = {
-				source = "~/.nixcfg/img/makoto.jpg";
+				source = "${config.home.homeDirectory}/.nixcfg/img/makoto.jpg";
 				type = "chafa";
 			};
 		};

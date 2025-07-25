@@ -18,6 +18,7 @@
     direnv
 
     fortune cowsay
+    sops age
 
     jdk17 jdk8
     uutils-coreutils-noprefix
