@@ -16,5 +16,5 @@
   };
 
   system.stateVersion = 6;
-  system.primaryUser = "Erizur";
+  system.primaryUser = "erizur";
 }
