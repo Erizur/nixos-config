@@ -15,7 +15,6 @@
     })
 	
     qbittorrent
-    chromium
     vesktop
     zoom-us
     obsidian

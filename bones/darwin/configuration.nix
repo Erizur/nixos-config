@@ -11,7 +11,7 @@
 
   homebrew = {
     enable = true;
-    casks = [ "supertuxkart" "supertux" ];
+    casks = [ "supertuxkart" "supertux" "chromium" ];
     brewPrefix = "/opt/homebrew/bin/";
   };
 
