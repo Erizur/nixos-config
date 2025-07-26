@@ -54,9 +54,9 @@
 	    nerd-fonts.comic-shanns-mono
       nerd-fonts.jetbrains-mono
 	
-	    carlito dejavu_fonts ipafont kochi-substitute source-code-pro
+	    carlito dejavu_fonts ipafont source-code-pro
 	    ttf_bitstream_vera
-  	];
+  	] ++ lib.optionals pkgs.stdenv.isLinux [ koichi-substitute ];
   };
 
   nixpkgs = {
