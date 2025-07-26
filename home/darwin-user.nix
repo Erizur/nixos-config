@@ -1,5 +1,6 @@
 { config, pkgs, system, inputs, ... }: 
 {
+  home.username = "erizur";
   home.stateVersion = "25.05";
   
   imports = [
