@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 {
   # Enable tailscale
-  services.tailscale.enable = true;
+  services.tailscale.enable = if pkgs.stdenv.isLinux then true else false;
 
   # Flake support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
