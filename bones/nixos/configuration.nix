@@ -141,13 +141,14 @@
   # Locale settings.
   i18n = {
     defaultLocale = "ja_JP.UTF-8";
-      inputMethod = {
+    inputMethod = {
       enable = true;
-        type = "fcitx5";
-        fcitx5.addons = with pkgs; [
-            fcitx5-mozc
-            kdePackages.fcitx5-qt
-        ];
+      type = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        kdePackages.fcitx5-qt
+      ];
+      fcitx5.waylandFrontend = true;
     };
   };
 
