@@ -56,7 +56,7 @@
 	
 	    carlito dejavu_fonts ipafont source-code-pro
 	    ttf_bitstream_vera
-  	] ++ lib.optionals pkgs.stdenv.isLinux [ koichi-substitute ];
+  	] ++ lib.optionals pkgs.stdenv.isLinux [ kochi-substitute ];
   };
 
   nixpkgs = {
