@@ -1,4 +1,4 @@
- config, lib, pkgs, inputs, ... }:
+{config, lib, pkgs, inputs, ... }:
 {
   # Enable tailscale
   services.tailscale.enable = if pkgs.stdenv.isLinux then true else false;
