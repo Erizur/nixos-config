@@ -35,7 +35,8 @@
     gst_all_1.gst-vaapi
     
     keyd libpulseaudio lact xdg-utils alsa-utils 
-    (pkgs.callPackage ../extrapkgs/kshift.nix {}) 
+    (pkgs.callPackage ../extrapkgs/kshift.nix {})
+    (pkgs.libsForQt5.callPackage ../extrapkgs/soulseekqt.nix {})
   ];
 
   environment.variables.EDITOR = "nvim";
