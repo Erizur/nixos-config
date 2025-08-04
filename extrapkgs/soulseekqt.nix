@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  fetchzip,
+  fetchurl,
   appimageTools,
   autoPatchelfHook,
   desktop-file-utils,
