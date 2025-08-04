@@ -6,7 +6,6 @@
   autoPatchelfHook,
   desktop-file-utils,
   imagemagick,
-  qtmultimedia,
 }:
 pkgs.stdenv.mkDerivation rec {
   pname = "soulseekqt";
@@ -29,9 +28,16 @@ pkgs.stdenv.mkDerivation rec {
     imagemagick
     autoPatchelfHook
     desktop-file-utils
+    qt6.qttools
     qt6.wrapQtAppsHook
   ];
   buildInputs = with pkgs; [
+    qt6.qt5compat
+    qt6.qtbase
+    qt6.qtnetworkauth
+    qt6.qtsvg
+    qt6.qtwayland
+    qt6.qtwebsockets
     qt6.qtmultimedia
     pkgs.stdenv.cc.cc
   ];
