@@ -17,21 +17,22 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "sha256-My2TafB0bx/dcsdwJ5FZg6FVFlgAyfq5kcEQYBqHDzs=";
   };
 
-  appextracted = appimageTools.extractType2 {
-    inherit pname version;
-    src = "${src}";
+  appextracted = appimageTools.extract {
+    inherit pname version src;
   };
 
   dontBuild = true;
   dontConfigure = true;
+  dontUnpack = true;
 
-  nativeBuildInputs = [
+  nativeBuildInputs = with pkgs; [
     imagemagick
     autoPatchelfHook
     desktop-file-utils
+    qt6.wrapQtAppsHook
   ];
-  buildInputs = [
-    qtmultimedia
+  buildInputs = with pkgs; [
+    qt6.qtmultimedia
     pkgs.stdenv.cc.cc
   ];
 
