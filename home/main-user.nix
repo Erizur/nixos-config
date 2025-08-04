@@ -54,9 +54,10 @@
     pingus
     pcsx2
     duckstation
+    mame
+    rmg-wayland
     prismlauncher
     scummvm
-    mame
 
     zip xz
     bat ripgrep fd
