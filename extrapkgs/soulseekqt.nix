@@ -14,7 +14,7 @@ pkgs.stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://f004.backblazeb2.com/file/SoulseekQt/SoulseekQt-${version}.AppImage";
-    sha256 = "16ncnvv8h33f161mgy7qc0wjvvqahsbwvby65qhgfh9pbbgb4xgg";
+    sha256 = "sha256-My2TafB0bx/dcsdwJ5FZg6FVFlgAyfq5kcEQYBqHDzs=";
   };
 
   appextracted = appimageTools.extractType2 {
