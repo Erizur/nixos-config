@@ -56,6 +56,7 @@
     duckstation
     mame
     rmg-wayland
+    ares
     prismlauncher
     scummvm
 
