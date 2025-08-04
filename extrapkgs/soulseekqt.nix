@@ -19,7 +19,7 @@ pkgs.stdenv.mkDerivation rec {
 
   appextracted = appimageTools.extractType2 {
     inherit pname version;
-    src = "${src}/SoulseekQt-2024-6-30.AppImage";
+    src = "${src}";
   };
 
   dontBuild = true;
