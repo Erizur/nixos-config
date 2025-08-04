@@ -55,6 +55,7 @@
     pcsx2
     duckstation
     mame
+    dolphin-emu
     rmg-wayland
     ares
     prismlauncher

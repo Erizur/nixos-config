@@ -29,6 +29,7 @@
 
     pcsx2-bin
     duckstation-bin
+    dolphin-emu
     prismlauncher
     scummvm
     mame
