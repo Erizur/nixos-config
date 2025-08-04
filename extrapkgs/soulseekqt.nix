@@ -32,7 +32,7 @@ pkgs.stdenv.mkDerivation rec {
   ];
   buildInputs = [
     qtmultimedia
-    stdenv.cc.cc
+    pkgs.stdenv.cc.cc
   ];
 
   installPhase = ''
