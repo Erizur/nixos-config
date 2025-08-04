@@ -12,7 +12,7 @@ pkgs.stdenv.mkDerivation rec {
   pname = "soulseekqt";
   version = "2024-6-30";
 
-  src = fetchzip {
+  src = fetchurl {
     url = "https://f004.backblazeb2.com/file/SoulseekQt/SoulseekQt-${version}.AppImage";
     sha256 = "16ncnvv8h33f161mgy7qc0wjvvqahsbwvby65qhgfh9pbbgb4xgg";
   };
