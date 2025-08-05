@@ -76,15 +76,7 @@
 
       if vim.g.vscode then
         -- fix clipboard
-        if has("clipboard")
-          if has("unnamedplus")
-            " When possible use + register for copy-paste
-            set clipboard=unnamed,unnamedplus
-          else
-            " On mac and Windows, use * register for copy-paste
-            set clipboard=unnamed
-          endif
-        endif
+        vim.o.clipboard = 'unnamedplus'
       else
         -- C/C++ LSP
         local lspconfig = require('lspconfig')
