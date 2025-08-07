@@ -26,7 +26,9 @@
     chromium
     vesktop
     zoom-us
+    
     obsidian
+    onlyoffice-desktopeditors
 
     vlc
     fooyin
@@ -60,9 +62,6 @@
     ares
     prismlauncher
     scummvm
-
-    zip xz
-    bat ripgrep fd
     
     mame-tools
     any-nix-shell

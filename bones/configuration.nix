@@ -12,6 +12,7 @@
     git neovim wget tree
 
     p7zip unzip unrar
+    zip xz bat ripgrep fd
     
     cmake ninja
     clang clang-tools lldb
