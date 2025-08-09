@@ -5,6 +5,7 @@
 		profiles.default = {
 			extensions = with pkgs.vscode-marketplace; [
 				ms-vscode.cpptools-extension-pack
+				ms-vscode.cmake-tools
 				ms-python.python
 				ms-python.vscode-pylance
 
@@ -33,6 +34,12 @@
 				
 				asvetliakov.vscode-neovim
 				vscode-icons-team.vscode-icons
+
+				davidanson.vscode-markdownlint
+				redhat.vscode-yaml
+				redhat.vscode-xml
+
+				tomoki1207.pdf
 			];
 
 			userSettings = {
@@ -43,6 +50,7 @@
 				"extensions.experimental.affinity" = {
 					"asvetliakov.vscode-neovim" = 1;
 				};
+				"C_Cpp.intelliSenseEngine" = "disabled";
 			};
 		};
 	};
