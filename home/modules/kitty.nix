@@ -7,10 +7,12 @@
       dynamic_background_opacity = true;
       enable_audio_bell = false;
       mouse_hide_wait = "1.0";
-      window_padding_width = 5;
-      background_opacity = "0.4";
-      background_blur = 5;
+      window_padding_width = 1;
       themeFile = "tokyo_night_storm";
+      font = {
+        name = "JetBrainsMono Nerd Font";
+        size = 12;
+      };
       symbol_map = let
         mappings = [
           "U+23FB-U+23FE"
@@ -33,7 +35,7 @@
           "U+E5FA-U+E62B"
         ];
       in
-        (builtins.concatStringsSep "," mappings) + " JetBrains Mono Nerd Font";
+        (builtins.concatStringsSep "," mappings) + " JetBrainsMono Nerd Font";
     };
   };
 
