@@ -40,6 +40,7 @@
     kdePackages.kolourpaint
     krita
     gimp3
+    aseprite
 
     nil # Soporte para nix
     alejandra
@@ -47,7 +48,6 @@
 
     wl-clipboard
     cmake-language-server
-    ardour
 
     superTuxKart
     superTux
