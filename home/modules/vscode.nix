@@ -40,12 +40,13 @@
 				redhat.vscode-xml
 
 				tomoki1207.pdf
+				enkia.tokyo-night
 			];
 
 			userSettings = {
 				"editor.formatOnSave" = false;
 				"editor.fontFamily" = "'JetBrains Mono Nerd Font', 'monospace', monospace";
-				"workbench.colorTheme" = "Tomorrow Night Blue";
+				"workbench.colorTheme" = "Tokyo Night Storm";
 				"workbench.iconTheme"= "vscode-icons";
 				"extensions.experimental.affinity" = {
 					"asvetliakov.vscode-neovim" = 1;

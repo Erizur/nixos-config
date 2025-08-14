@@ -48,6 +48,7 @@
       cmake-tools-nvim
       plenary-nvim
       telescope-nvim
+      tokyonight-nvim
     ];
 
     extraConfig = ''
@@ -58,7 +59,7 @@
       vim.o.tabstop = 4
       vim.o.shiftwidth = 4
       vim.o.expandtab = true
-      vim.cmd("colorscheme gruvbox")
+      vim.cmd("colorscheme tokyonight-storm")
 
       -- Clipboard
       vim.g.clipboard = {
