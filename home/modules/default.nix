@@ -7,6 +7,7 @@
     ./sops.nix
     ./git.nix
     ./fastfetch.nix
+    ./kitty.nix
     ./nvim/default.nix
   ];
 }
