@@ -8,10 +8,8 @@
       mouse_hide_wait = "1.0";
       window_padding_width = 1;
       themeFile = "tokyo_night_storm";
-      font = {
-        name = "JetBrainsMono Nerd Font";
-        size = 12.0;
-      };
+      font_family = "JetBrainsMono Nerd Font";
+      font_size = 10.0;
       symbol_map = let
         mappings = [
           "U+23FB-U+23FE"
