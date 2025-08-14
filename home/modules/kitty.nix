@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.kitty = lib.mkForce {
     enable = true;
@@ -10,6 +10,7 @@
       window_padding_width = 5;
       background_opacity = "0.4";
       background_blur = 5;
+      themeFile = "tokyo_night_storm";
       symbol_map = let
         mappings = [
           "U+23FB-U+23FE"
