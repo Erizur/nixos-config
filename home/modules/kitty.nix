@@ -10,7 +10,7 @@
       themeFile = "tokyo_night_storm";
       font = {
         name = "JetBrainsMono Nerd Font";
-        size = 12;
+        size = 12.0;
       };
       symbol_map = let
         mappings = [
