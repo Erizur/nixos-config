@@ -21,7 +21,7 @@
 
 		initContent = ''
 			any-nix-shell zsh --info-right | source /dev/stdin
-			fortune | lolcat | cowsay
+			fortune | cowsay | lolcat
 		'';
 
 		history.size = 1000;
