@@ -59,7 +59,6 @@
     any-nix-shell
   ] ++ lib.optionals (extraGaming == true) [
     teeworlds hedgewars
-    duckstation
     ares
     rmg-wayland
     dolphin-emu
