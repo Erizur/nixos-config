@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, ... }: 
+{ config, pkgs, system, inputs, extraGaming, ... }:
 {
   home.username = "erizur";
   home.homeDirectory = "/home/erizur";
@@ -51,20 +51,19 @@
 
     superTuxKart
     superTux
-    hedgewars
-    teeworlds
     pingus
     pcsx2
-    duckstation
-    mame
-    dolphin-emu
-    rmg-wayland
-    ares
     prismlauncher
-    scummvm
     
     mame-tools
     any-nix-shell
+  ] ++ lib.optionals (extraGaming == true) [
+    teeworlds hedgewars
+    duckstation
+    ares
+    rmg-wayland
+    dolphin-emu
+    mame scummvm
   ];
 
   home.file.".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";

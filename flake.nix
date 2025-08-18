@@ -59,7 +59,7 @@
             inputs.sops-nix.nixosModules.sops
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; inherit system; };
+                extraSpecialArgs = { extraGaming = true; inherit inputs; inherit system; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
@@ -84,7 +84,7 @@
             inputs.sops-nix.nixosModules.sops
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; inherit system; };
+                extraSpecialArgs = { extraGaming = false; inherit inputs; inherit system; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
