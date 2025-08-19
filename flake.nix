@@ -8,6 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     marble-browser = {
       url = "github:Erizur/marble-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,6 +82,7 @@
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix
             ./bones/nixos/sjdks/configuration.nix
+            inputs.nixos-hardware.nixosModules.lenovo-ideapad-15ach6
             inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
             {
