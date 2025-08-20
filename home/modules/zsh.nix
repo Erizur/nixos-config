@@ -12,7 +12,7 @@
 			editnixcfg = "sudoedit ~/.nixcfg/bones/configuration.nix";
 			editnixflake = "sudoedit ~/.nixcfg/flake.nix";
 			editnixhome = if pkgs.stdenv.isLinux then "sudoedit ~/.nixcfg/home/main-user.nix" else "sudoedit ~/.nixcfg/home/darwin-user.nix";
-			unfree-shell = "NIXPKGS_ALLOW_UNFREE=1 nix-shell --impure"
+			unfree-shell = "NIXPKGS_ALLOW_UNFREE=1 nix-shell --impure";
 		};
 
 		oh-my-zsh = {

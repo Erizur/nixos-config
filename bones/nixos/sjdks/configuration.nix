@@ -43,5 +43,5 @@
                 registry-mirrors = ["https://mirror.gcr.io"];
             };
         };
-    }
+    };
 }
