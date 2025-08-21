@@ -14,6 +14,9 @@
 
 				rust-lang.rust-analyzer
 
+				vscjava.vscode-java-pack
+				vmware.vscode-boot-dev-pack
+
 				bbenoist.nix
 				brettm12345.nixfmt-vscode
 				jnoortheen.nix-ide
