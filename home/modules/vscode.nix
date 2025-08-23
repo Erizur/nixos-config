@@ -14,6 +14,17 @@
 
 				rust-lang.rust-analyzer
 
+				pkgs.vscode-extensions.redhat.java
+				vscjava.vscode-java-debug
+				vscjava.vscode-java-test
+				vscjava.vscode-maven
+				vscjava.vscode-gradle
+				vscjava.vscode-java-dependency
+				
+				vmware.vscode-spring-boot
+				vscjava.vscode-spring-initializr
+				vscjava.vscode-spring-boot-dashboard
+
 				bbenoist.nix
 				brettm12345.nixfmt-vscode
 				jnoortheen.nix-ide
@@ -29,7 +40,11 @@
 				ms-vscode.makefile-tools
 				ms-vsliveshare.vsliveshare
 
-				vshaxe.haxe-extension-pack
+				nadako.vshaxe
+				wiggin77.codedox
+				vshaxe.haxe-checkstyle
+				vshaxe.haxe-debug
+				vshaxe.hxcpp-debugger
 				openfl.lime-vscode-extension
 				
 				asvetliakov.vscode-neovim
@@ -52,6 +67,8 @@
 					"asvetliakov.vscode-neovim" = 1;
 				};
 				"C_Cpp.intelliSenseEngine" = "disabled";
+				"redhat.telemetry.enabled" = false;
+				""
 			};
 		};
 	};

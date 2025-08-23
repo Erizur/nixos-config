@@ -28,7 +28,6 @@
     cmake-language-server
 
     pcsx2-bin
-    duckstation-bin
     dolphin-emu
     ares
     prismlauncher

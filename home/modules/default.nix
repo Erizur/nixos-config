@@ -10,4 +10,6 @@
     ./kitty.nix
     ./nvim/default.nix
   ];
+
+  programs.java.enable = true;
 }

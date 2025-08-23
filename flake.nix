@@ -8,6 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     marble-browser = {
       url = "github:Erizur/marble-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,7 +61,7 @@
             inputs.sops-nix.nixosModules.sops
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; inherit system; };
+                extraSpecialArgs = { extraGaming = true; inherit inputs; inherit system; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
@@ -80,11 +82,12 @@
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix
             ./bones/nixos/sjdks/configuration.nix
+            inputs.nixos-hardware.nixosModules.lenovo-ideapad-15ach6
             inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; inherit system; };
+                extraSpecialArgs = { extraGaming = false; inherit inputs; inherit system; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
