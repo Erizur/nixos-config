@@ -27,6 +27,8 @@
     wineWowPackages.staging
     winetricks
 
+    kdePackages.oxygen-sounds
+
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
@@ -46,10 +48,10 @@
 
   fonts = {
   	packages = with pkgs; [
-	  noto-fonts noto-fonts-cjk-sans noto-fonts-emoji liberation_ttf
+	  noto-fonts noto-fonts-cjk-sans noto-fonts-emoji liberation_ttf oxygenfonts
 	  junction-font aileron fragment-mono comic-mono comic-neue comic-relief work-sans hubot-sans eurofurence
 	  dosis manrope montserrat helvetica-neue-lt-std mplus-outline-fonts.githubRelease
-      fira-code fira-code-symbols
+    fira-code fira-code-symbols
 	  nerd-fonts.fira-code
 	  nerd-fonts.ubuntu
 	  nerd-fonts.hack
