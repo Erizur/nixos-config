@@ -68,7 +68,6 @@
 				};
 				"C_Cpp.intelliSenseEngine" = "disabled";
 				"redhat.telemetry.enabled" = false;
-				""
 			};
 		};
 	};

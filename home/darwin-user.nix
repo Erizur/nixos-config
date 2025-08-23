@@ -1,4 +1,7 @@
 { config, pkgs, system, inputs, ... }: 
+let 
+  duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
+in
 {
   home.username = "erizur";
   home.stateVersion = "25.05";
@@ -27,6 +30,7 @@
     wl-clipboard
     cmake-language-server
 
+    duckstation.duckstation-unofficial
     pcsx2-bin
     dolphin-emu
     ares

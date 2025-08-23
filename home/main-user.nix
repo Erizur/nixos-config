@@ -1,4 +1,7 @@
 { config, pkgs, system, inputs, extraGaming, ... }:
+let 
+  duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
+in
 {
   home.username = "erizur";
   home.homeDirectory = "/home/erizur";
@@ -54,6 +57,7 @@
     pingus
     pcsx2
     prismlauncher
+    duckstation-src.duckstation-unofficial
     
     mame-tools
     any-nix-shell

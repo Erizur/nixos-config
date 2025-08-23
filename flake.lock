@@ -17,6 +17,22 @@
         "type": "github"
       }
     },
+    "duckstation-unofficial": {
+      "locked": {
+        "lastModified": 1755909329,
+        "narHash": "sha256-e8kMsEYYPqAdGUZ3UxtDxP/3tUC4WWq5Qhu/bX6NGhU=",
+        "owner": "normalcea",
+        "repo": "nixpkgs",
+        "rev": "c797ea97dd0d2bfde7f71da5371da79b7c6e6a27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "normalcea",
+        "ref": "init-duckstation-unofficial",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -42,11 +58,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755397986,
-        "narHash": "sha256-qwrF5laj6eE3Zht0wKYTmH6QzL7bdOyE2f6jd3WCO8g=",
+        "lastModified": 1755914636,
+        "narHash": "sha256-VJ+Gm6YsHlPfUCpmRQxvdiZW7H3YPSrdVOewQHAhZN8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8b4ac149687e8520187a66f05e9d4eafebf96522",
+        "rev": "8b55a6ac58b678199e5bba701aaff69e2b3281c0",
         "type": "github"
       },
       "original": {
@@ -95,11 +111,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1755395483,
-        "narHash": "sha256-dNFrfbVndh9T+ugUqFk51tIIGtw9kva5I++u2SWgFXU=",
+        "lastModified": 1755924313,
+        "narHash": "sha256-7/M3ngqiCVKGTcPMeJj6zDW2P5FXL4afwGTroSqLjsM=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "60ea7d2b5749f1d9dbbe11ed51ec20c575e3f165",
+        "rev": "732ab79f3b0b71a3dab449309987b5c8a718d867",
         "type": "github"
       },
       "original": {
@@ -111,11 +127,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1755401985,
-        "narHash": "sha256-Er35lUKKcZT3ygNrYdLMk9An/WdUgSIiZLIH85lrC34=",
+        "lastModified": 1755924099,
+        "narHash": "sha256-lAz1HlhPf8jXNcnPDgFNxLv1d+5cJUzSj/j3HXVeXz0=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "897ffacaaaa0a8bed2f12dbab091e361bb5ad384",
+        "rev": "ca8062faf800b79081874bf8700fea6277a2cb0a",
         "type": "github"
       },
       "original": {
@@ -152,11 +168,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755275010,
-        "narHash": "sha256-lEApCoWUEWh0Ifc3k1JdVjpMtFFXeL2gG1qvBnoRc2I=",
+        "lastModified": 1755825449,
+        "narHash": "sha256-XkiN4NM9Xdy59h69Pc+Vg4PxkSm9EWl6u7k6D5FZ5cM=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "7220b01d679e93ede8d7b25d6f392855b81dd475",
+        "rev": "8df64f819698c1fee0c2969696f54a843b2231e8",
         "type": "github"
       },
       "original": {
@@ -190,11 +206,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1755396877,
-        "narHash": "sha256-92gZRDz3zEsodraI0ZxPzZrpjSqc2qjxTW9HOflzKFw=",
+        "lastModified": 1755914146,
+        "narHash": "sha256-ew98ilw4NTodKlILnr3ndsT0Aj9JhqC507JB3efa0pY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "0cf076c0bafbe7cbd33a3b7377ed24827674e8be",
+        "rev": "ff42a421ff1d415caa0125e6af6f3bd82e642838",
         "type": "github"
       },
       "original": {
@@ -237,11 +253,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1755186698,
-        "narHash": "sha256-wNO3+Ks2jZJ4nTHMuks+cxAiVBGNuEBXsT29Bz6HASo=",
+        "lastModified": 1755615617,
+        "narHash": "sha256-HMwfAJBdrr8wXAkbGhtcby1zGFvs+StOp19xNsbqdOg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fbcf476f790d8a217c3eab4e12033dc4a0f6d23c",
+        "rev": "20075955deac2583bb12f07151c2df830ef346b4",
         "type": "github"
       },
       "original": {
@@ -253,6 +269,7 @@
     },
     "root": {
       "inputs": {
+        "duckstation-unofficial": "duckstation-unofficial",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",

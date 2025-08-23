@@ -55,7 +55,7 @@
 	  nerd-fonts.ubuntu
 	  nerd-fonts.hack
 	  nerd-fonts.comic-shanns-mono
-      nerd-fonts.jetbrains-mono
+    nerd-fonts.jetbrains-mono
 	
 	  carlito dejavu_fonts ipafont source-code-pro
 	  ttf_bitstream_vera
