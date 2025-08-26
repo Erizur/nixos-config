@@ -34,7 +34,8 @@ in
     onlyoffice-desktopeditors
 
     vlc
-    fooyin
+    cider-2
+    deadbeef
     memento
     tenacity
     obs-studio
