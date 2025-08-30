@@ -1,7 +1,7 @@
 { config, pkgs, system, inputs, extraGaming, ... }:
 let 
   duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
-  fooyin = import inputs.fooyin {system = "${system}";};
+  fooyin = import inputs.fooyin {system = "${system}"; config.allowUnfree = true;};
 in
 {
   home.username = "erizur";
