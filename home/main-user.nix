@@ -35,7 +35,8 @@ in
 
     vlc
     cider-2
-    deadbeef
+    audacious
+    audacious-plugins
     memento
     tenacity
     obs-studio
