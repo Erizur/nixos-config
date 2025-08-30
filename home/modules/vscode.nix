@@ -68,6 +68,7 @@
 				};
 				"C_Cpp.intelliSenseEngine" = "disabled";
 				"redhat.telemetry.enabled" = false;
+				"java.jdt.ls.java.home" = "${pkgs.jdk21}";
 			};
 		};
 	};

@@ -20,7 +20,8 @@
 
     fortune cowsay
     sops age
-    
+
+    jdk21 jdk17 
     uutils-coreutils-noprefix
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     wineWowPackages.staging
