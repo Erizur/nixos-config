@@ -35,8 +35,7 @@ in
 
     vlc
     cider-2
-    audacious
-    audacious-plugins
+    fooyin
     memento
     tenacity
     obs-studio
