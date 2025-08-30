@@ -1,6 +1,7 @@
 { config, pkgs, system, inputs, extraGaming, ... }:
 let 
   duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
+  fooyin = import inputs.fooyin {system = "${system}";};
 in
 {
   home.username = "erizur";
@@ -35,7 +36,7 @@ in
 
     vlc
     cider-2
-    fooyin
+    fooyin.fooyin
     memento
     tenacity
     obs-studio

@@ -51,6 +51,22 @@
         "type": "github"
       }
     },
+    "fooyin": {
+      "locked": {
+        "lastModified": 1755456926,
+        "narHash": "sha256-CmRhBQibHNrFi1acs275UVUrt6g3C9sVhTalQaGYQEc=",
+        "owner": "keenanweaver",
+        "repo": "nixpkgs",
+        "rev": "d45ab9ddfa92fbf3dd937e41ed1518cb57715913",
+        "type": "github"
+      },
+      "original": {
+        "owner": "keenanweaver",
+        "ref": "fooyin-0.9.0",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -270,6 +286,7 @@
     "root": {
       "inputs": {
         "duckstation-unofficial": "duckstation-unofficial",
+        "fooyin": "fooyin",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
