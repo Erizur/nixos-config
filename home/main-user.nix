@@ -21,11 +21,7 @@ in
     })
     lutris bottles
 	
-    (
-      inputs.marble-browser.packages."${system}".default.override {
-        nativeMessagingHosts = [pkgs.firefoxpwa pkgs.kdePackages.plasma-browser-integration];
-      }
-    )
+    inputs.marble-browser.packages."${system}".default.override
     qbittorrent
     chromium
     vesktop
@@ -36,7 +32,16 @@ in
 
     vlc
     cider-2
-    fooyin.fooyin
+    (
+      fooyin.fooyin.override {
+        src = pkgs.fetchFromGitHub {
+          owner = "ludouzi";
+          repo = "fooyin";
+          tag = "v" + finalAttrs.version;
+          hash = "sha256-pkzBuJkZs76m7I/9FPt5GxGa8v2CDNR8QAHaIAuKN4w=";
+        };
+      }
+    )
     memento
     tenacity
     obs-studio
