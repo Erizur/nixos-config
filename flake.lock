@@ -142,11 +142,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756665012,
-        "narHash": "sha256-wNJCtCF3W8Dur1hEb5Gd7I+quqDZLt4kMVcXlFpaWSs=",
+        "lastModified": 1756666045,
+        "narHash": "sha256-lallr7Jdt8i8CJf4xxYZM+iqmACKr/yzJymz1D66a/4=",
         "owner": "Erizur",
         "repo": "marble-flake",
-        "rev": "5bf19ee09326f3b0ed052322976291240961f24e",
+        "rev": "a9e8ed15d43a14fd380cb396e911e4428ea82483",
         "type": "github"
       },
       "original": {

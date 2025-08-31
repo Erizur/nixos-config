@@ -12,11 +12,9 @@ in
   ];
 
   home.packages = with pkgs; [
-    lolcat fortune
+    lolcat fortune imagemagick
     figlet cmatrix
-    (jetbrains.clion.override {
-      jdk = pkgs.openjdk21;
-    })
+    jetbrains.clion
 	
     qbittorrent
     vesktop
