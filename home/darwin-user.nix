@@ -30,7 +30,7 @@ in
     wl-clipboard
     cmake-language-server
 
-    duckstation.duckstation-unofficial
+    duckstation-src.duckstation-unofficial
     pcsx2-bin
     dolphin-emu
     ares
