@@ -32,7 +32,6 @@ in
 
     duckstation-src.duckstation-unofficial
     pcsx2-bin
-    dolphin-emu
     ares
     prismlauncher
     scummvm
