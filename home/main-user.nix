@@ -14,14 +14,11 @@ in
   ];
 
   home.packages = with pkgs; [
-    lolcat
-    figlet fortune cmatrix hollywood jp2a
-    (jetbrains.clion.override {
-      jdk = pkgs.openjdk21;
-    })
+    lolcat figlet fortune cmatrix hollywood jp2a
+    jetbrains.clion
     lutris bottles
 	
-    inputs.marble-browser.packages."${system}".default.override
+    inputs.marble-browser.packages."${system}".default
     qbittorrent
     chromium
     vesktop
@@ -33,14 +30,14 @@ in
     vlc
     cider-2
     (
-      fooyin.fooyin.override {
+      fooyin.fooyin.overrideAttrs (oldAttrs: {
         src = pkgs.fetchFromGitHub {
           owner = "ludouzi";
           repo = "fooyin";
           tag = "v" + finalAttrs.version;
           hash = "sha256-pkzBuJkZs76m7I/9FPt5GxGa8v2CDNR8QAHaIAuKN4w=";
         };
-      }
+      })
     )
     memento
     tenacity
