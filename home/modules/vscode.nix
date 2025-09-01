@@ -68,7 +68,9 @@
 				};
 				"C_Cpp.intelliSenseEngine" = "disabled";
 				"redhat.telemetry.enabled" = false;
-				"java.jdt.ls.java.home" = "${pkgs.jdk21}";
+				"java.jdt.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
+				"spring-boot.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
+				"maven.terminal.useJavaHome" = true;
 			};
 		};
 	};
