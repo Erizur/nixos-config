@@ -41,5 +41,6 @@ in
     any-nix-shell
   ];
 
+  targets.darwin.linkApps.directory = "Applications";
   programs.home-manager.enable = true;
 }
