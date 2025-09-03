@@ -75,6 +75,21 @@
         cache_enabled = 1,
       }
 
+      if vim.loop.os_uname().sysname == "Darwin" then
+        vim.g.clipboard = {
+          name = 'unnamedplus',
+          copy = {
+            ['+'] = 'pbcopy',
+            ['*'] = 'pbcopy',
+          },
+          paste = {
+            ['+'] = 'pbpaste',
+            ['*'] = 'pbpaste',
+          },
+          cache_enabled = 1,
+        }
+      end
+
       if vim.g.vscode then
         -- fix clipboard
         vim.o.clipboard = 'unnamedplus'

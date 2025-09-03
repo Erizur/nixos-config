@@ -25,7 +25,6 @@ in
     alejandra
     pyright
 
-    wl-clipboard
     cmake-language-server
 
     duckstation-src.duckstation-unofficial
