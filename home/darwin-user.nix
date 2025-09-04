@@ -1,6 +1,6 @@
 { config, pkgs, system, inputs, ... }: 
 let 
-  duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
+  duckstation-src = import inputs.duckstation-unofficial {system = "x86_64-darwin"; config.allowUnfree = true;};
 in
 {
   home.username = "erizur";
@@ -33,9 +33,6 @@ in
     prismlauncher
     scummvm
     mame
-
-    zip xz
-    bat ripgrep fd
     
     mame-tools
     any-nix-shell
