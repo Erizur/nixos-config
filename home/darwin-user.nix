@@ -12,7 +12,7 @@ in
   ];
 
   home.packages = with pkgs; [
-    lolcat fortune imagemagick
+    lolcat fortune
     figlet cmatrix
     jetbrains.clion
 	
