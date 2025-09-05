@@ -16,4 +16,8 @@
 
   system.stateVersion = 6;
   system.primaryUser = "erizur";
+  
+  nixpkgs.overlays = [
+    (import ./overlays.nix)
+  ];
 }
