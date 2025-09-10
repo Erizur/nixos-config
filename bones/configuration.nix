@@ -15,15 +15,16 @@
     zip xz bat ripgrep fd
     
     cmake ninja
-    clang clang-tools lldb
     direnv
 
     fortune cowsay
     sops age
 
     jdk21 jdk17 
-    uutils-coreutils-noprefix
   ] ++ lib.optionals pkgs.stdenv.isLinux [
+    uutils-coreutils-noprefix
+    clang clang-tools lldb
+
     wineWowPackages.staging
     winetricks
 
@@ -40,6 +41,8 @@
     keyd libpulseaudio lact xdg-utils alsa-utils 
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    imagemagick
   ];
 
   environment.variables.EDITOR = "nvim";

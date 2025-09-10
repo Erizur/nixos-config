@@ -29,11 +29,14 @@ in
 
   programs.ssh = {
     enable = true;
-    forwardAgent = true;
-    addKeysToAgent = "yes";
-
+    enableDefaultConfig = false;
     matchBlocks =
       {
+        "*" = {
+          forwardAgent = true;
+          addKeysToAgent = "yes";
+        };
+
         "github.com" = {
           identitiesOnly = true;
           identityFile = "${homeDirectory}/.ssh/id_ed25519";
