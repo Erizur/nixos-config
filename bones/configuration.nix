@@ -48,8 +48,21 @@
   environment.variables = {
     EDITOR = "nvim";
   } // lib.optionals pkgs.stdenv.isLinux {
-    GST_PLUGIN_PATH = "";
-    GST_PLUGIN_SYSTEM_PATH_1_0 = "${pkgs.gst_all_1.gstreamer.out}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-base}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-good}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-bad}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-ugly}/lib/gstreamer-1.0";
+    GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
+    GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
+      pkgs.gst_all_1.gstreamer.out	
+	  pkgs.gst_all_1.gst-plugins-base
+	  pkgs.pkgsi686Linux.gst_all_1.gst-plugins-base
+	  pkgs.gst_all_1.gst-plugins-good
+	  pkgs.pkgsi686Linux.gst_all_1.gst-plugins-good
+	  pkgs.gst_all_1.gst-plugins-bad
+	  pkgs.pkgsi686Linux.gst_all_1.gst-plugins-bad
+	  pkgs.gst_all_1.gst-plugins-ugly
+	  pkgs.pkgsi686Linux.gst_all_1.gst-plugins-ugly
+      pkgs.gst_all_1.gst-libav
+	  pkgs.pkgsi686Linux.gst_all_1.gst-libav
+	  pkgs.gst_all_1.gst-vaapi
+	  pkgs.pkgsi686Linux.gst_all_1.gst-vaapi ];
   };
 
   programs.zsh.enable = true;
