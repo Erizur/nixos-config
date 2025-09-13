@@ -18,9 +18,9 @@ in
     jetbrains.clion
     lutris
     (bottles.override {
-      extraLibraries = with pkgs; [
+      extraLibraries = pkgs: [
         pkgs.fluidsynth
-      ];
+      ]
     })
 	
     inputs.marble-browser.packages."${system}".default
