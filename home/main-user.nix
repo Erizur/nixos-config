@@ -20,7 +20,7 @@ in
     (bottles.override {
       extraLibraries = pkgs: [
         pkgs.fluidsynth
-      ]
+      ];
     })
 	
     inputs.marble-browser.packages."${system}".default
