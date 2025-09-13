@@ -16,7 +16,12 @@ in
   home.packages = with pkgs; [
     lolcat figlet fortune cmatrix hollywood jp2a
     jetbrains.clion
-    lutris bottles
+    lutris
+    (bottles.override {
+      extraLibraries = with pkgs; [
+        pkgs.fluidsynth
+      ];
+    })
 	
     inputs.marble-browser.packages."${system}".default
     qbittorrent
