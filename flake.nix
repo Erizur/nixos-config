@@ -78,6 +78,7 @@
                 backupFileExtension = "backup";
                 users.erizur.imports = [
                   ./home/main-user.nix
+                  ./home/modules/fluidsynth.nix
                   ./home/modules/branding/makoto.nix
                 ];
                 sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
