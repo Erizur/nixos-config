@@ -6,6 +6,7 @@
   # Flake support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc.options = "--delete-older-than 7d";
+  nix.settings.trusted-users = ["root" "erizur"];
   
   # Packages
   environment.systemPackages = with pkgs; [
