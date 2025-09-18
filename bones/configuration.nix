@@ -39,7 +39,7 @@
     gst_all_1.gst-libav
     gst_all_1.gst-vaapi
     
-    keyd libpulseaudio lact xdg-utils alsa-utils 
+    keyd libpulseaudio xdg-utils alsa-utils 
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
