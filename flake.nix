@@ -25,7 +25,7 @@
     };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    duckstation-unofficial.url = "github:normalcea/nixpkgs/init-duckstation-unofficial";
+    duckstation-unofficial.url = "github:normalcea/nixpkgs/revert-duckstation-removal";
     fooyin.url = "github:keenanweaver/nixpkgs/fooyin-0.9.0";
 
     sops-nix = {

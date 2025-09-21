@@ -27,7 +27,7 @@ in
 
     cmake-language-server
 
-    duckstation-src.duckstation-unofficial
+    duckstation-src.duckstation
     pcsx2-bin
     ares
     prismlauncher

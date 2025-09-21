@@ -66,7 +66,7 @@ in
     pingus
     pcsx2
     prismlauncher
-    duckstation-src.duckstation-unofficial
+    duckstation-src.duckstation
     
     mame-tools
     any-nix-shell
