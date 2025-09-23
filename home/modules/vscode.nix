@@ -70,7 +70,8 @@
 				"redhat.telemetry.enabled" = false;
 				"java.jdt.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
 				"spring-boot.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
-				"maven.terminal.useJavaHome" = true;
+                "maven.terminal.useJavaHome" = true;
+                "lldb.library" = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
 			};
 		};
 	};
