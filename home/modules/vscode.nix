@@ -14,7 +14,7 @@
 
 				rust-lang.rust-analyzer
 
-				vscode-extensions.redhat.java
+				redhat.java
 				vscjava.vscode-java-debug
 				vscjava.vscode-java-test
 				vscjava.vscode-maven
