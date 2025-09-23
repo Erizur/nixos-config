@@ -10,7 +10,7 @@
 				ms-python.vscode-pylance
 
 				llvm-vs-code-extensions.vscode-clangd
-				pkgs.vscode-extensions.vadimcn.vscode-lldb
+				vadimcn.vscode-lldb
 
 				rust-lang.rust-analyzer
 
@@ -71,7 +71,7 @@
 				"java.jdt.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
 				"spring-boot.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
                 "maven.terminal.useJavaHome" = true;
-                "lldb.library" = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
+                #"lldb.library" = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
 			};
 		};
 	};
