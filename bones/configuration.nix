@@ -26,8 +26,9 @@
     uutils-coreutils-noprefix
     clang clang-tools lldb
 
-    wineWowPackages.staging
-    winetricks
+    wineWowPackages.stagingFull
+    winetricks wineasio
+    q4wine
 
     kdePackages.oxygen-sounds
 
