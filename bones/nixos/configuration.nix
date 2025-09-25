@@ -170,6 +170,8 @@
       };
     };
   };
+  
+  hardware.opentabletdriver.enable = true;
 
   system.stateVersion = "25.05"; # Don't change this unless fully reinstalling
 }
