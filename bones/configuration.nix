@@ -28,7 +28,6 @@
 
     wineWowPackages.stagingFull
     winetricks wineasio
-    q4wine
 
     kdePackages.oxygen-sounds
 

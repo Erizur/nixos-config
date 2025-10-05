@@ -19,11 +19,11 @@
     },
     "duckstation-unofficial": {
       "locked": {
-        "lastModified": 1759638428,
-        "narHash": "sha256-0PobYfu1hkHZG83Yeqen4jYWisDHOYTOQlOJCiniguU=",
+        "lastModified": 1759681287,
+        "narHash": "sha256-61Y+XFuukzx0qG8rjWNYI/JI/r7R9CWvhp/nB8AkrQg=",
         "owner": "normalcea",
         "repo": "nixpkgs",
-        "rev": "9b59d9c3949dd483434623699839ef04f633a950",
+        "rev": "faa2075892d29cc90647fca6d1a7b4a899f1d6fd",
         "type": "github"
       },
       "original": {
