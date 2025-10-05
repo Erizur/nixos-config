@@ -1,7 +1,6 @@
 { config, pkgs, system, inputs, extraGaming, ... }:
 let 
   duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
-  fooyin-src = import inputs.fooyin {system = "${system}"; config.allowUnfree = true;};
 in
 {
   home.username = "erizur";
@@ -34,16 +33,6 @@ in
 
     vlc
     cider-2
-    (
-      fooyin-src.fooyin.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-          owner = "ludouzi";
-          repo = "fooyin";
-          tag = "v0.9.1";
-          hash = "sha256-549AtdldAPFengQsVXMnZI0mVzUwgKgUKAfR0Ro3s2I=";
-        };
-      })
-    )
     memento
     tenacity
     obs-studio

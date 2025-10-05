@@ -9,8 +9,8 @@
     services.lact.enable = true;
 
     hardware.graphics = {
-        extraPackages = with pkgs; [ amdvlk rocmPackages.clr.icd mesa ];
-        extraPackages32 = with pkgs.pkgsi686Linux; [ amdvlk mesa ];
+        extraPackages = with pkgs; [ rocmPackages.clr.icd mesa ];
+        extraPackages32 = with pkgs.pkgsi686Linux; [ mesa ];
     };
 
     boot.loader.grub.extraEntries = ''
