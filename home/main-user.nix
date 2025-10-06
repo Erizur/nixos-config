@@ -36,6 +36,7 @@ in
     memento
     tenacity
     obs-studio
+    fooyin
 
     kdePackages.kcalc
     kdePackages.kolourpaint
