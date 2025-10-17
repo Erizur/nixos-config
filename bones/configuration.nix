@@ -11,6 +11,7 @@
   # Packages
   environment.systemPackages = with pkgs; [
     git neovim wget tree
+    lolcat figlet fortune cmatrix 
 
     p7zip unzip unrar
     zip xz bat ripgrep fd
@@ -21,8 +22,10 @@
     fortune cowsay
     sops age
 
-    jdk21 jdk17 
+    jdk21 jdk17
+    imagemagickBig
   ] ++ lib.optionals pkgs.stdenv.isLinux [
+    hollywood jp2a
     uutils-coreutils-noprefix
     clang clang-tools lldb
 
@@ -38,12 +41,13 @@
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
     gst_all_1.gst-vaapi
-    
+
+    mame-tools
     keyd libpulseaudio xdg-utils alsa-utils 
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
-    imagemagick
+    
   ];
 
   environment.variables = {

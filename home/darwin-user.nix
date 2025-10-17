@@ -12,10 +12,6 @@ in
   ];
 
   home.packages = with pkgs; [
-    lolcat fortune
-    figlet cmatrix
-    jetbrains.clion
-	
     qbittorrent
     vesktop
     zoom-us

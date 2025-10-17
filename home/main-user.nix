@@ -13,8 +13,6 @@ in
   ];
 
   home.packages = with pkgs; [
-    lolcat figlet fortune cmatrix hollywood jp2a
-    jetbrains.clion
     lutris
     (bottles.override {
       extraLibraries = pkgs: [
@@ -58,7 +56,6 @@ in
     prismlauncher
     duckstation-src.duckstation
     
-    mame-tools
     any-nix-shell
   ] ++ lib.optionals (extraGaming == true) [
     teeworlds hedgewars

@@ -17,7 +17,7 @@
 
 		oh-my-zsh = {
 			enable = true;
-			plugins = [ "git" "gh" "dirhistory" "history" "qrcode" "emoji" "emoji-clock" "lol" "themes"];
+			plugins = [ "git" "gh" "dotenv" "dirhistory" "history" "qrcode" "emoji" "emoji-clock" "lol" "themes"];
 			theme = "candy";
 		};
 

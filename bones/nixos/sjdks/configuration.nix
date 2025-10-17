@@ -32,16 +32,4 @@
             package = config.boot.kernelPackages.nvidiaPackages.stable; # Use beta NVIDIA driver
         };
     };
-
-    virtualisation.docker = {
-        enable = false;
-        rootless = {
-            enable = true;
-            setSocketVariable = true;
-            daemon.settings = {
-                dns = ["1.1.1.1" "8.8.8.8"];
-                registry-mirrors = ["https://mirror.gcr.io"];
-            };
-        };
-    };
 }
