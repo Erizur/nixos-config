@@ -52,7 +52,9 @@
 
 				davidanson.vscode-markdownlint
 				redhat.vscode-yaml
-				redhat.vscode-xml
+                redhat.vscode-xml
+
+                TheQtCompany.qt-qml
 
 				tomoki1207.pdf
 				enkia.tokyo-night
