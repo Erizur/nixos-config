@@ -16,8 +16,8 @@ in
     package = pkgs.gitFull;
     
     settings = {
-      userName = "AM_Erizur";
-      userEmail = "sajoudks@outlook.com";
+      user.name = "AM_Erizur";
+      user.email = "sajoudks@outlook.com";
       init.defaultBranch = "main";
       commit.signoff = true;
       commit.gpgsign = true;

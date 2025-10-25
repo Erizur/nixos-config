@@ -48,9 +48,10 @@
     kdePackages.kcalc
     kdePackages.kolourpaint
     kdePackages.oxygen-sounds
+    kdePackages.fcitx5-configtool 
     krita gimp3
     aseprite
-
+    
     qbittorrent
     memento vlc
     tenacity
@@ -58,7 +59,7 @@
     
     cage
     (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
-
+    
     keyd libpulseaudio xdg-utils alsa-utils 
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
