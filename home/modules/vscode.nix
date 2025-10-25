@@ -54,7 +54,7 @@
 				redhat.vscode-yaml
                 redhat.vscode-xml
 
-                TheQtCompany.qt-qml
+                theqtcompany.qt-qml
 
 				tomoki1207.pdf
 				enkia.tokyo-night

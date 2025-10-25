@@ -118,7 +118,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "env XDG_SESSION_TYPE=wayland EGL_PLATFORM=gbm QT_QPA_PLATFORM=wayland QT_WAYLAND_DISABLE_WINDOWDECORATION=1 cage -s -- quickshell -p ${greetDir}/greet.qml";
+        command = "env GREET_WALLPATH='/home/erizur/Pictures/Wallpapers/wp10550609.jpg' GREET_UPICPATH='/home/erizur/Downloads/image.png' XDG_SESSION_TYPE=wayland EGL_PLATFORM=gbm QT_QPA_PLATFORM=wayland QT_WAYLAND_DISABLE_WINDOWDECORATION=1 cage -s -- quickshell -p ${greetDir}/greet.qml";
       };
     };
   };
