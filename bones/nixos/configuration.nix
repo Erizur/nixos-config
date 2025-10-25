@@ -34,15 +34,19 @@
   	timeZone = "America/Lima";
   };
 
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
+  # Nuke the console.
+  console.enable = false;
 
-  # Enable the X11 windowing system.
   services.xserver = {
   	enable = true;
     xkb.layout = "es";
+  };
+
+  services.kmscon = {
+    enable = true;
+    fonts = [ { name = "JetBrainsMono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono; } ];
+    hwRender = true;
+    useXkbConfig = true;
   };
 
   # Enable sound.

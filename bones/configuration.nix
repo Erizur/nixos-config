@@ -24,15 +24,18 @@
 
     jdk21 jdk17
     imagemagickBig
+    mame-tools
+
+    nil alejandra
+    pyright 
+    cmake-language-server
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     hollywood jp2a
     uutils-coreutils-noprefix
-    clang clang-tools lldb
+    clang clang-tools lldb wl-clipboard
 
     wineWowPackages.stagingFull
     winetricks wineasio
-
-    kdePackages.oxygen-sounds
 
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
@@ -42,7 +45,17 @@
     gst_all_1.gst-libav
     gst_all_1.gst-vaapi
 
-    mame-tools
+    kdePackages.kcalc
+    kdePackages.kolourpaint
+    kdePackages.oxygen-sounds
+    krita gimp3
+    aseprite
+
+    qbittorrent
+    memento vlc
+    tenacity
+    fooyin
+
     keyd libpulseaudio xdg-utils alsa-utils 
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
