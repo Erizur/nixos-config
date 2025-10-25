@@ -14,11 +14,10 @@ in
     enable = true;
     lfs.enable = true;
     package = pkgs.gitFull;
-
-    userName = "AM_Erizur";
-    userEmail = "sajoudks@outlook.com";
     
-    extraConfig = {
+    settings = {
+      userName = "AM_Erizur";
+      userEmail = "sajoudks@outlook.com";
       init.defaultBranch = "main";
       commit.signoff = true;
       commit.gpgsign = true;

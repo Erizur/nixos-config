@@ -29,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/7a5ffd8bfce663427169220ea020c8046964dd31";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
