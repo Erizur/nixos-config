@@ -1,7 +1,4 @@
 { config, pkgs, system, inputs, ... }: 
-let 
-  duckstation-src = import inputs.duckstation-unofficial {system = "x86_64-darwin"; config.allowUnfree = true;};
-in
 {
   home.username = "erizur";
   home.stateVersion = "25.05";
