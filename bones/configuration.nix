@@ -1,4 +1,4 @@
-{config, lib, pkgs, inputs, ... }:
+{config, lib, pkgs, inputs, system, ... }:
 {
   # Enable tailscale
   services.tailscale.enable = if pkgs.stdenv.isLinux then true else false;
@@ -55,6 +55,8 @@
     memento vlc
     tenacity
     fooyin
+
+    (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
 
     keyd libpulseaudio xdg-utils alsa-utils 
     (pkgs.callPackage ../extrapkgs/kshift.nix {})

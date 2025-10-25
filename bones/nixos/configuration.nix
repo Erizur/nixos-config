@@ -1,4 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ self, config, lib, pkgs, ... }:
+let
+  greetFile = pkgs.writeTextFile {
+    name = "greeter-test";
+    destination = "/share/quickshell/greet.qml";
+    text = builtins.readFile ${self}/greeter/greet.qml;
+  };
+in
 {
   # Use the GRand Unified Bootloader
   boot.loader = {
@@ -111,9 +118,13 @@
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 
-  services.displayManager.sddm = {
-  	enable = true;
-  	wayland.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "quickshell ${greetFile}/share/quickshell/greet.qml";
+      };
+    };
   };
 
   services.desktopManager.plasma6.enable = true;

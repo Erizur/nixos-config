@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, extraGaming, ... }:
+{ self, config, pkgs, system, inputs, extraGaming, ... }:
 let 
   duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
 in
@@ -51,7 +51,7 @@ in
           gtk.enable = true;
           x11.enable = true;
           name = "Oxygen-Zion";
-          size = 48;
+          size = 24;
           package = 
             pkgs.runCommand "moveUp" {} ''
               mkdir -p $out/share/icons

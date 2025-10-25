@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/7a5ffd8bfce663427169220ea020c8046964dd31";
     duckstation-unofficial.url = "github:normalcea/nixpkgs/revert-duckstation-removal";
 
@@ -32,8 +37,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Homebrew package manager support
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
@@ -54,7 +61,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
+  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, quickshell, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
