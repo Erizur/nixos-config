@@ -114,6 +114,7 @@ in
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 
+  # TODO: Move this around a new file, to declutter?
   services.greetd = {
     enable = true;
     settings = {
@@ -122,6 +123,13 @@ in
       };
     };
   };
+
+  security.pam.services.greetd.text = ''
+  auth      substack      login
+  account   include       login
+  password  substack      login
+  session   include       login
+  '';
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
