@@ -3,7 +3,7 @@ let
   greetFile = pkgs.writeTextFile {
     name = "greeter-test";
     destination = "/share/quickshell/greet.qml";
-    text = builtins.readFile ${self}/greeter/greet.qml;
+    text = builtins.readFile ../../greeter/greet.qml;
   };
 in
 {
