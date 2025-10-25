@@ -69,7 +69,7 @@
       nixosConfigurations = {
         # current desktop (will redo when i get a new one)
         ts140 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; inherit system; };
           modules = [
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix
@@ -95,7 +95,7 @@
 
         # uni laptop
         sjdks = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; inherit system; };
           modules = [
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix

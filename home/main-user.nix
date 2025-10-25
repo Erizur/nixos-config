@@ -1,6 +1,7 @@
 { self, config, pkgs, system, inputs, extraGaming, ... }:
 let 
   duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
+  cursor-path = ../cursor;
 in
 {
   home.username = "erizur";
@@ -55,7 +56,7 @@ in
           package = 
             pkgs.runCommand "moveUp" {} ''
               mkdir -p $out/share/icons
-              ln -s ${self}/cursor $out/share/icons/Oxygen-Zion
+              ln -s ${cursor-path} $out/share/icons/Oxygen-Zion
           '';
         };
   programs.home-manager.enable = true;
