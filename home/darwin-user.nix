@@ -19,7 +19,7 @@
 
     cmake-language-server
 
-    duckstation-src.duckstation
+    duckstation
     pcsx2-bin
     ares
     prismlauncher
