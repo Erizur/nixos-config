@@ -55,7 +55,8 @@
     memento vlc
     tenacity
     fooyin
-
+    
+    cage
     (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
 
     keyd libpulseaudio xdg-utils alsa-utils 

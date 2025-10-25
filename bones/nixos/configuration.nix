@@ -1,10 +1,6 @@
 { self, config, lib, pkgs, ... }:
 let
-  greetFile = pkgs.writeTextFile {
-    name = "greeter-test";
-    destination = "/share/quickshell/greet.qml";
-    text = builtins.readFile ../../greeter/greet.qml;
-  };
+  greetDir = ../../greeter;
 in
 {
   # Use the GRand Unified Bootloader
@@ -122,7 +118,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "quickshell ${greetFile}/share/quickshell/greet.qml";
+        command = "env XDG_SESSION_TYPE=wayland EGL_PLATFORM=gbm QT_QPA_PLATFORM=wayland QT_WAYLAND_DISABLE_WINDOWDECORATION=1 cage -s -- quickshell -p ${greetDir}/greet.qml";
       };
     };
   };
