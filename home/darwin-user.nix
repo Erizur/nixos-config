@@ -12,12 +12,11 @@ in
   ];
 
   home.packages = with pkgs; [
-    qbittorrent
     vesktop
     zoom-us
     obsidian
 
-    nil # Soporte para nix
+    nil
     alejandra
     pyright
 
@@ -30,7 +29,6 @@ in
     scummvm
     mame
     
-    mame-tools
     any-nix-shell
   ];
 

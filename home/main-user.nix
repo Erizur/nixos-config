@@ -21,33 +21,15 @@ in
     })
 	
     inputs.marble-browser.packages."${system}".default
-    qbittorrent
     chromium
     vesktop
     zoom-us
     
     obsidian
     onlyoffice-desktopeditors
-
-    vlc
     cider-2
-    memento
-    tenacity
+    
     obs-studio
-    fooyin
-
-    kdePackages.kcalc
-    kdePackages.kolourpaint
-    krita
-    gimp3
-    aseprite
-
-    nil # Soporte para nix
-    alejandra
-    pyright
-
-    wl-clipboard
-    cmake-language-server
 
     superTuxKart
     superTux
@@ -65,7 +47,17 @@ in
     mame scummvm
   ];
 
-  home.file.".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";
+  home.pointerCursor = {
+          gtk.enable = true;
+          x11.enable = true;
+          name = "Oxygen-Zion";
+          size = 48;
+          package = 
+            pkgs.runCommand "moveUp" {} ''
+              mkdir -p $out/share/icons
+              ln -s ${self}/cursor $out/share/icons/Oxygen-Zion
+          '';
+        };
   programs.home-manager.enable = true;
 }
 
