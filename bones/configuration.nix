@@ -116,6 +116,10 @@
     config.allowUnfree = true;
     overlays = [
       inputs.nix-vscode-extensions.overlays.default
+      (final: prev: {
+        fcitx5 = inputs.unstable-small.legacyPackages.${final.system}.fcitx5;
+        fcitx5-qt6 = inputs.unstable-small.legacyPackages.${final.system}.fcitx5-qt6;
+      })
     ];
   };
 }

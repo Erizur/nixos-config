@@ -16,7 +16,8 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
+    unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     marble-browser = {
@@ -30,8 +31,7 @@
     };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    fcitx5-fix.url = "github:nixos/nixpkgs/cb82756ecc37fa623f8cf3e88854f9bf7f64af93";
-
+    
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
