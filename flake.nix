@@ -29,8 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    duckstation-unofficial.url = "github:normalcea/revert-duckstation-removal";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/7a5ffd8bfce663427169220ea020c8046964dd31";
+    duckstation-unofficial.url = "github:NixOS/nixpkgs/58d045414a13e7c8d966ef95c52de96e3b3b9a1a";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
