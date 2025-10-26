@@ -48,7 +48,7 @@ in
   services.kmscon = {
     enable = true;
     fonts = [ { name = "JetBrainsMono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono; } ];
-    hwRender = true;
+    hwRender = false;
     useXkbConfig = true;
   };
 
