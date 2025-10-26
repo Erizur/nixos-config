@@ -117,9 +117,17 @@
     overlays = [
       inputs.nix-vscode-extensions.overlays.default
       (final: prev: {
-        fcitx5 = inputs.unstable-small.legacyPackages.${final.system}.fcitx5;
-        fcitx5-qt6 = inputs.unstable-small.legacyPackages.${final.system}.fcitx5-qt6;
-      })
+        kdePackages = prev.kdePackages // {
+          fcitx5-qt = prev.kdePackages.fcitx5-qt.overrideAttrs (old: {
+            src = final.fetchFromGitHub {
+              owner = "fcitx";
+              repo = "fcitx5-qt";
+              rev = "000e10204374d62dbd1329a00c49171215d76da7";
+              sha256 = "0larddhk45jqqm78nl9cxz2sc3mrz11ihvkwmn6mxkxs96f1dgrn";
+            };
+          });
+        };
+      })    
     ];
   };
 }

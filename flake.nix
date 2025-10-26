@@ -16,8 +16,7 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     marble-browser = {
