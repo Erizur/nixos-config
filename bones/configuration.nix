@@ -48,7 +48,6 @@
     kdePackages.kcalc
     kdePackages.kolourpaint
     kdePackages.oxygen-sounds
-    kdePackages.fcitx5-configtool 
     krita gimp3
     aseprite
     
@@ -70,6 +69,13 @@
   environment.variables = {
     EDITOR = "nvim";
   } // lib.optionals pkgs.stdenv.isLinux {
+    XMODIFIERS = "@im=fcitx";
+    QT_IM_MODULE = "fcitx";
+    GTK_IM_MODULE = "wayland";
+    QT_IM_MODULES = "wayland;fcitx;ibus";
+    SDL_IM_MODULE = "fcitx";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    NIXOS_OZONE_WL = "1";
     GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
     GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
       pkgs.gst_all_1.gstreamer.out	

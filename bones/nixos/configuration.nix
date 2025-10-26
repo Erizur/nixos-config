@@ -1,4 +1,4 @@
-{ self, config, lib, pkgs, ... }:
+{ self, config, lib, pkgs, inputs, ... }:
 let
   greetDir = ../../greeter;
 in
@@ -166,8 +166,11 @@ in
     inputMethod = {
       enable = true;
       type = "fcitx5";
+      fcitx5.fcitx5-with-addons = pkgs.callPackage ../../extrapkgs/fcitx5-with-addons.nix {inherit inputs;};
       fcitx5.addons = with pkgs; [
-        fcitx5-mozc 
+        fcitx5-mozc
+        fcitx5-qt
+        fcitx5-gtk
       ];
       fcitx5.waylandFrontend = true;
     };
@@ -186,6 +189,19 @@ in
           };
         };
       };
+    };
+  };
+  
+  gtk = {
+    gtk2.extraConfig =
+      ''
+        gtk-im-module="fcitx"
+      '';
+    gtk3.extraConfig = {
+      gtk-im-module = "fcitx";
+    };
+    gtk4.extraConfig = {
+      gtk-im-module = "fcitx";
     };
   };
 

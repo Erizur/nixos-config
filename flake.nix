@@ -30,6 +30,7 @@
     };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    fcitx5-fix.url = "github:nixos/nixpkgs/cb82756ecc37fa623f8cf3e88854f9bf7f64af93";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
