@@ -11,7 +11,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/5c43e78b605be1338e8de2c30770d5ce268064fd";
+    nixpkgs.url = "github:NixOS/nixpkgs/7df7ff7d8e00218376575f0acdcc5d66741351ee";
     home-manager = {
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +30,7 @@
     };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    duckstation-unofficial.url = "github:normalcea/nixpkgs/revert-duckstation-removal";
+    duckstation-unofficial.url = "github:normalcea/revert-duckstation-removal";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
