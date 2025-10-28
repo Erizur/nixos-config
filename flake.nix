@@ -29,8 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    duckstation-unofficial.url = "github:NixOS/nixpkgs/58d045414a13e7c8d966ef95c52de96e3b3b9a1a";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; 
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -61,7 +60,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, quickshell, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
