@@ -29,7 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; 
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions/fix-vadimcn-vscode-lldb-v1.11.8";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; 
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
