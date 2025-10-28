@@ -3,7 +3,7 @@
 	programs.vscode = {
 		enable = true;
 		profiles.default = {
-			extensions = with pkgs.vscode-marketplace; [
+			extensions = with pkgs.vscode-marketplace-universal; [
 				ms-vscode.cpptools-extension-pack
 				ms-vscode.cmake-tools
 				ms-python.python

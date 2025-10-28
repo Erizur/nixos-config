@@ -92,17 +92,19 @@ in
 
                 ln -sf size_ver n-resize
                 ln -sf size_ver s-resize
+                ln -sf size_ver ns-resize
                 ln -sf size_hor e-resize
                 ln -sf size_hor w-resize
-                ln -sf size_bdiag nw-resize
-                ln -sf size_fdiag ne-resize
-                ln -sf size_fdiag sw-resize
-                ln -sf size_bdiag se-resize
-                ln -sf size_hor col-resize
-                ln -sf size_ver row-resize
+                ln -sf size_hor ew-resize
+                ln -sf size_fdiag nw-resize
+                ln -sf size_bdiag ne-resize
+                ln -sf size_bdiag sw-resize
+                ln -sf size_fdiag se-resize
+                ln -sf split_h col-resize
+                ln -sf split_v row-resize
                 ln -sf size_hor sb_h_double_arrow
                 ln -sf size_ver sb_v_double_arrow
-                ln -sf size_hor v_double_arrow
+                ln -sf size_ver v_double_arrow
 
                 ln -sf cross crosshair
                 ln -sf split_h sb_h_double_arrow
