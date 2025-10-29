@@ -17,6 +17,22 @@
         "type": "github"
       }
     },
+    "duckstation-unofficial": {
+      "locked": {
+        "lastModified": 1761693851,
+        "narHash": "sha256-D4uFcn72B1KgL7EcJ0ty5lmasJjLGunpfXIhwcSWtoE=",
+        "owner": "normalcea",
+        "repo": "nixpkgs",
+        "rev": "71cbb752aa36854eb4a7deb3685b9789256d643c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "normalcea",
+        "ref": "duckstation-update-from-0.1-9669",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -218,6 +234,7 @@
     },
     "root": {
       "inputs": {
+        "duckstation-unofficial": "duckstation-unofficial",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
