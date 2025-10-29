@@ -1,6 +1,20 @@
 { self, config, lib, pkgs, inputs, ... }:
 let
   greetDir = ../../greeter;
+  weston = let 
+    westonIni = (pkgs.formats.ini {}).generate "weston.ini" {
+      libinput = {
+        enable-tap = config.services.libinput.mouse.tapping;
+        left-handed = config.services.libinput.mouse.leftHanded;
+      };
+      keyboard = {
+        keymap_model = config.services.xserver.xkb.model;
+        keymap_layout = config.services.xserver.xkb.layout;
+        keymap_variant = config.services.xserver.xkb.variant;
+        keymap_options = config.services.xserver.xkb.options;
+      };
+    };
+  in "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
 in
 {
   # Use the GRand Unified Bootloader
@@ -119,20 +133,39 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "env GREET_WALLPATH='/home/erizur/Pictures/Wallpapers/wp10550609.jpg' GREET_UPICPATH='/home/erizur/Downloads/image.png' XDG_SESSION_TYPE=wayland EGL_PLATFORM=gbm QT_QPA_PLATFORM=wayland QT_WAYLAND_DISABLE_WINDOWDECORATION=1 dbus-run-session cage -s -- quickshell -p ${greetDir}/greet.qml";
+        command = ''
+          env GREET_WALLPATH='/home/erizur/Pictures/Wallpapers/wp10550609.jpg' \
+          GREET_UPICPATH='/home/erizur/Downloads/image.png' \
+          XDG_SESSION_TYPE=wayland \
+          EGL_PLATFORM=gbm \
+          QT_QPA_PLATFORM=wayland \
+          QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
+          dbus-run-session ${weston} & quickshell -p ${greetDir}/greet.qml > /tmp/quickshell.log 2>&1
+        '';
       };
     };
   };
-
-  security.pam.services.greetd = {
-    kwallet.enable = true;
-    text = ''
+  
+  security.pam.services.greetd.text = '' 
       auth      substack      login
       account   include       login
       password  substack      login
       session   include       login
-    '';
-  };
+      auth     required       pam_succeed_if.so audit quiet_success user = sddm
+      auth     optional       pam_permit.so
+
+      account  required       pam_succeed_if.so audit quiet_success user = sddm
+      account  sufficient     pam_unix.so
+
+      password required       pam_deny.so
+
+      session  required       pam_succeed_if.so audit quiet_success user = sddm
+      session  required       pam_env.so conffile=/etc/pam/environment readenv=0
+      session  optional       ${config.systemd.package}/lib/security/pam_systemd.so
+      session  optional       pam_keyinit.so force revoke
+      session  optional       pam_permit.so
+  ''; 
+  security.pam.services.greetd.kwallet.enable = true;
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
