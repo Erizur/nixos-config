@@ -33,6 +33,7 @@
       url = "github:nix-community/nix-vscode-extensions/fix-vadimcn-vscode-lldb-v1.11.8";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
+    duckstation-unofficial.url = "github:normalcea/nixpkgs/duckstation-update-from-0.1-9669";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -63,7 +64,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
+  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, quickshell, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

@@ -1,5 +1,6 @@
 { self, config, pkgs, system, inputs, extraGaming, ... }:
 let 
+  duckstation-src = import inputs.duckstation-unofficial {system = "${system}"; config.allowUnfree = true;};
   cursor-path = ../cursor;
 in
 {
@@ -36,14 +37,7 @@ in
     pingus
     pcsx2
     prismlauncher
-    (duckstation.overrideAttrs (old : {
-      src = pkgs.fetchFromGitHub {
-        owner = "stenzek";
-        repo = "duckstation";
-        rev = "5a7094b8121a9072949072530739b50382e38acc";
-        sha256 = pkgs.lib.fakeSha256;
-      };
-    }))
+    duckstation-src.duckstation
     
     any-nix-shell
   ] ++ lib.optionals (extraGaming == true) [
