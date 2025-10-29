@@ -36,7 +36,14 @@ in
     pingus
     pcsx2
     prismlauncher
-    duckstation
+    (duckstation.overrideAttrs (old : {
+      src = pkgs.fetchFromGitHub {
+        owner = "stenzek";
+        repo = "duckstation";
+        rev = "5a7094b8121a9072949072530739b50382e38acc";
+        sha256 = pkgs.lib.fakeSha256;
+      };
+    }))
     
     any-nix-shell
   ] ++ lib.optionals (extraGaming == true) [

@@ -54,7 +54,14 @@
     qbittorrent
     memento vlc
     tenacity
-    fooyin
+    (fooyin.overrideAttrs (oldAttrs: {
+      src = pkgs.fetchFromGitHub {
+        owner = "fooyin";
+        repo = "fooyin";
+        rev = "0.9.2";
+        sha256 = pkgs.lib.fakeSha256;
+      };
+    }))
     
     cage
     (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
