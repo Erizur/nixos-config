@@ -58,9 +58,11 @@
       src = pkgs.fetchFromGitHub {
         owner = "fooyin";
         repo = "fooyin";
-        rev = "0.9.2";
-        sha256 = pkgs.lib.fakeSha256;
+        rev = "a5992066d3cade035773fefb025d7653b54fc7c3";
+        sha256 = "0l7bkrvzza31n15r0kjh4vxjmzcghck8ry0nxvnwgfppbansbmbl";
       };
+
+      patches = [];
     }))
     
     cage
