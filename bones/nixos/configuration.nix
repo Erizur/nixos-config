@@ -1,6 +1,9 @@
 { self, config, lib, pkgs, inputs, ... }:
 let
   greetDir = ../../greeter;
+  executeLaunch = pkgs.writeShellScript "start-greet.sh" ''
+    quickshell -p ${greetDir}/greet.qml > /tmp/quickshell.log 2>&1
+  '';
   weston = let 
     westonIni = (pkgs.formats.ini {}).generate "weston.ini" {
       libinput = {
@@ -13,8 +16,12 @@ let
         keymap_variant = config.services.xserver.xkb.variant;
         keymap_options = config.services.xserver.xkb.options;
       };
+      autolaunch = {
+        path = "${executeLaunch}";
+        watch = true;
+      };
     };
-  in "${lib.getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
+  in "${lib.getExe pkgs.weston} --log=/tmp/weston.log --shell=kiosk -c ${westonIni}";
 in
 {
   # Use the GRand Unified Bootloader
@@ -140,32 +147,21 @@ in
           EGL_PLATFORM=gbm \
           QT_QPA_PLATFORM=wayland \
           QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
-          dbus-run-session ${weston} & quickshell -p ${greetDir}/greet.qml > /tmp/quickshell.log 2>&1
+          dbus-run-session ${weston} 
         '';
       };
     };
   };
   
   security.pam.services.greetd.text = '' 
-      auth      substack      login
+      auth      include      login
       account   include       login
-      password  substack      login
+      password  include      login
       session   include       login
-      auth     required       pam_succeed_if.so audit quiet_success user = sddm
-      auth     optional       pam_permit.so
-
-      account  required       pam_succeed_if.so audit quiet_success user = sddm
-      account  sufficient     pam_unix.so
-
-      password required       pam_deny.so
-
-      session  required       pam_succeed_if.so audit quiet_success user = sddm
-      session  required       pam_env.so conffile=/etc/pam/environment readenv=0
-      session  optional       ${config.systemd.package}/lib/security/pam_systemd.so
-      session  optional       pam_keyinit.so force revoke
-      session  optional       pam_permit.so
   ''; 
   security.pam.services.greetd.kwallet.enable = true;
+  users.users.greeter.createHome = true;
+  users.users.greeter.home = "/var/lib/greeter";
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [

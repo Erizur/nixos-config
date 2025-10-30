@@ -97,9 +97,7 @@ ApplicationWindow {
             // e.g., "Hyprland", "startplasma-wayland", or just "bash"
             Greetd.launch([
               "sh", "-c",
-              "systemctl --user import-environment WAYLAND_DISPLAY XDG_SESSION_TYPE; \
-               dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_SESSION_TYPE; \
-               exec startplasma-wayland"
+              "exec dbus-run-session startplasma-wayland"
             ]) 
         }
     }
