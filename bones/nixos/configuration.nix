@@ -147,7 +147,7 @@ in
           EGL_PLATFORM=gbm \
           QT_QPA_PLATFORM=wayland \
           QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
-          dbus-run-session ${weston} 
+          ${weston} 
         '';
       };
     };
