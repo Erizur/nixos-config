@@ -152,11 +152,16 @@ in
   
   security.pam.services.greetd.text = '' 
     auth      substack    login
+    auth      optional    pam_kwallet5.so
     account   include     login
     password  substack    login
     session   include     login
-  ''; 
+    session   optional    pam_kwallet5.so auto_start force_run
+  '';
+
+  security.pam.services.login.kwallet.enable = true;
   security.pam.services.greetd.kwallet.enable = true;
+
   users.users.greeter.createHome = true;
   users.users.greeter.home = "/var/lib/greeter";
   users.users.greeter.extraGroups = ["video"];
