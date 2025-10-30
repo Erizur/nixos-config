@@ -46,6 +46,8 @@ ApplicationWindow {
             onTextChanged: {
                 if (userInput.text === "")
                     passInput.enabled = false
+                else
+                    passInput.enabled = true    
             }
 
             // When user hits Enter, start the session

@@ -2,26 +2,23 @@
 let
   greetDir = ../../greeter;
   executeLaunch = pkgs.writeShellScript "start-greet.sh" ''
-    quickshell -p ${greetDir}/greet.qml > /tmp/quickshell.log 2>&1
+    quickshell -p ${greetDir}/greet.qml > /tmp/quickshell.log 2>&1 
   '';
-  weston = let 
-    westonIni = (pkgs.formats.ini {}).generate "weston.ini" {
-      libinput = {
-        enable-tap = config.services.libinput.mouse.tapping;
-        left-handed = config.services.libinput.mouse.leftHanded;
+  wf-log = let 
+    wfIni = (pkgs.formats.ini {}).generate "wayfire.ini" {
+      core = {
+        plugins = "autostart foreign-toplevel";
+        vheight = 1;
+        vwidth = 1;
+        xwayland = false;
+        preferred_decoration_mode = "server";
       };
-      keyboard = {
-        keymap_model = config.services.xserver.xkb.model;
-        keymap_layout = config.services.xserver.xkb.layout;
-        keymap_variant = config.services.xserver.xkb.variant;
-        keymap_options = config.services.xserver.xkb.options;
-      };
-      autolaunch = {
-        path = "${executeLaunch}";
-        watch = true;
+      autostart = {
+        autostart_wf_shell = false;
+        dm = "${executeLaunch} && wayland-logout";
       };
     };
-  in "${lib.getExe pkgs.weston} --log=/tmp/weston.log --shell=kiosk -c ${westonIni}";
+  in "${lib.getExe pkgs.wayfire} --config ${wfIni} > /tmp/wf-log.log 2>&1";
 in
 {
   # Use the GRand Unified Bootloader
@@ -147,30 +144,58 @@ in
           EGL_PLATFORM=gbm \
           QT_QPA_PLATFORM=wayland \
           QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
-          ${weston} 
+          dbus-run-session ${wf-log}
         '';
       };
     };
   };
   
   security.pam.services.greetd.text = '' 
-      auth      include     login
-      account   include     login
-      password  include     login
-      session   include     login
+    #%PAM-1.0
 
-      auth      optional    pam_permit.so 
-      account   sufficient  pam_unix.so 
-      password  required    pam_deny.so 
+    # Block login if they are globally disabled
+    auth    requisite       pam_nologin.so
+    auth    required        pam_succeed_if.so user != root quiet_success
 
-      session   required    pam_env.so conffile=/etc/pam/environment readenv=0 
-      session   optional    ${config.systemd.package}/lib/security/pam_systemd.so 
-      session   optional    pam_keyinit.so force revoke
-      session   optional    pam_permit.so 
+    # auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin
+    @include common-auth
+    # gnome_keyring breaks QProcess
+    -auth   optional        pam_gnome_keyring.so
+    -auth   optional        pam_kwallet5.so
+
+    @include common-account
+
+    # SELinux needs to be the first session rule.  This ensures that any
+    # lingering context has been cleared.  Without this it is possible that a
+    # module could execute code in the wrong domain.
+    session [success=ok ignore=ignore module_unknown=ignore default=bad] pam_selinux.so close
+    # Create a new session keyring.
+    session optional        pam_keyinit.so force revoke
+    session required        pam_limits.so
+    session required        pam_loginuid.so
+    @include common-session
+    # SELinux needs to intervene at login time to ensure that the process starts
+    # in the proper default security context.  Only sessions which are intended
+    # to run in the user's context should be run after this.
+    session [success=ok ignore=ignore module_unknown=ignore default=bad] pam_selinux.so open
+    -session optional       pam_gnome_keyring.so auto_start
+    -session optional       pam_kwallet5.so auto_start
+
+    @include common-password
+
+    # From the pam_env man page
+    # Since setting of PAM environment variables can have side effects to other modules, this module should be the last one on the stack.
+
+    # Load environment from /etc/environment
+    session required        pam_env.so
+
+    # Load environment from /etc/default/locale and ~/.pam_environment
+    session required        pam_env.so envfile=/etc/default/locale user_readenv=1 
   ''; 
   security.pam.services.greetd.kwallet.enable = true;
   users.users.greeter.createHome = true;
   users.users.greeter.home = "/var/lib/greeter";
+  users.users.greeter.extraGroups = ["video"];
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
