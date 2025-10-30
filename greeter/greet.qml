@@ -96,8 +96,7 @@ ApplicationWindow {
             // Change "sway" to your desired session command
             // e.g., "Hyprland", "startplasma-wayland", or just "bash"
             Greetd.launch([
-              "sh", "-c",
-              "exec dbus-run-session startplasma-wayland"
+              "dbus-run-session startplasma-wayland"
             ]) 
         }
     }
