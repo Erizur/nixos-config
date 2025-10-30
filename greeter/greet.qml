@@ -43,6 +43,11 @@ ApplicationWindow {
             background: Rectangle { color: "#3c3836" }
             Layout.fillWidth: true
 
+            onTextChanged: {
+                if (userInput.text === "")
+                    passInput.enabled = false
+            }
+
             // When user hits Enter, start the session
             onAccepted: {
                 messageText.text = "Starting session for " + userInput.text
@@ -60,6 +65,13 @@ ApplicationWindow {
             color: "#ebdbb2"
             background: Rectangle { color: "#3c3836" }
             Layout.fillWidth: true
+
+            onAccepted: {
+                messageText.text = "Starting session for " + userInput.text
+                userInput.visible = false
+                passInput.visible = false
+                Greetd.createSession(userInput.text)
+            }
         }
     }
 
@@ -95,9 +107,7 @@ ApplicationWindow {
             // --- IMPORTANT ---
             // Change "sway" to your desired session command
             // e.g., "Hyprland", "startplasma-wayland", or just "bash"
-            Greetd.launch([
-              "startplasma-wayland"
-            ]) 
+            Greetd.launch(["startplasma-wayland"])
         }
     }
 

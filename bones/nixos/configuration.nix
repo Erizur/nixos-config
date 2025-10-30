@@ -154,10 +154,19 @@ in
   };
   
   security.pam.services.greetd.text = '' 
-      auth      include      login
-      account   include       login
-      password  include      login
-      session   include       login
+      auth      include     login
+      account   include     login
+      password  include     login
+      session   include     login
+
+      auth      optional    pam_permit.so 
+      account   sufficient  pam_unix.so 
+      password  required    pam_deny.so 
+
+      session   required    pam_env.so conffile=/etc/pam/environment readenv=0 
+      session   optional    ${config.systemd.package}/lib/security/pam_systemd.so 
+      session   optional    pam_keyinit.so force revoke
+      session   optional    pam_permit.so 
   ''; 
   security.pam.services.greetd.kwallet.enable = true;
   users.users.greeter.createHome = true;
