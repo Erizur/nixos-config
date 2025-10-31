@@ -38,17 +38,14 @@ in
     };
   };
   
-  security.pam.services.greetd.text = '' 
+  security.pam.services.greetd.text = ''
     auth      substack    login
-    auth      optional    ${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so
-    account   include     login
+    account   include     login 
     password  substack    login
     session   include     login
-    session   optional    ${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so auto_start force_run
   '';
-
   security.pam.services.login.kwallet.enable = true;
-  security.pam.services.greetd.kwallet.enable = true;
+  security.pam.services.login.kwallet.forceRun = true;
 
   users.users.greeter.createHome = true;
   users.users.greeter.home = "/var/lib/greeter";
