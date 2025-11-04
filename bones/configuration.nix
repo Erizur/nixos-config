@@ -68,7 +68,8 @@
     wayland-logout
     (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
     
-    keyd libpulseaudio xdg-utils alsa-utils 
+    keyd libpulseaudio xdg-utils alsa-utils
+    (pkgs.callPackage ../cursor/package.nix {})
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
@@ -82,6 +83,8 @@
     SDL_IM_MODULE = "fcitx";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     NIXOS_OZONE_WL = "1";
+    XCURSOR_THEME = "Oxygen-Zion";
+    XCURSOR_SIZE = "24";
     GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
     GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
       pkgs.gst_all_1.gstreamer.out	

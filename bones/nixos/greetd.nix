@@ -13,6 +13,10 @@ let
         xwayland = false;
         preferred_decoration_mode = "server";
       };
+      input = {
+        cursor_size = 24;
+        cursor_theme = "Oxygen-Zion";
+      };
       autostart = {
         autostart_wf_shell = false;
         dm = "${executeLaunch} && wayland-logout";

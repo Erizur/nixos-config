@@ -53,64 +53,7 @@ in
           x11.enable = true;
           name = "Oxygen-Zion";
           size = 24;
-          package = 
-            pkgs.runCommand "moveUp" {} ''
-              mkdir -p $out/share/icons
-              cp -r ${cursor-path} $out/share/icons/Oxygen-Zion
-              chmod -R u+w $out/share/icons/Oxygen-Zion
-              cd $out/share/icons/Oxygen-Zion/cursors
-              for dir in cursors cursors_scalable; do
-                test -d "$out/share/icons/Oxygen-Zion/$dir" || continue
-                cd "$out/share/icons/Oxygen-Zion/$dir"
-
-                ln -sf wait watch
-                ln -sf half-busy progress
-                ln -sf half-busy left_ptr_watch
-
-                ln -sf pointing_hand hand1
-                ln -sf pointing_hand hand2
-                ln -sf pointing_hand pointer
-
-                ln -sf xterm ibeam
-                ln -sf xterm text
-
-                ln -sf closedhand move
-                ln -sf fleur size_all
-                ln -sf fleur all-scroll
-
-                ln -sf forbidden not-allowed
-                ln -sf circle crossed_circle
-
-                ln -sf help question_arrow
-                ln -sf help whats_this
-
-                ln -sf copy dnd-copy
-                ln -sf link dnd-link
-                ln -sf closedhand dnd-move
-                ln -sf closedhand dnd-none
-                ln -sf forbidden dnd-no-drop
-
-                ln -sf size_ver n-resize
-                ln -sf size_ver s-resize
-                ln -sf size_ver ns-resize
-                ln -sf size_hor e-resize
-                ln -sf size_hor w-resize
-                ln -sf size_hor ew-resize
-                ln -sf size_fdiag nw-resize
-                ln -sf size_bdiag ne-resize
-                ln -sf size_bdiag sw-resize
-                ln -sf size_fdiag se-resize
-                ln -sf split_h col-resize
-                ln -sf split_v row-resize
-                ln -sf size_hor sb_h_double_arrow
-                ln -sf size_ver sb_v_double_arrow
-                ln -sf size_ver v_double_arrow
-
-                ln -sf cross crosshair
-                ln -sf split_h sb_h_double_arrow
-                ln -sf split_v sb_v_double_arrow
-              done          
-          '';
+          package = (pkgs.callPackage ../cursor/package.nix {}); 
         };
   programs.home-manager.enable = true;
 }
