@@ -71,8 +71,6 @@ pkgs.stdenvNoCC.mkDerivation rec {
         ln -sf size_ver v_double_arrow
 
         ln -sf cross crosshair
-        ln -sf split_h sb_h_double_arrow
-        ln -sf split_v sb_v_double_arrow
         popd
       done
     done
