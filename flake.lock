@@ -167,16 +167,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1761678803,
-        "narHash": "sha256-iVk2oxLSFqkR6shDSnM0BOLVuWx8ZXgHiaejtGxbdnQ=",
+        "lastModified": 1762221338,
+        "narHash": "sha256-pxA++rP660cyy9gUHOi+dSZ2orEixPvdHNvwtzfOwSc=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "0c6d565cf058c5be5fbec7f0fb74545d5bab83b7",
+        "rev": "f662f854e901ca849f1833cc438c53653cdf94a3",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "fix-vadimcn-vscode-lldb-v1.11.8",
         "repo": "nix-vscode-extensions",
         "type": "github"
       }

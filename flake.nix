@@ -30,7 +30,7 @@
     };
 
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/fix-vadimcn-vscode-lldb-v1.11.8";
+      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     duckstation-unofficial.url = "github:normalcea/nixpkgs/duckstation-update-from-0.1-9669";
