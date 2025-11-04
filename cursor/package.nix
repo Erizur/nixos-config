@@ -24,7 +24,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
   buildPhase = ''
     runHook preBuild
 
-    for theme in Oxygen-{Zion}; do
+    for theme in Oxygen-Zion; do
       for dir in cursors cursors_scalable; do
         pushd $theme/$dir
         ln -sf wait watch
@@ -83,7 +83,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    for theme in Oxygen-{Zion}; do
+    for theme in Oxygen-Zion; do
       mkdir -p $out/share/icons/$theme/cursors
       mkdir -p $out/share/icons/$theme/cursors_scalable
       cp -a $theme/cursors/* $out/share/icons/$theme/cursors/
