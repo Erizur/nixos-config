@@ -35,7 +35,11 @@
 				
 				vmware.vscode-spring-boot
 				vscjava.vscode-spring-initializr
-				vscjava.vscode-spring-boot-dashboard
+                vscjava.vscode-spring-boot-dashboard
+
+                msjsdiag.vscode-react-native
+                dsznajder.es7-react-js-snippets
+                expo.vscode-expo-tools
 
 				bbenoist.nix
 				brettm12345.nixfmt-vscode
@@ -45,7 +49,7 @@
 				ms-toolsai.jupyter
 				ms-toolsai.jupyter-renderers
 				dbaeumer.vscode-eslint
-
+                
 				ms-vscode.live-server
 				mkhl.direnv
 
@@ -86,7 +90,7 @@
 				"spring-boot.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
                 "maven.terminal.useJavaHome" = true;
                 "extensions.autoCheckUpdates" = false;
-                "extensions.autoUpdate" = "none";
+                "extensions.autoUpdate" = false;
                 #"lldb.library" = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
 			};
 		};
