@@ -48,18 +48,18 @@
     kdePackages.kcalc
     kdePackages.kolourpaint
     kdePackages.oxygen-sounds
-    krita gimp3
-    aseprite
+    krita gimp3 inkscape
+    aseprite blender
     
     qbittorrent
     memento vlc
     tenacity
     (fooyin.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
-        owner = "fooyin";
+        owner = "pcm720";
         repo = "fooyin";
-        rev = "a5992066d3cade035773fefb025d7653b54fc7c3";
-        sha256 = "0l7bkrvzza31n15r0kjh4vxjmzcghck8ry0nxvnwgfppbansbmbl";
+        rev = "f57700420a3c72300e5135426d5a953547f90872";
+        sha256 = "09sj61ji7zhs42mmg8dsac7vvnidlnss8kr8g9ckjg6amd0p4gfx";
       };
 
       patches = [];
@@ -72,8 +72,6 @@
     (pkgs.callPackage ../cursor/package.nix {})
     (pkgs.callPackage ../extrapkgs/kshift.nix {})
     (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
-    
   ];
 
   environment.variables = {
@@ -107,16 +105,16 @@
   fonts = {
   	packages = with pkgs; [
 	  noto-fonts noto-fonts-cjk-sans noto-fonts-color-emoji liberation_ttf oxygenfonts
-	  junction-font aileron fragment-mono comic-mono comic-neue comic-relief work-sans hubot-sans eurofurence
+	  junction-font aileron fragment-mono comic-mono comic-neue comic-relief work-sans hubot-sans eurofurence koruri corefonts vegur sn-pro nacelle recursive
 	  dosis manrope montserrat helvetica-neue-lt-std mplus-outline-fonts.githubRelease
     fira-code fira-code-symbols
-	  nerd-fonts.fira-code
+    nerd-fonts.fira-code
 	  nerd-fonts.ubuntu
 	  nerd-fonts.hack
 	  nerd-fonts.comic-shanns-mono
     nerd-fonts.jetbrains-mono
 	
-	  carlito dejavu_fonts ipafont source-code-pro
+	  carlito dejavu_fonts ipafont ipaexfont migmix azuki migu dotcolon-fonts source-code-pro
 	  ttf_bitstream_vera
   	] ++ lib.optionals pkgs.stdenv.isLinux [ kochi-substitute ];
   };

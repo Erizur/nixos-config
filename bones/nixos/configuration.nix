@@ -191,5 +191,5 @@
     ./greetd.nix
   ];
 
-  system.stateVersion = "25.05"; # Don't change this unless fully reinstalling
+  system.stateVersion = "25.11"; # Don't change this unless fully reinstalling
 }

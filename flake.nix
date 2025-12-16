@@ -30,7 +30,7 @@
     };
 
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
+      url = "github:nix-community/nix-vscode-extensions/5ff4631fd35568ed2ea9c4e15ebc213a69c06dba";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     duckstation-unofficial.url = "github:normalcea/nixpkgs/duckstation-update-from-0.1-9669";
@@ -39,44 +39,21 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Homebrew package manager support
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
   };
 
-  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, quickshell, nix-vscode-extensions, nix-darwin, sops-nix, ... }@inputs: 
+  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, quickshell, nix-vscode-extensions, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        # current desktop (will redo when i get a new one)
-        ts140 = nixpkgs.lib.nixosSystem {
+        # i got a new one
+        makoto = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; inherit system; };
           modules = [
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix
-            ./bones/nixos/ts140/configuration.nix
+            ./bones/nixos/makoto/configuration.nix
             inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
             {
@@ -97,12 +74,12 @@
         };
 
         # uni laptop
-        sjdks = nixpkgs.lib.nixosSystem {
+        sajou = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; inherit system; };
           modules = [
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix
-            ./bones/nixos/sjdks/configuration.nix
+            ./bones/nixos/sajou/configuration.nix
             inputs.nixos-hardware.nixosModules.lenovo-ideapad-15ach6
             inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
@@ -117,45 +94,6 @@
                   ./home/modules/branding/pitcher56.nix
                 ];
                 sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
-              };
-            }
-          ];
-        };
-      };
-
-      darwinConfigurations = {
-        ts140 = nix-darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./bones/configuration.nix
-            ./bones/darwin/configuration.nix
-            inputs.home-manager.darwinModules.home-manager
-            inputs.sops-nix.darwinModules.sops
-            {
-              home-manager = {
-                extraSpecialArgs = { inherit inputs; inherit system; };
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.erizur.imports = [
-                  ./home/darwin-user.nix
-                  ./home/modules/branding/makoto.nix
-                ];
-                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
-              };
-            }
-            inputs.nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                enable = true;
-                user = "erizur";
-                taps = {
-                  "homebrew/homebrew-core" = inputs.homebrew-core;
-                  "homebrew/homebrew-cask" = inputs.homebrew-cask;
-                  "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-                };
-                mutableTaps = false;
               };
             }
           ];
