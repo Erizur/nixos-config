@@ -8,7 +8,7 @@
 		shellAliases = {
 			ll = "ls -l";
 			la = "ls -la";
-			nixcgrs = lib.mkOptionDefault [ "sudo nixos-rebuild switch --flake ~/.nixcfg#ts140" ];
+			nixcgrs = lib.mkOptionDefault [ "sudo nixos-rebuild switch --flake ~/.nixcfg#makoto" ];
 			editnixcfg = "sudoedit ~/.nixcfg/bones/configuration.nix";
 			editnixflake = "sudoedit ~/.nixcfg/flake.nix";
 			editnixhome = if pkgs.stdenv.isLinux then "sudoedit ~/.nixcfg/home/main-user.nix" else "sudoedit ~/.nixcfg/home/darwin-user.nix";
