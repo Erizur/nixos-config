@@ -55,14 +55,10 @@
     memento vlc
     tenacity
     (fooyin.overrideAttrs (oldAttrs: {
-      src = pkgs.fetchFromGitHub {
-        owner = "pcm720";
-        repo = "fooyin";
-        rev = "f57700420a3c72300e5135426d5a953547f90872";
-        sha256 = "09sj61ji7zhs42mmg8dsac7vvnidlnss8kr8g9ckjg6amd0p4gfx";
-      };
-
-      patches = [];
+      postPatch = ''
+	   substituteInPlace src/utils/starrating.cpp \
+	   --replace-fail '.arg(alignment);' '.arg(alignment.toInt());'
+	'';
     }))
     
     wayland-logout
