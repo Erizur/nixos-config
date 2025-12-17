@@ -30,7 +30,7 @@
     };
 
     nix-vscode-extensions = {
-      url = "github:dseum/nix-vscode-extensions/master";
+      url = "github:Erizur/nix-vscode-extensions/master";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     duckstation-unofficial.url = "github:normalcea/nixpkgs/duckstation-update-from-0.1-9669";
