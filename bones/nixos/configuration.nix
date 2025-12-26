@@ -191,5 +191,10 @@
     ./greetd.nix
   ];
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 16*1024; # 16 GB
+  }];
+
   system.stateVersion = "25.11"; # Don't change this unless fully reinstalling
 }

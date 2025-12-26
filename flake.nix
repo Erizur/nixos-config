@@ -49,7 +49,7 @@
       nixosConfigurations = {
         # i got a new one
         makoto = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; inherit system; };
+          specialArgs = { extraGaming = true; inherit inputs; inherit system; };
           modules = [
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix
