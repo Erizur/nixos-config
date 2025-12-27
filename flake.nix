@@ -32,8 +32,7 @@
     nix-vscode-extensions = {
       url = "github:Erizur/nix-vscode-extensions/master";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
-    duckstation-unofficial.url = "github:normalcea/nixpkgs/duckstation-update-from-0.1-9669";
+    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -41,7 +40,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, duckstation-unofficial, home-manager, quickshell, nix-vscode-extensions, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -75,7 +74,7 @@
 
         # uni laptop
         sajou = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; inherit system; };
+          specialArgs = { extraGaming = false; inherit inputs; inherit system; };
           modules = [
             ./bones/configuration.nix
             ./bones/nixos/configuration.nix

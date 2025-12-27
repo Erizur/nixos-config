@@ -56,12 +56,7 @@
     qbittorrent
     memento vlc
     tenacity
-    (fooyin.overrideAttrs (oldAttrs: {
-      postPatch = ''
-	   substituteInPlace src/utils/starrating.cpp \
-	   --replace-fail '.arg(alignment);' '.arg(alignment.toInt());'
-	'';
-    }))
+    fooyin
     
     wayland-logout
     (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
