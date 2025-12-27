@@ -47,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765987985,
-        "narHash": "sha256-LQ0Xjvxtza+fjTFrA4A7T/s6RoGcNTL+reJ8otYGcIw=",
+        "lastModified": 1766856444,
+        "narHash": "sha256-ep8fYrw3vkUisFWdMyQvxL9V1kHNSzpYdJ6EVuYmn+Y=",
         "owner": "Erizur",
         "repo": "nix-vscode-extensions",
-        "rev": "7f80c4cf92f5eb96b0ceea51febd7202ca87fa9c",
+        "rev": "547167a32769eb63560192524c8f3ee7a9907997",
         "type": "github"
       },
       "original": {
