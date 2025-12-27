@@ -12,19 +12,8 @@
                 llvm-vs-code-extensions.vscode-clangd
                 vadimcn.vscode-lldb
 
-                ((rust-lang.rust-analyzer.override {
-                  setDefaultServerPath = false;
-                }).overrideAttrs (old: {
-                  nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
-                    pkgs.jq
-                    pkgs.moreutils
-                  ];
-
-                  preInstall = ''
-                    jq '.contributes.configuration.properties."rust-analyzer.server.path".default = "${pkgs.rust-analyzer}/bin/rust-analyzer"' \
-                      package.json | sponge package.json
-                  '';
-                }))
+                rust-lang.rust-analyzer
+                ziglang.vscode-zig
 
 				redhat.java
 				vscjava.vscode-java-debug
