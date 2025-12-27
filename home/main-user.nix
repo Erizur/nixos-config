@@ -13,7 +13,6 @@ in
   ];
 
   home.packages = with pkgs; [
-    lutris
     (bottles.override {
       extraLibraries = pkgs: [
         pkgs.fluidsynth
