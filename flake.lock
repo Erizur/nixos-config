@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "duckstation-unofficial": {
-      "locked": {
-        "lastModified": 1761693851,
-        "narHash": "sha256-D4uFcn72B1KgL7EcJ0ty5lmasJjLGunpfXIhwcSWtoE=",
-        "owner": "normalcea",
-        "repo": "nixpkgs",
-        "rev": "71cbb752aa36854eb4a7deb3685b9789256d643c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "normalcea",
-        "ref": "duckstation-update-from-0.1-9669",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -95,11 +79,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1766855223,
-        "narHash": "sha256-q+EVqtwLu9HxqKuz8Ba++hmYYZsXNYWSROqaREC4PvU=",
+        "lastModified": 1766855704,
+        "narHash": "sha256-N3R8MtQLza/pp02uarwxOwe6+YaB4+Z+nvpHoZWFlic=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7831509743fae1dd1981c6da39ddc8db93e1eefa",
+        "rev": "177fade1ee0702eca39c0892e0f4019cb729bf76",
         "type": "github"
       },
       "original": {
@@ -130,7 +114,6 @@
     },
     "root": {
       "inputs": {
-        "duckstation-unofficial": "duckstation-unofficial",
         "home-manager": "home-manager",
         "marble-browser": "marble-browser",
         "nix-vscode-extensions": "nix-vscode-extensions",
