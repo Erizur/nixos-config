@@ -106,7 +106,7 @@
   	packages = with pkgs; [
 	  noto-fonts noto-fonts-cjk-sans noto-fonts-color-emoji liberation_ttf oxygenfonts
 	  junction-font aileron fragment-mono comic-mono comic-neue comic-relief work-sans hubot-sans eurofurence koruri corefonts vegur sn-pro nacelle recursive
-	  dosis manrope montserrat helvetica-neue-lt-std mplus-outline-fonts.githubRelease
+	  dosis montserrat helvetica-neue-lt-std mplus-outline-fonts.githubRelease
       fira-code fira-code-symbols
       nerd-fonts.fira-code
 	  nerd-fonts.ubuntu
