@@ -45,8 +45,6 @@
     gst_all_1.gst-libav
     gst_all_1.gst-vaapi
 
-    bitwig-studio
-
     kdePackages.kcalc
     kdePackages.kolourpaint
     kdePackages.oxygen-sounds

@@ -2,6 +2,7 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ../../../extrapkgs/audioprod.nix
     ];
 
     networking.hostName = "makoto";
@@ -12,4 +13,6 @@
     programs.gamemode.enable = true;
 
     programs.coolercontrol.enable = true;
+
+    modules.apps.audioprod.enable = true;
 }
