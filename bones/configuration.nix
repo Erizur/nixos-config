@@ -120,7 +120,8 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      inputs.nix-vscode-extensions.overlays.default 
+      inputs.nix-vscode-extensions.overlays.default
+      inputs.audio.overlays.default
     ];
   };
 }

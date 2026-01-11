@@ -39,7 +39,6 @@ in
       paulxstretch
       vital
       tony
-      amplocker
       chow-centaur
       chow-phaser
       papu

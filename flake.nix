@@ -38,9 +38,14 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    audio = {
+      url = "github:polygon/audio.nix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, audio, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
