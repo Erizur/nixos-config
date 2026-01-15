@@ -185,7 +185,10 @@
       };
   };
   
-  hardware.opentabletdriver.enable = true;
+  programs.xppen = {
+    enable = true;
+    package = pkgs.xppen_3;
+  };
 
   imports = [
     ./greetd.nix

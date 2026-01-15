@@ -4,7 +4,7 @@
     enable = true;
 
     package = (
-      pkgs.mpv-unwrapped.wrapper {
+      pkgs.mpv.override {
         scripts = with pkgs.mpvScripts; [
           sponsorblock
           visualizer
@@ -14,7 +14,7 @@
           memo
         ] ++ lib.optionals pkgs.stdenv.isLinux [ mpris ];
 
-        mpv = pkgs.mpv-unwrapped.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override {
           waylandSupport = if pkgs.stdenv.isLinux then true else false;
           ffmpeg = pkgs.ffmpeg-full;
         };
