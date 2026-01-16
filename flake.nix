@@ -11,7 +11,9 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+
     home-manager = {
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,9 +45,13 @@
       url = "github:polygon/audio.nix/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sonic-visualizer = {
+      url = "github:joostn/nixpkgs/jn-sonic-visualiser";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, audio, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, audio, sops-nix, sonic-visualizer, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

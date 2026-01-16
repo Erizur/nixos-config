@@ -122,6 +122,21 @@
     overlays = [
       inputs.nix-vscode-extensions.overlays.default
       inputs.audio.overlays.default
+      (final: prev: {
+        sonic-visualiser = inputs.sonic-visualizer.legacyPackages.${system}.sonic-visualiser;
+      })
+      # wonderful amazing hack for mozc
+      # until they fix bezel janking it with gcc15
+      (final: prev: {
+        stable = import inputs.nixpkgs-stable {
+          system = final.stdenv.hostPlatform.system;
+          config.allowUnfree = true;
+        };
+      })
+      (final: prev: {
+        mozc = final.stable.mozc;
+        fcitx5-mozc = final.stable.fcitx5-mozc;
+      })
     ];
   };
 }

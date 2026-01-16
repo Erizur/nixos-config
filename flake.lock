@@ -194,15 +194,32 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1768513589,
-        "narHash": "sha256-M/hhFVDHkaiGT3xn3yQSVMJ5aDUoJXf0K17D8UAG2w8=",
+        "lastModified": 1768305791,
+        "narHash": "sha256-AIdl6WAn9aymeaH/NvBj0H9qM+XuAuYbGMZaP0zcXAQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c95adf86c53872089808aa93247caa3d200071b8",
+        "rev": "1412caf7bf9e660f2f962917c14b1ea1c3bc695e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1768323494,
+        "narHash": "sha256-yBXJLE6WCtrGo7LKiB6NOt6nisBEEkguC/lq/rP3zRQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2c3e5ec5df46d3aeee2a1da0bfedd74e21f4bf3a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -235,7 +252,9 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-stable": "nixpkgs-stable",
         "quickshell": "quickshell",
+        "sonic-visualizer": "sonic-visualizer",
         "sops-nix": "sops-nix"
       }
     },
@@ -275,6 +294,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sonic-visualizer": {
+      "locked": {
+        "lastModified": 1767289605,
+        "narHash": "sha256-NJwUTeogAAZ0GbLyXhuj+Iz0fwQ9KsB7DWFSkO9ujqU=",
+        "owner": "joostn",
+        "repo": "nixpkgs",
+        "rev": "9d4b0620f6398f51db269f1ca44753f1f40bc09a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joostn",
+        "ref": "jn-sonic-visualiser",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
