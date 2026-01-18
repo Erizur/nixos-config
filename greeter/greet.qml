@@ -28,7 +28,7 @@ Variants {
         exclusionMode: ExclusionMode.Normal
         WlrLayershell.layer: WlrLayer.Overlay
         WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
-        color: "#282828" // A dark background
+        color: "#282828"
         
         property string screenName: root.screen?.name ?? ""
         property bool isPrimaryScreen: {
@@ -39,25 +39,121 @@ Variants {
             return screenName === Qt.application.screens[0].name
         }
 
+        // Session management
+        QtObject {
+            id: sessionManager
+            property int currentIndex: 0
+            property var sessions: [
+                { name: "KDE Plasma", exec: "startplasma-wayland" },
+                { name: "Wayfire", exec: "wayfire" },
+            ]
+            
+            property string currentSessionName: sessions[currentIndex].name
+            property string currentSessionExec: sessions[currentIndex].exec
+            
+            function nextSession() {
+                currentIndex = (currentIndex + 1) % sessions.length
+            }
+            
+            function previousSession() {
+                currentIndex = (currentIndex - 1 + sessions.length) % sessions.length
+            }
+        }
+
         // Center all content
         ColumnLayout {
             anchors.centerIn: parent
-            spacing: 10
+            spacing: 20
 
             Text {
                 id: messageText
                 text: "Welcome to NixOS"
-                color: "#ebdbb2" // A light text color
+                color: "#ebdbb2"
                 font.pixelSize: 24
                 Layout.alignment: Qt.AlignHCenter
+            }
+
+            // Session selector
+            Rectangle {
+                Layout.alignment: Qt.AlignHCenter
+                width: 300
+                height: 50
+                radius: 8
+                color: "#3c3836"
+                border.color: "#ebdbb2"
+                border.width: 1
+
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: 8
+                    spacing: 8
+
+                    // Previous button
+                    Rectangle {
+                        width: 34
+                        height: 34
+                        radius: 4
+                        color: prevMouse.containsMouse ? "#504945" : "transparent"
+                        
+                        Text {
+                            anchors.centerIn: parent
+                            text: "◀"
+                            color: "#ebdbb2"
+                            font.pixelSize: 16
+                        }
+                        
+                        MouseArea {
+                            id: prevMouse
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: sessionManager.previousSession()
+                        }
+                    }
+
+                    // Session name
+                    Text {
+                        Layout.fillWidth: true
+                        text: sessionManager.currentSessionName
+                        color: "#ebdbb2"
+                        font.pixelSize: 16
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                    // Next button
+                    Rectangle {
+                        width: 34
+                        height: 34
+                        radius: 4
+                        color: nextMouse.containsMouse ? "#504945" : "transparent"
+                        
+                        Text {
+                            anchors.centerIn: parent
+                            text: "▶"
+                            color: "#ebdbb2"
+                            font.pixelSize: 16
+                        }
+                        
+                        MouseArea {
+                            id: nextMouse
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: sessionManager.nextSession()
+                        }
+                    }
+                }
             }
 
             TextField {
                 id: userInput
                 placeholderText: "Username"
                 color: "#ebdbb2"
-                background: Rectangle { color: "#3c3836" }
-                Layout.fillWidth: true
+                background: Rectangle { 
+                    color: "#3c3836"
+                    radius: 4
+                }
+                Layout.preferredWidth: 300
+                Layout.alignment: Qt.AlignHCenter
 
                 onTextChanged: {
                     if (userInput.text === "")
@@ -66,12 +162,12 @@ Variants {
                         passInput.enabled = true    
                 }
 
-                // When user hits Enter, start the session
                 onAccepted: {
-                    messageText.text = "Starting session for " + userInput.text
-                    userInput.visible = false
-                    passInput.visible = false
-                    Greetd.createSession(userInput.text)
+                    if (passInput.enabled && passInput.text !== "") {
+                        startSession()
+                    } else {
+                        passInput.forceActiveFocus()
+                    }
                 }
             }
 
@@ -82,16 +178,45 @@ Variants {
                 visible: true
                 enabled: false
                 color: "#ebdbb2"
-                background: Rectangle { color: "#3c3836" }
-                Layout.fillWidth: true
+                background: Rectangle { 
+                    color: "#3c3836"
+                    radius: 4
+                }
+                Layout.preferredWidth: 300
+                Layout.alignment: Qt.AlignHCenter
 
                 onAccepted: {
-                    messageText.text = "Starting session for " + userInput.text
-                    userInput.visible = false
-                    passInput.visible = false
-                    Greetd.createSession(userInput.text)
+                    startSession()
                 }
             }
+
+            Button {
+                text: "Login"
+                Layout.alignment: Qt.AlignHCenter
+                Layout.preferredWidth: 300
+                enabled: userInput.text !== "" && passInput.text !== ""
+                
+                background: Rectangle {
+                    color: parent.enabled ? (parent.hovered ? "#689d6a" : "#458588") : "#504945"
+                    radius: 4
+                }
+                
+                contentItem: Text {
+                    text: parent.text
+                    color: "#ebdbb2"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                
+                onClicked: startSession()
+            }
+        }
+
+        function startSession() {
+            messageText.text = "Starting " + sessionManager.currentSessionName + "..."
+            userInput.visible = false
+            passInput.visible = false
+            Greetd.createSession(userInput.text)
         }
 
         // --- Greetd Logic ---
@@ -99,7 +224,6 @@ Variants {
             target: Greetd
             enabled: isPrimaryScreen
 
-            // Greetd is asking for info (e.g., "Password:")
             function onAuthMessage(message, error, responseRequired, echoResponse) {
                 messageText.text = message
                 
@@ -110,28 +234,21 @@ Variants {
                 }
             }
 
-            // Authentication failed (wrong password)
             function onAuthFailure(message) {
                 messageText.text = "Login failed: " + message
                 passInput.visible = true
-                userInput.visible = true // Show username field again
+                userInput.visible = true
                 userInput.text = ""
                 passInput.text = ""
                 userInput.forceActiveFocus()
             }
 
-            // Authentication succeeded!
             function onReadyToLaunch() {
                 messageText.text = "Success! Launching session..."
-                
-                // --- IMPORTANT ---
-                // Change "sway" to your desired session command
-                // e.g., "Hyprland", "startplasma-wayland", or just "bash"
-                Greetd.launch(["startplasma-wayland"])
+                Greetd.launch([sessionManager.currentSessionExec])
             }
         }
 
-        // Start by focusing the username input
         Component.onCompleted: {
             userInput.forceActiveFocus()
         }

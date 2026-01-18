@@ -8,6 +8,7 @@
     ./git.nix
     ./fastfetch.nix
     ./kitty.nix
+    ./wayfire.nix
     ./nvim/default.nix
   ];
 
