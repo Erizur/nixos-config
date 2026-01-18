@@ -45,8 +45,7 @@ Variants {
             property int currentIndex: 0
             property var sessions: [
                 { name: "KDE Plasma", exec: "startplasma-wayland" },
-                { name: "Wayfire", exec: "wayfire" },
-                { name: "Hyprland", exec: "Hyprland" }
+                { name: "Wayfire", exec: "dbus-run-session wayfire" }
             ]
 
             property string currentSessionName: sessions[currentIndex].name
@@ -61,10 +60,9 @@ Variants {
             }
         }
 
-        // Center all content
         ColumnLayout {
             anchors.centerIn: parent
-            spacing: 10
+            spacing: 5
 
             Text {
                 id: messageText
@@ -75,7 +73,6 @@ Variants {
                 Layout.bottomMargin: 10
             }
 
-            // Session selector - compact
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: 300
@@ -87,12 +84,12 @@ Variants {
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 4
-                    spacing: 4
+                    anchors.margins: 2
+                    spacing: 2
 
                     Rectangle {
                         width: 28
-                        height: 28
+                        height: 24
                         radius: 3
                         color: prevMouse.containsMouse ? "#504945" : "transparent"
 
@@ -122,7 +119,7 @@ Variants {
 
                     Rectangle {
                         width: 28
-                        height: 28
+                        height: 24
                         radius: 3
                         color: nextMouse.containsMouse ? "#504945" : "transparent"
 
@@ -190,7 +187,7 @@ Variants {
                     border.width: 1
                 }
                 Layout.preferredWidth: 300
-                Layout.preferredHeight: 36
+                Layout.preferredHeight: 24
                 Layout.alignment: Qt.AlignHCenter
                 leftPadding: 10
 
@@ -203,7 +200,7 @@ Variants {
                 text: "Login"
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: 300
-                Layout.preferredHeight: 36
+                Layout.preferredHeight: 24
                 Layout.topMargin: 4
                 enabled: userInput.text !== "" && passInput.text !== ""
 

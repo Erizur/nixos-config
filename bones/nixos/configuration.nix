@@ -117,15 +117,6 @@
   ];
   programs.dconf.enable = true;
 
-  programs.wayfire = {
-    enable = true;
-    plugins = with pkgs.wayfirePlugins; [
-      wcm
-      wf-shell
-      wayfire-plugins-extra
-    ];
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
