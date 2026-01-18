@@ -29,14 +29,14 @@ Variants {
         WlrLayershell.layer: WlrLayer.Overlay
         WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
         color: "#282828"
-        
+
         property string screenName: root.screen?.name ?? ""
         property bool isPrimaryScreen: {
             if (!Qt.application.screens || Qt.application.screens.length === 0)
                 return true
-            if (!screenName || screenName === "")
-                return true
-            return screenName === Qt.application.screens[0].name
+                if (!screenName || screenName === "")
+                    return true
+                    return screenName === Qt.application.screens[0].name
         }
 
         // Session management
@@ -46,15 +46,16 @@ Variants {
             property var sessions: [
                 { name: "KDE Plasma", exec: "startplasma-wayland" },
                 { name: "Wayfire", exec: "wayfire" },
+                { name: "Hyprland", exec: "Hyprland" }
             ]
-            
+
             property string currentSessionName: sessions[currentIndex].name
             property string currentSessionExec: sessions[currentIndex].exec
-            
+
             function nextSession() {
                 currentIndex = (currentIndex + 1) % sessions.length
             }
-            
+
             function previousSession() {
                 currentIndex = (currentIndex - 1 + sessions.length) % sessions.length
             }
@@ -63,7 +64,7 @@ Variants {
         // Center all content
         ColumnLayout {
             anchors.centerIn: parent
-            spacing: 20
+            spacing: 10
 
             Text {
                 id: messageText
@@ -71,37 +72,37 @@ Variants {
                 color: "#ebdbb2"
                 font.pixelSize: 24
                 Layout.alignment: Qt.AlignHCenter
+                Layout.bottomMargin: 10
             }
 
-            // Session selector
+            // Session selector - compact
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
-                width: 300
-                height: 50
-                radius: 8
+                Layout.preferredWidth: 300
+                height: 36
+                radius: 4
                 color: "#3c3836"
-                border.color: "#ebdbb2"
+                border.color: "#665c54"
                 border.width: 1
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 8
-                    spacing: 8
+                    anchors.margins: 4
+                    spacing: 4
 
-                    // Previous button
                     Rectangle {
-                        width: 34
-                        height: 34
-                        radius: 4
+                        width: 28
+                        height: 28
+                        radius: 3
                         color: prevMouse.containsMouse ? "#504945" : "transparent"
-                        
+
                         Text {
                             anchors.centerIn: parent
                             text: "◀"
                             color: "#ebdbb2"
-                            font.pixelSize: 16
+                            font.pixelSize: 14
                         }
-                        
+
                         MouseArea {
                             id: prevMouse
                             anchors.fill: parent
@@ -110,30 +111,28 @@ Variants {
                         }
                     }
 
-                    // Session name
                     Text {
                         Layout.fillWidth: true
                         text: sessionManager.currentSessionName
                         color: "#ebdbb2"
-                        font.pixelSize: 16
+                        font.pixelSize: 13
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                     }
 
-                    // Next button
                     Rectangle {
-                        width: 34
-                        height: 34
-                        radius: 4
+                        width: 28
+                        height: 28
+                        radius: 3
                         color: nextMouse.containsMouse ? "#504945" : "transparent"
-                        
+
                         Text {
                             anchors.centerIn: parent
                             text: "▶"
                             color: "#ebdbb2"
-                            font.pixelSize: 16
+                            font.pixelSize: 14
                         }
-                        
+
                         MouseArea {
                             id: nextMouse
                             anchors.fill: parent
@@ -148,18 +147,23 @@ Variants {
                 id: userInput
                 placeholderText: "Username"
                 color: "#ebdbb2"
-                background: Rectangle { 
+                font.pixelSize: 13
+                background: Rectangle {
                     color: "#3c3836"
                     radius: 4
+                    border.color: "#665c54"
+                    border.width: 1
                 }
                 Layout.preferredWidth: 300
+                Layout.preferredHeight: 36
                 Layout.alignment: Qt.AlignHCenter
+                leftPadding: 10
 
                 onTextChanged: {
                     if (userInput.text === "")
                         passInput.enabled = false
-                    else
-                        passInput.enabled = true    
+                        else
+                            passInput.enabled = true
                 }
 
                 onAccepted: {
@@ -178,12 +182,17 @@ Variants {
                 visible: true
                 enabled: false
                 color: "#ebdbb2"
-                background: Rectangle { 
+                font.pixelSize: 13
+                background: Rectangle {
                     color: "#3c3836"
                     radius: 4
+                    border.color: "#665c54"
+                    border.width: 1
                 }
                 Layout.preferredWidth: 300
+                Layout.preferredHeight: 36
                 Layout.alignment: Qt.AlignHCenter
+                leftPadding: 10
 
                 onAccepted: {
                     startSession()
@@ -194,20 +203,23 @@ Variants {
                 text: "Login"
                 Layout.alignment: Qt.AlignHCenter
                 Layout.preferredWidth: 300
+                Layout.preferredHeight: 36
+                Layout.topMargin: 4
                 enabled: userInput.text !== "" && passInput.text !== ""
-                
+
                 background: Rectangle {
                     color: parent.enabled ? (parent.hovered ? "#689d6a" : "#458588") : "#504945"
                     radius: 4
                 }
-                
+
                 contentItem: Text {
                     text: parent.text
                     color: "#ebdbb2"
+                    font.pixelSize: 13
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
-                
+
                 onClicked: startSession()
             }
         }
@@ -226,7 +238,7 @@ Variants {
 
             function onAuthMessage(message, error, responseRequired, echoResponse) {
                 messageText.text = message
-                
+
                 if (responseRequired) {
                     Greetd.respond(passInput.text)
                 } else if (!error) {
