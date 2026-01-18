@@ -56,7 +56,7 @@
     tenacity
     fooyin
     
-    wayland-logout swaybg wcm
+    wayland-logout swaybg
     (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
     
     keyd libpulseaudio xdg-utils alsa-utils
