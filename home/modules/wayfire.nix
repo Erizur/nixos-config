@@ -4,5 +4,5 @@ let
 in
 {
   xdg.configFile."wayfire.ini".source = config.lib.file.mkOutOfStoreSymlink "${nixcfgDir}/lucyshell/wayfire.ini";
-  xdg.configFile."quickshell".source = config.lib.file.mkOutOfStoreSymlink "${nixcfgDir}/lucyshell";
+  xdg.configFile."lucyshell".source = config.lib.file.mkOutOfStoreSymlink "${nixcfgDir}/lucyshell";
 }
