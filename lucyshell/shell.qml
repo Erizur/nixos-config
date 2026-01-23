@@ -21,11 +21,12 @@ ShellRoot {
                 bottom: true
             }
 
-            implicitHeight: 32
+            implicitHeight: 40
             color: "transparent"
 
             WlrLayershell.layer: WlrLayer.Top
             WlrLayershell.exclusiveZone: implicitHeight
+            WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
 
             Rectangle {
                 anchors.fill: parent
@@ -45,11 +46,8 @@ ShellRoot {
                     anchors.rightMargin: 6
                     spacing: 8
 
-                    // App launcher
                     Widgets.AppLauncher {}
-
-                    // Workspace indicators
-                    Widgets.Workspaces {}
+                    Widgets.Workspaces { parentWindow: mainPanel }
 
                     Widgets.Tasks {
                         parentWindow: mainPanel
@@ -59,11 +57,10 @@ ShellRoot {
 
                     Item { Layout.fillWidth: true }
 
-                    // System tray area
                     Row {
                         spacing: 6
 
-                        Widgets.SystemTray {}
+                        Widgets.SystemTray { parentWindow: mainPanel }
 
                         Rectangle {
                             width: 1
@@ -71,7 +68,8 @@ ShellRoot {
                             color: "#3e364e"
                         }
 
-                        Widgets.VolumeControl {}
+                        Widgets.VolumeControl { parentWindow: mainPanel }
+                        Widgets.MediaPlayer { parentWindow: mainPanel }
                         Widgets.NetworkIndicator {}
                         Widgets.Clock { parentWindow: mainPanel }
                         Widgets.PowerButton { parentWindow: mainPanel }

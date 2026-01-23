@@ -4,10 +4,13 @@ import Quickshell.Services.Pipewire
 import "../services" // Ensure this path is correct to find Audio.qml
 
 Rectangle {
+    id: root
     width: volumeRow.width + 12
     height: 24
     radius: 4
-    color: volumeMouse.containsMouse ? "#262130" : "transparent"
+    color: (volumeMouse.containsMouse || audioMenu.visible) ? "#3c3836" : "#262130"
+
+    required property var parentWindow
 
     readonly property real volume: Audio.value
     readonly property bool isMuted: Audio.sink?.audio?.muted ?? false
@@ -18,15 +21,14 @@ Rectangle {
         spacing: 4
 
         Text {
-            text: "🔊"
+            text: isMuted ? "🔇" : "🔊"
             font.pixelSize: 12
             anchors.verticalCenter: parent.verticalCenter
         }
 
         Text {
             id: volumeText
-            // Change 2: Bind text to the Audio service properties
-            text: isMuted ? "Muted" : Math.round(volume * 100) + "%"
+            text: isMuted ? "" : Math.round(volume * 100) + "%"
             color: "#e9e4f0"
             font.pixelSize: 11
             anchors.verticalCenter: parent.verticalCenter
@@ -37,13 +39,18 @@ Rectangle {
         id: volumeMouse
         anchors.fill: parent
         hoverEnabled: true
+        acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
 
-        // Change 3: Use the toggleMute function from Audio.qml
-        onClicked: {
-            Audio.toggleMute()
+        onClicked: (mouse) => {
+            if (mouse.button === Qt.LeftButton) {
+                // Open the Menu
+                audioMenu.visible = !audioMenu.visible
+            } else if (mouse.button === Qt.MiddleButton || mouse.button === Qt.RightButton) {
+                // Quick Mute
+                Audio.toggleMute()
+            }
         }
 
-        // Change 4: Use the increment/decrement functions from Audio.qml
         onWheel: wheel => {
             if (wheel.angleDelta.y > 0) {
                 Audio.incrementVolume()
@@ -51,5 +58,12 @@ Rectangle {
                 Audio.decrementVolume()
             }
         }
+    }
+
+    // Include the new AudioMenu
+    AudioMenu {
+        id: audioMenu
+        parentWindow: root.parentWindow
+        targetItem: root
     }
 }

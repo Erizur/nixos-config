@@ -192,6 +192,7 @@
 
   imports = [
     ./greetd.nix
+    ./lucyshell.nix
   ];
 
   swapDevices = [{

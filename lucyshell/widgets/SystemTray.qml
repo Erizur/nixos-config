@@ -4,7 +4,14 @@ import Quickshell
 import Quickshell.Services.SystemTray
 
 Row {
+    id: trayRow
     spacing: 4
+    property var parentWindow: null
+
+    TrayMenu {
+        id: contextMenu
+        parentWindow: trayRow.parentWindow
+    }
 
     Repeater {
         model: SystemTray.items
@@ -20,11 +27,26 @@ Row {
 
             Image {
                 anchors.centerIn: parent
-                width: 18
-                height: 18
-                source: modelData.icon?.url ?? ""
+
+                source: {
+                    const iconName = modelData.icon ?? ""
+                    if (iconName.startsWith("/") || iconName.startsWith("file://")) {
+                        return iconName
+                    }
+
+                    if (iconName.includes("?path=")) {
+                        const parts = iconName.split("?path=")
+                        return parts[1]
+                    }
+
+                    return iconName || ""
+                }
+
                 smooth: true
                 fillMode: Image.PreserveAspectFit
+
+                sourceSize.width: 24
+                sourceSize.height: 24
 
                 Text {
                     visible: parent.status !== Image.Ready || parent.source == ""
@@ -45,12 +67,11 @@ Row {
                     if (mouse.button === Qt.LeftButton) {
                         modelData.activate()
                     } else if (mouse.button === Qt.RightButton) {
-                        console.log("Context menus are not yet implemented in this shell.")
-
-                        /* if (modelData.menu) {
-                         *                           modelData.menu.open(mouse.x, mouse.y)
-                    }
-                    */
+                        if (modelData.menu) {
+                            contextMenu.targetItem = trayItem
+                            contextMenu.menuHandle = modelData.menu
+                            contextMenu.visible = true
+                        }
                     } else if (mouse.button === Qt.MiddleButton) {
                         modelData.secondaryActivate()
                     }

@@ -17,22 +17,26 @@ Row {
 
             readonly property bool isOnScreen: root.parentWindow ? modelData.screens.includes(root.parentWindow.screen) : true
 
-            visible: isOnScreen
-            width: visible ? 24 : 0
-            height: 24
+            readonly property bool isActive: modelData.activated
+            readonly property bool isHovered: mouseArea.containsMouse
 
-            radius: 3
-            color: modelData.activated ? "#262130" : "transparent"
-            border.color: modelData.activated ? "#c7a1d8" : "transparent"
+            visible: isOnScreen
+            height: root.parentWindow.implicitHeight - 4
+            width: visible ? height + 4 : 0
+
+            radius: 4
+            color: isActive ? "#262130" : (isHovered ? "#3c3836" : "#1d202180")
+
+            border.color: isActive ? "#c7a1d8" : (isHovered ? "#504945" : "transparent")
             border.width: 1
 
             Image {
                 anchors.centerIn: parent
-                width: 18
-                height: 18
-                source: Quickshell.iconPath(modelData.appId, true) || "application-x-executable"
+                source: getAppIcon(modelData.appId, "image-missing")
                 fillMode: Image.PreserveAspectFit
                 smooth: true
+                sourceSize.width: taskItem.width - 4
+                sourceSize.height: taskItem.height - 4
             }
 
             MouseArea {
@@ -77,5 +81,12 @@ Row {
                 }
             }
         }
+    }
+
+    function getAppIcon(name: string, fallback: string): string {
+        const icon = DesktopEntries.heuristicLookup(name)?.icon;
+        if (fallback !== "undefined")
+            return Quickshell.iconPath(icon, fallback);
+        return Quickshell.iconPath(icon);
     }
 }
