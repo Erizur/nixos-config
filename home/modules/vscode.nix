@@ -92,6 +92,7 @@
                 "maven.terminal.useJavaHome" = true;
                 "extensions.autoCheckUpdates" = false;
                 "extensions.autoUpdate" = false;
+                "zig.zls.enabled" = "on";
                 #"lldb.library" = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
 			};
 		};
