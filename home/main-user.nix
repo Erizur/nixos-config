@@ -35,15 +35,9 @@ in
     pingus
     pcsx2
     prismlauncher
-    (duckstation.overrideAttrs (oldAttrs: {
-      src = pkgs.fetchFromGitHub {
-        owner = "stenzek";
-        repo = "duckstation";
-        tag = "v0.1-10413";
-        deepClone = true;
-        hash = "sha256-ksmxdYLFWYIA3Kp8dztyN4UxeJFvpNRmN79TspwZHuw=";
-      };
-    }))
+    # temporary fix for duckstation since the packaging broke in upstream nixpkgs
+    # they will take 1562 business days to fix it so i had to do manual revert
+    (pkgs.callPackage ../extrapkgs/duckstation/package.nix { })
     
     any-nix-shell
   ] ++ lib.optionals (extraGaming == true) [

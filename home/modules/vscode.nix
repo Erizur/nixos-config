@@ -42,6 +42,11 @@
                 dsznajder.es7-react-js-snippets
                 expo.vscode-expo-tools
 
+                pkgs.vscode-extensions.ms-dotnettools.csharp
+                pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime 
+                pkgs.vscode-extensions.ms-dotnettools.csdevkit
+                pkgs.vscode-extensions.visualstudiotoolsforunity.vstuc
+
 				bbenoist.nix
 				brettm12345.nixfmt-vscode
 				jnoortheen.nix-ide
