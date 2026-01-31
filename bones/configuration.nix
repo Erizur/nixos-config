@@ -50,6 +50,7 @@
 
       jdk21
       jdk17
+      dotnet-sdk_9
       imagemagickBig
       mame-tools
 
