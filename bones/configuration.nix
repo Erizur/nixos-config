@@ -159,6 +159,7 @@
   fonts = {
     packages = with pkgs;
       [
+        google-fonts
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-color-emoji
@@ -168,9 +169,7 @@
         aileron
         fragment-mono
         comic-mono
-        comic-neue
         comic-relief
-        work-sans
         hubot-sans
         eurofurence
         koruri
@@ -178,9 +177,6 @@
         vegur
         sn-pro
         nacelle
-        recursive
-        dosis
-        montserrat
         helvetica-neue-lt-std
         mplus-outline-fonts.githubRelease
         fira-code
@@ -199,10 +195,16 @@
         azuki
         migu
         dotcolon-fonts
-        source-code-pro
         ttf_bitstream_vera
       ]
-      ++ lib.optionals pkgs.stdenv.isLinux [kochi-substitute];
+      ++ lib.optionals pkgs.stdenv.isLinux [
+        kochi-substitute
+        (pkgs.runCommand "local-fonts" { src = ../localfonts; } ''
+          mkdir -p $out/share/fonts/truetype
+          cp $src/*.ttf $out/share/fonts/truetype/ 2>/dev/null || true
+          cp $src/*.otf $out/share/fonts/truetype/ 2>/dev/null || true
+        '')
+      ];
   };
 
   nixpkgs = {

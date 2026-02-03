@@ -123,6 +123,7 @@
     powerOnBoot = true;
   };
 
+  fonts.fontDir.enable = true;
   fonts.fontconfig = {
     useEmbeddedBitmaps = true;
     defaultFonts = {
