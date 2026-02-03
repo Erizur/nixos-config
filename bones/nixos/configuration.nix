@@ -1,5 +1,11 @@
-{ self, config, lib, pkgs, inputs, ... }:
 {
+  self,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Use the GRand Unified Bootloader
   boot.loader = {
     efi = {
@@ -15,12 +21,12 @@
   };
 
   networking = {
-  	networkmanager = {
-      enable = true;  # Easiest to use and most distros use this by default.
-      plugins = with pkgs; [ networkmanager-openvpn ];
+    networkmanager = {
+      enable = true; # Easiest to use and most distros use this by default.
+      plugins = with pkgs; [networkmanager-openvpn];
     };
     firewall.enable = true;
-    firewall.trustedInterfaces = [ "tailscale0" ];
+    firewall.trustedInterfaces = ["tailscale0"];
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
@@ -31,20 +37,25 @@
 
   # Time zone & dualboot shenanigans.
   time = {
-  	timeZone = "America/Lima";
+    timeZone = "America/Lima";
   };
 
   # Nuke the console.
   console.enable = false;
 
   services.xserver = {
-  	enable = true;
+    enable = true;
     xkb.layout = "es";
   };
 
   services.kmscon = {
     enable = true;
-    fonts = [ { name = "JetBrainsMono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono; } ];
+    fonts = [
+      {
+        name = "JetBrainsMono Nerd Font";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+      }
+    ];
     hwRender = false;
     useXkbConfig = true;
   };
@@ -87,7 +98,7 @@
     extraConfig.pipewire."10-airplay" = {
       "context.modules" = [
         {
-        name = "libpipewire-module-raop-discover";
+          name = "libpipewire-module-raop-discover";
         }
       ];
     };
@@ -97,19 +108,22 @@
   users.users.erizur = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "bluetooth" "audio" "uinput" ]; # Uinput might be unsafe, but required for some gamepad projects I use.
+    extraGroups = ["networkmanager" "wheel" "bluetooth" "audio" "uinput"]; # Uinput might be unsafe, but required for some gamepad projects I use.
     home = "/home/erizur";
   };
 
   programs.steam = {
-  	enable = true;
+    enable = true;
     remotePlay.openFirewall = false;
     dedicatedServer.openFirewall = false;
     localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
   };
 
   users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
@@ -127,18 +141,18 @@
   fonts.fontconfig = {
     useEmbeddedBitmaps = true;
     defaultFonts = {
-        monospace = [
-          "JetBrainsMono Nerd Font"
-          "IPAGothic"
-        ];
-        sansSerif = [
-          "Noto Sans"
-          "IPAGothic"
-        ];
-        serif = [
-          "Noto Serif"
-          "IPAPMincho"
-        ];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "IPAGothic"
+      ];
+      sansSerif = [
+        "Noto Sans"
+        "IPAGothic"
+      ];
+      serif = [
+        "Noto Serif"
+        "IPAPMincho"
+      ];
     };
   };
 
@@ -176,17 +190,17 @@
   };
 
   virtualisation.docker = {
-      enable = false;
-      rootless = {
-          enable = true;
-          setSocketVariable = true;
-          daemon.settings = {
-              dns = ["1.1.1.1" "8.8.8.8"];
-              registry-mirrors = ["https://mirror.gcr.io"];
-          };
+    enable = false;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+      daemon.settings = {
+        dns = ["1.1.1.1" "8.8.8.8"];
+        registry-mirrors = ["https://mirror.gcr.io"];
       };
+    };
   };
-  
+
   programs.xppen = {
     enable = true;
     package = pkgs.xppen_3;
@@ -197,10 +211,12 @@
     ./lucyshell.nix
   ];
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 16*1024; # 16 GB
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024; # 16 GB
+    }
+  ];
 
   system.stateVersion = "25.11"; # Don't change this unless fully reinstalling
 }

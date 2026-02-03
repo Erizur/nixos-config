@@ -4,9 +4,11 @@
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "https://nix-gaming.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
   };
 
@@ -20,6 +22,7 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     marble-browser = {
       url = "github:Erizur/marble-flake";
@@ -51,80 +54,105 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, quickshell, nix-vscode-extensions, audio, sops-nix, sonic-visualizer, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      nixosConfigurations = {
-        # i got a new one
-        makoto = nixpkgs.lib.nixosSystem {
-          specialArgs = { extraGaming = true; inherit inputs; inherit system; };
-          modules = [
-            ./bones/configuration.nix
-            ./bones/nixos/configuration.nix
-            ./bones/nixos/makoto/configuration.nix
-            inputs.home-manager.nixosModules.home-manager
-            inputs.sops-nix.nixosModules.sops
-            {
-              home-manager = {
-                extraSpecialArgs = { extraGaming = true; inherit inputs; inherit system; };
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.erizur.imports = [
-                  ./home/main-user.nix
-                  ./home/modules/fluidsynth.nix
-                  ./home/modules/branding/makoto.nix
-                ];
-                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
-              };
-            }
-          ];
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    quickshell,
+    nix-vscode-extensions,
+    audio,
+    sops-nix,
+    sonic-visualizer,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    nixosConfigurations = {
+      # i got a new one
+      makoto = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          extraGaming = true;
+          inherit inputs;
+          inherit system;
         };
-
-        # uni laptop
-        sajou = nixpkgs.lib.nixosSystem {
-          specialArgs = { extraGaming = false; inherit inputs; inherit system; };
-          modules = [
-            ./bones/configuration.nix
-            ./bones/nixos/configuration.nix
-            ./bones/nixos/sajou/configuration.nix
-            inputs.nixos-hardware.nixosModules.lenovo-ideapad-15ach6
-            inputs.home-manager.nixosModules.home-manager
-            inputs.sops-nix.nixosModules.sops
-            {
-              home-manager = {
-                extraSpecialArgs = { extraGaming = false; inherit inputs; inherit system; };
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.erizur.imports = [
-                  ./home/main-user.nix
-                  ./home/modules/branding/pitcher56.nix
-                ];
-                sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+        modules = [
+          ./bones/configuration.nix
+          ./bones/nixos/configuration.nix
+          ./bones/nixos/makoto/configuration.nix
+          inputs.home-manager.nixosModules.home-manager
+          inputs.sops-nix.nixosModules.sops
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                extraGaming = true;
+                inherit inputs;
+                inherit system;
               };
-            }
-          ];
-        };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.erizur.imports = [
+                ./home/main-user.nix
+                ./home/modules/fluidsynth.nix
+                ./home/modules/branding/makoto.nix
+              ];
+              sharedModules = [inputs.sops-nix.homeManagerModules.sops];
+            };
+          }
+        ];
       };
 
-      devShells.${system}.default = pkgs.mkShell {
-        name = "nix-devenv";
-        buildInputs = with pkgs; [
-          nil
-          alejandra
-          git
-          nix-index
-
-          fortune
-          cowsay
+      # uni laptop
+      sajou = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          extraGaming = false;
+          inherit inputs;
+          inherit system;
+        };
+        modules = [
+          ./bones/configuration.nix
+          ./bones/nixos/configuration.nix
+          ./bones/nixos/sajou/configuration.nix
+          inputs.nixos-hardware.nixosModules.lenovo-ideapad-15ach6
+          inputs.home-manager.nixosModules.home-manager
+          inputs.sops-nix.nixosModules.sops
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                extraGaming = false;
+                inherit inputs;
+                inherit system;
+              };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.erizur.imports = [
+                ./home/main-user.nix
+                ./home/modules/branding/pitcher56.nix
+              ];
+              sharedModules = [inputs.sops-nix.homeManagerModules.sops];
+            };
+          }
         ];
-
-        shellHook = ''
-          export NIX_LSP_FORMATTER=alejandra
-        '';
       };
     };
+
+    devShells.${system}.default = pkgs.mkShell {
+      name = "nix-devenv";
+      buildInputs = with pkgs; [
+        nil
+        alejandra
+        git
+        nix-index
+
+        fortune
+        cowsay
+      ];
+
+      shellHook = ''
+        export NIX_LSP_FORMATTER=alejandra
+      '';
+    };
+  };
 }

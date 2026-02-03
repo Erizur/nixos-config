@@ -6,7 +6,9 @@
   system,
   extraGaming,
   ...
-}: {
+}: let
+  nixGaming = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system};
+in {
   # Enable tailscale
   services.tailscale.enable =
     if pkgs.stdenv.isLinux
@@ -68,7 +70,8 @@
       lldb
       wl-clipboard
 
-      wineWowPackages.stagingFull
+      nixGaming.wine-tkg
+      nixGaming.wineprefix-preparer
       winetricks
       wineasio
 
@@ -199,7 +202,7 @@
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         kochi-substitute
-        (pkgs.runCommand "local-fonts" { src = ../localfonts; } ''
+        (pkgs.runCommand "local-fonts" {src = ../localfonts;} ''
           mkdir -p $out/share/fonts/truetype
           cp $src/*.ttf $out/share/fonts/truetype/ 2>/dev/null || true
           cp $src/*.otf $out/share/fonts/truetype/ 2>/dev/null || true
