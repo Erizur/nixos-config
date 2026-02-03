@@ -72,7 +72,7 @@ in {
 
       nixGaming.wine-tkg
       nixGaming.wineprefix-preparer
-      winetricks
+      nixGaming.winetricks-git
       wineasio
 
       gst_all_1.gstreamer
