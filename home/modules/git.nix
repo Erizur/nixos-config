@@ -17,7 +17,7 @@ in
     
     settings = {
       user.name = "AM_Erizur";
-      user.email = "sajoudks@outlook.com";
+      user.email = "watchdoukyuusei@outlook.com";
       init.defaultBranch = "main";
       commit.signoff = true;
       commit.gpgsign = true;
@@ -37,6 +37,11 @@ in
         };
 
         "github.com" = {
+          identitiesOnly = true;
+          identityFile = "${homeDirectory}/.ssh/id_ed25519";
+        };
+
+        "amerizur.com" = {
           identitiesOnly = true;
           identityFile = "${homeDirectory}/.ssh/id_ed25519";
         };

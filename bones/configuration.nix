@@ -69,8 +69,11 @@ in {
       clang-tools
       lldb
       wl-clipboard
-
-      nixGaming.wine-tkg
+      
+      (pkgs.runCommand "wine-alias" { } ''
+        mkdir -p $out/bin
+        ln -s ${nixGaming.wine-tkg}/bin/wine $out/bin/wine64
+      '')
       nixGaming.wineprefix-preparer
       nixGaming.winetricks-git
       wineasio

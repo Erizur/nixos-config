@@ -209,7 +209,14 @@
   imports = [
     ./greetd.nix
     ./lucyshell.nix
+    inputs.nix-gaming.nixosModules.wine
   ];
+
+  programs.wine = {
+    enable = true;
+    binfmt = true;
+    package = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-tkg;
+  };
 
   swapDevices = [
     {

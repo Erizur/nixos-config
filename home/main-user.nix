@@ -37,6 +37,7 @@ in
     prismlauncher
     # temporary fix for duckstation since the packaging broke in upstream nixpkgs
     # they will take 1562 business days to fix it so i had to do manual revert
+    # update: they will not. thank mr keznets' upstream for that!
     (pkgs.callPackage ../extrapkgs/duckstation/package.nix { })
     
     any-nix-shell
