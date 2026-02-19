@@ -76,7 +76,7 @@ in {
       '')
       nixGaming.wineprefix-preparer
       nixGaming.winetricks-git
-      wineasio
+      (pkgs.callPackage ../extrapkgs/wineasio.nix {})
 
       gst_all_1.gstreamer
       gst_all_1.gst-plugins-base
@@ -119,7 +119,6 @@ in {
       xdg-utils
       alsa-utils
       (pkgs.callPackage ../cursor/package.nix {})
-      (pkgs.callPackage ../extrapkgs/kshift.nix {})
       (pkgs.callPackage ../extrapkgs/soulseekqt.nix {})
     ]
     ++ lib.optionals (extraGaming == true) [
