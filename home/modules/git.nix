@@ -41,7 +41,7 @@ in
           identityFile = "${homeDirectory}/.ssh/id_ed25519";
         };
 
-        "amerizur.com" = {
+        "*.amerizur.com" = {
           identitiesOnly = true;
           identityFile = "${homeDirectory}/.ssh/id_ed25519";
         };
