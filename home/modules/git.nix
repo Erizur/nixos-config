@@ -23,6 +23,11 @@ in
       commit.gpgsign = true;
       gpg.format = "ssh";
       user.signingkey = "${homeDirectory}/.ssh/sign_ed25519.pub";
+
+      credential.helper = [
+        "cache --timeout 21600" # Caches the token in memory for 6 hours
+        "${pkgs.git-credential-oauth}/bin/git-credential-oauth"
+      ];
     };
   };
 
