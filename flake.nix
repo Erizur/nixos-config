@@ -5,10 +5,12 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://nix-gaming.cachix.org"
+      "https://ezkea.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
     ];
   };
 
@@ -52,6 +54,11 @@
     sonic-visualizer = {
       url = "github:joostn/nixpkgs/jn-sonic-visualiser";
     };
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -63,6 +70,7 @@
     audio,
     sops-nix,
     sonic-visualizer,
+    aagl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -80,6 +88,7 @@
           ./bones/configuration.nix
           ./bones/nixos/configuration.nix
           ./bones/nixos/makoto/configuration.nix
+          ./extrapkgs/sleepy.nix
           inputs.home-manager.nixosModules.home-manager
           inputs.sops-nix.nixosModules.sops
           {

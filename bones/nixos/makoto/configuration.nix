@@ -11,8 +11,9 @@
 
     programs.gamescope.enable = true;
     programs.gamemode.enable = true;
-
     programs.coolercontrol.enable = true;
 
     modules.apps.audioprod.enable = true;
+
+    virtualisation.waydroid.enable = true;
 }
