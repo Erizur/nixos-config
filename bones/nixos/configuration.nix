@@ -26,7 +26,7 @@
       plugins = with pkgs; [networkmanager-openvpn];
     };
     firewall.enable = true;
-    firewall.trustedInterfaces = ["tailscale0"];
+    firewall.trustedInterfaces = [ "tailscale0" "waydroid0" ];
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"

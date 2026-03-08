@@ -14,6 +14,4 @@
     programs.coolercontrol.enable = true;
 
     modules.apps.audioprod.enable = true;
-
-    virtualisation.waydroid.enable = true;
 }

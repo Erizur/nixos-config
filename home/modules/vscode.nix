@@ -5,9 +5,11 @@
 		profiles.default = {
 			extensions = with pkgs.vscode-marketplace-universal; [
 				ms-vscode.cpptools-extension-pack
-				ms-vscode.cmake-tools
+                ms-vscode.cmake-tools
+
 				ms-python.python
-				ms-python.vscode-pylance
+                ms-python.vscode-pylance
+                ms-python.debugpy
 
                 llvm-vs-code-extensions.vscode-clangd
                 vadimcn.vscode-lldb
