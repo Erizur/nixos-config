@@ -115,6 +115,7 @@ in {
       (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
 
       libimobiledevice
+      idevicerestore
       ifuse
 
       keyd
