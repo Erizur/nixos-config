@@ -114,6 +114,9 @@ in {
       '')
       (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
 
+      libimobiledevice
+      ifuse
+
       keyd
       libpulseaudio
       xdg-utils

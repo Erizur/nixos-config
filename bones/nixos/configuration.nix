@@ -189,6 +189,11 @@
     };
   };
 
+  services.usbmuxd = {
+    enable = true;
+    package = pkgs.usbmuxd2;
+  };
+
   virtualisation.docker = {
     enable = false;
     rootless = {
