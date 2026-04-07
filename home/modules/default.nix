@@ -3,6 +3,7 @@
   imports = [
     ./zsh.nix
     ./mpv.nix
+    ./obs.nix
     ./vscode.nix
     ./sops.nix
     ./git.nix

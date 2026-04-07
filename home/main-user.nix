@@ -27,11 +27,9 @@ in
     obsidian
     onlyoffice-desktopeditors
     cider-2
-    
-    obs-studio
 
-    superTuxKart
-    superTux
+    supertuxkart
+    supertux
     pingus
     pcsx2
     prismlauncher

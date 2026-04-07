@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  xorg,
+  xcursorgen,
   hicolor-icon-theme,
 }:
 
@@ -12,7 +12,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
   src = ./.; 
 
   buildInputs = [
-    xorg.xcursorgen
+    xcursorgen
   ];
 
   propagatedBuildInputs = [

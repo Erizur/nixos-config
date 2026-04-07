@@ -9,8 +9,7 @@
           sponsorblock
           visualizer
           thumbfast
-          mpv-discord
-          mpv-osc-modern
+          modernz
           memo
         ] ++ lib.optionals pkgs.stdenv.isLinux [ mpris ];
 
