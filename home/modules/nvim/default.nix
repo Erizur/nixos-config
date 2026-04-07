@@ -8,7 +8,7 @@
     withPython3 = false;
 
     plugins = with pkgs.vimPlugins; [
-      vim-vscode-snippets
+      friendly-snippets
 
       # C/C++ support
       nvim-lspconfig
