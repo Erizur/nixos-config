@@ -36,7 +36,6 @@ in
       stochas
       xtuner
       atlas2
-      paulxstretch
       vital
       tony
       chow-centaur

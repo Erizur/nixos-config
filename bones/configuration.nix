@@ -99,7 +99,8 @@ in {
       memento
       vlc
       tenacity
-      fooyin
+      # TODO: remove it when PR 504583 gets merged.
+      (pkgs.callPackage ../extrapkgs/fooyin.nix {})
 
       wayland-logout
       swaybg
