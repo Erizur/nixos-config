@@ -76,7 +76,12 @@ in {
       '')
       nixGaming.wineprefix-preparer
       nixGaming.winetricks-git
-      (pkgs.callPackage ../extrapkgs/wineasio.nix {})
+      (wineasio.overrideAttrs {
+        buildInputs = [
+          pkgsi686Linux.pipewire.jack
+          pipewire.jack
+        ];
+      })
 
       gst_all_1.gstreamer
       gst_all_1.gst-plugins-base

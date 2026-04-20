@@ -67,9 +67,12 @@
     enable = true;
     audio.enable = true;
     pulse.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     jack.enable = true;
+
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
 
     extraConfig.pipewire."92-low-latency" = {
       "context.properties" = {
@@ -90,7 +93,7 @@
         }
       ];
       stream.properties = {
-        resample.quality = 10;
+        resample.quality = 5;
       };
     };
 

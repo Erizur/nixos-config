@@ -1,5 +1,5 @@
 {
-  stdenv,
+  clangStdenv,
   lib,
   fetchFromGitHub,
   cmake,
@@ -23,7 +23,7 @@
   pluginSelection ? "",
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+clangStdenv.mkDerivation (finalAttrs: {
   pname = "fooyin";
   version = "0.10.3";
 
