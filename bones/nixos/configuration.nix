@@ -209,10 +209,9 @@
     };
   };
 
-  programs.xppen = {
-    enable = true;
-    package = pkgs.xppen_3;
-  };
+  hardware.opentabletdriver.enable = true;
+  hardware.uinput.enable = true;
+  boot.kernelModules = [ "uinput" ];
 
   imports = [
     ./greetd.nix
