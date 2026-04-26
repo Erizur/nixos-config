@@ -99,6 +99,7 @@ in {
       inkscape
       aseprite
       blender
+      quickemu
 
       qbittorrent
       memento
