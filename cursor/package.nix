@@ -3,16 +3,21 @@
   lib,
   xcursorgen,
   hicolor-icon-theme,
+  jq,
+  librsvg,
+  bc
 }:
 
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "oxygen-cursors";
   version = "0.1";
+  src = ./.;
 
-  src = ./.; 
-
-  buildInputs = [
+  nativeBuildInputs = [
     xcursorgen
+    jq
+    librsvg
+    bc
   ];
 
   propagatedBuildInputs = [
@@ -23,10 +28,58 @@ pkgs.stdenvNoCC.mkDerivation rec {
 
   buildPhase = ''
     runHook preBuild
+    SIZES="24 32 48 64"
 
     for theme in Oxygen-Zion; do
-      for dir in cursors cursors_scalable; do
-        pushd $theme/$dir
+      mkdir -p $theme/cursors_compiled
+
+      for dir in $theme/cursors_scalable/*; do
+        if [ -d "$dir" ] && [ -f "$dir/metadata.json" ]; then
+          cursor_name=$(basename "$dir")
+          config_file="$dir/build.in"
+          rm -f "$config_file"
+
+          len=$(jq '. | length' "$dir/metadata.json")
+
+          for size in $SIZES; do
+            # Get the nominal size
+            nom_size=$(jq -r '.[0].nominal_size' "$dir/metadata.json")
+
+            # CALCULATE THE ZOOM MULTIPLIER (Target Size / Nominal Size)
+            zoom=$(echo "scale=4; $size / $nom_size" | bc)
+
+            for i in $(seq 0 $((len-1))); do
+              svg_file=$(jq -r ".[$i].filename" "$dir/metadata.json")
+              hot_x=$(jq -r ".[$i].hotspot_x" "$dir/metadata.json")
+              hot_y=$(jq -r ".[$i].hotspot_y" "$dir/metadata.json")
+              delay=$(jq -r ".[$i].delay // empty" "$dir/metadata.json")
+
+              # Scale the hotspots using the zoom multiplier
+              new_x=$(echo "scale=0; ($hot_x * $zoom + 0.5) / 1" | bc)
+              new_y=$(echo "scale=0; ($hot_y * $zoom + 0.5) / 1" | bc)
+
+              # Render using --zoom to preserve natural canvas proportions and shadows
+              png_file="$dir/''${size}_''${i}.png"
+              rsvg-convert --zoom=$zoom -f png -o "$png_file" "$dir/$svg_file"
+
+              if [ -z "$delay" ]; then
+                echo "$size $new_x $new_y $png_file" >> "$config_file"
+              else
+                echo "$size $new_x $new_y $png_file $delay" >> "$config_file"
+              fi
+            done
+          done
+
+          xcursorgen "$config_file" "$theme/cursors_compiled/$cursor_name"
+        fi
+      done
+
+      rm -rf $theme/cursors
+      mv $theme/cursors_compiled $theme/cursors
+
+      # (Symlinks remain identical to before)
+      for target_dir in cursors cursors_scalable; do
+        pushd $theme/$target_dir
         ln -sf wait watch
         ln -sf half-busy progress
         ln -sf half-busy left_ptr_watch
@@ -50,6 +103,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
 
         ln -sf copy dnd-copy
         ln -sf link dnd-link
+
         ln -sf closedhand dnd-move
         ln -sf closedhand dnd-none
         ln -sf forbidden dnd-no-drop
@@ -60,6 +114,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
         ln -sf size_hor e-resize
         ln -sf size_hor w-resize
         ln -sf size_hor ew-resize
+
         ln -sf size_fdiag nw-resize
         ln -sf size_bdiag ne-resize
         ln -sf size_bdiag sw-resize
