@@ -6,7 +6,7 @@
   cmake,
   pkg-config,
   ninja,
-  extra-cmake-modules,
+  kdePackages,
   wayland-scanner,
   qt6,
   sdl3,
@@ -22,7 +22,7 @@
   rapidjson,
   libzip,
   curl,
-  libX11,
+  libx11,
   wayland,
   shaderc,
   spirv-cross,
@@ -229,7 +229,7 @@ let
       cmake
       pkg-config
       ninja
-      extra-cmake-modules
+      kdePackages.extra-cmake-modules
       wayland-scanner
       qt6.wrapQtAppsHook
       qt6.qttools
@@ -247,7 +247,7 @@ let
       cpuinfo
       libzip
       curl
-      libX11
+      libx11
       wayland
       spirv-cross
       qt6.qtbase

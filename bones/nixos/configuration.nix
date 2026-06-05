@@ -50,13 +50,10 @@
 
   services.kmscon = {
     enable = true;
-    fonts = [
-      {
-        name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerd-fonts.jetbrains-mono;
-      }
-    ];
-    hwRender = false;
+    config = {
+      font-name = "JetBrainsMono Nerd Font";
+      hwaccel = true;
+    };
     useXkbConfig = true;
   };
 

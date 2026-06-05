@@ -74,6 +74,7 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
+    overlays = [ (import ./overlays/wayfire-ecosystem.nix) ];
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
@@ -85,6 +86,7 @@
           inherit system;
         };
         modules = [
+          { nixpkgs.overlays = overlays; }
           ./bones/configuration.nix
           ./bones/nixos/configuration.nix
           ./bones/nixos/makoto/configuration.nix
@@ -120,6 +122,7 @@
           inherit system;
         };
         modules = [
+          { nixpkgs.overlays = overlays; }
           ./bones/configuration.nix
           ./bones/nixos/configuration.nix
           ./bones/nixos/sajou/configuration.nix
