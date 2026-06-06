@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766856444,
-        "narHash": "sha256-ep8fYrw3vkUisFWdMyQvxL9V1kHNSzpYdJ6EVuYmn+Y=",
+        "lastModified": 1780632924,
+        "narHash": "sha256-daDXLSRlgmWt+tiX85SQ5L2l04WgCgNhoezgWQpb8SM=",
         "owner": "Erizur",
         "repo": "nix-vscode-extensions",
-        "rev": "547167a32769eb63560192524c8f3ee7a9907997",
+        "rev": "639982843f1b69ea3f5e3394177d2b09d868e7d3",
         "type": "github"
       },
       "original": {
@@ -441,7 +441,8 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "quickshell": "quickshell",
         "sonic-visualizer": "sonic-visualizer",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "wayfire-devel": "wayfire-devel"
       }
     },
     "rust-analyzer-src": {
@@ -538,6 +539,25 @@
         "owner": "Mic92",
         "repo": "sops-nix",
         "type": "github"
+      }
+    },
+    "wayfire-devel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778493355,
+        "narHash": "sha256-4c+YY0TaROVgM5rPev/x4tgI9YwBsJN0aDu+ZpeeHl0=",
+        "ref": "refs/heads/master",
+        "rev": "4ffa601d845624cadcd5ffa1d3741269bdb0850d",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Erizur/wayfire.git"
+      },
+      "original": {
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Erizur/wayfire.git"
       }
     }
   },

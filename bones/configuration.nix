@@ -94,7 +94,7 @@ in {
       kdePackages.kcalc
       kdePackages.kolourpaint
       kdePackages.oxygen-sounds
-      krita
+      #krita THEY BROKE IT!
       gimp3
       inkscape
       aseprite

@@ -59,6 +59,11 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wayfire-devel = {
+      url = "git+https://github.com/Erizur/wayfire.git?submodules=1&shallow=1";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -74,7 +79,7 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    overlays = [ (import ./overlays/wayfire-ecosystem.nix) ];
+    overlays = [ (import ./overlays/wayfire-ecosystem.nix inputs) ];
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {

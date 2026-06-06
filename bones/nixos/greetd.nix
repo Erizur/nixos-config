@@ -29,15 +29,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = ''
-          env GREET_WALLPATH='/home/erizur/Pictures/Wallpapers/wp10550609.jpg' \
-          GREET_UPICPATH='/home/erizur/Downloads/image.png' \
-          XDG_SESSION_TYPE=wayland \
-          EGL_PLATFORM=gbm \
-          QT_QPA_PLATFORM=wayland \
-          QT_WAYLAND_DISABLE_WINDOWDECORATION=1 \
-          dbus-run-session ${wf-log}
-        '';
+        command = "env GREET_WALLPATH='/home/erizur/Pictures/Wallpapers/wp10550609.jpg' GREET_UPICPATH='/home/erizur/Downloads/image.png' XDG_SESSION_TYPE=wayland EGL_PLATFORM=gbm QT_QPA_PLATFORM=wayland QT_WAYLAND_DISABLE_WINDOWDECORATION=1 dbus-run-session ${wf-log}";
       };
     };
   };
@@ -53,5 +45,5 @@ in
 
   users.users.greeter.createHome = true;
   users.users.greeter.home = "/var/lib/greeter";
-  users.users.greeter.extraGroups = ["video"];
+  users.users.greeter.extraGroups = ["video" "input"];
 }
