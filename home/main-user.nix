@@ -6,6 +6,7 @@ in
   home.username = "erizur";
   home.homeDirectory = "/home/erizur";
   home.stateVersion = "25.11";
+  home.sessionPath = [ "$HOME/.local/bin" ];
   
   imports = [
     ./modules

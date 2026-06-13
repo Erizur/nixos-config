@@ -44,7 +44,8 @@ Variants {
             property int currentIndex: 0
             property var sessions: [
                 { name: "KDE Plasma", exec: "startplasma-wayland" },
-                { name: "Wayfire", exec: "start-wayfire-session" }
+                { name: "Wayfire", exec: "start-wayfire-session" },
+                { name: "Wayfire (dev)", exec: "start-wayfire-dev-session" }
             ]
             property string currentSessionName: sessions[currentIndex].name
             property string currentSessionExec: sessions[currentIndex].exec

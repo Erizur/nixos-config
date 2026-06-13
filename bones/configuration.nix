@@ -69,8 +69,8 @@ in {
       clang-tools
       lldb
       wl-clipboard
-      
-      (pkgs.runCommand "wine-alias" { } ''
+
+      (pkgs.runCommand "wine-alias" {} ''
         mkdir -p $out/bin
         ln -s ${nixGaming.wine-tkg}/bin/wine $out/bin/wine64
       '')
@@ -118,6 +118,18 @@ in {
         export QT_QPA_PLATFORM=wayland
 
         exec dbus-run-session wayfire
+      '')
+      (pkgs.writeShellScriptBin "start-wayfire-dev-session" ''
+        export XDG_CURRENT_DESKTOP=wayfire
+        export XDG_SESSION_DESKTOP=wayfire
+        export XDG_MENU_PREFIX=plasma-
+        export QT_QPA_PLATFORM=wayland
+        export LD_LIBRARY_PATH=/home/erizur/Documents/wayfire/install/lib:$LD_LIBRARY_PATH
+        export WAYFIRE_PLUGIN_PATH=/home/erizur/Documents/wayfire/install/lib/wayfire
+        echo "starting wayfire dev at $(date)" >> /tmp/wf-dev.log
+        exec dbus-run-session /home/erizur/Documents/wayfire/install/bin/wayfire \
+          --config /home/erizur/.config/wayfire.ini \
+          >> /tmp/wf-dev.log 2>&1
       '')
       (inputs.quickshell.packages."${system}".default.withModules [kdePackages.qt5compat kdePackages.qtmultimedia])
 
@@ -173,6 +185,7 @@ in {
   programs.zsh.enable = true;
 
   fonts = {
+    fontDir.enable = true;
     packages = with pkgs;
       [
         google-fonts

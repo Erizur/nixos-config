@@ -52,7 +52,7 @@
     enable = true;
     config = {
       font-name = "JetBrainsMono Nerd Font";
-      hwaccel = true;
+      hwaccel = false;
     };
     useXkbConfig = true;
   };
@@ -108,7 +108,7 @@
   users.users.erizur = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel" "bluetooth" "audio" "uinput"]; # Uinput might be unsafe, but required for some gamepad projects I use.
+    extraGroups = ["networkmanager" "video" "wheel" "bluetooth" "audio" "uinput"]; # Uinput might be unsafe, but required for some gamepad projects I use.
     home = "/home/erizur";
   };
 

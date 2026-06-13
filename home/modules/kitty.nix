@@ -5,6 +5,7 @@
     enableGitIntegration = true;
     themeFile = "tokyo_night_storm";
     settings = {
+      auto_reload_config = -0.1;
       confirm_os_window_close = 0;
       enable_audio_bell = false;
       mouse_hide_wait = "1.0";
