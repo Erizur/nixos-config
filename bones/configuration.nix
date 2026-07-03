@@ -94,12 +94,15 @@ in {
       kdePackages.kcalc
       kdePackages.kolourpaint
       kdePackages.oxygen-sounds
-      #krita THEY BROKE IT!
+      #krita STILL BROKEN
       gimp3
       inkscape
       aseprite
       blender
-      quickemu
+
+      # virtual machinery
+      dnsmasq
+      virtio-win
 
       qbittorrent
       memento

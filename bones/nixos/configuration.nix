@@ -108,7 +108,7 @@
   users.users.erizur = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "video" "wheel" "bluetooth" "audio" "uinput"]; # Uinput might be unsafe, but required for some gamepad projects I use.
+    extraGroups = ["networkmanager" "video" "wheel" "bluetooth" "audio" "uinput" "libvirtd" "kvm"]; # Uinput might be unsafe, but required for some gamepad projects I use.
     home = "/home/erizur";
   };
 
@@ -194,21 +194,34 @@
     package = pkgs.usbmuxd2;
   };
 
-  virtualisation.docker = {
-    enable = false;
-    rootless = {
+  virtualisation = {
+    libvirtd = {
       enable = true;
-      setSocketVariable = true;
-      daemon.settings = {
-        dns = ["1.1.1.1" "8.8.8.8"];
-        registry-mirrors = ["https://mirror.gcr.io"];
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+      };
+    };
+
+    docker = {
+      enable = false;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+        daemon.settings = {
+          dns = ["1.1.1.1" "8.8.8.8"];
+          registry-mirrors = ["https://mirror.gcr.io"];
+        };
       };
     };
   };
 
+  programs.virt-manager.enable = true;
+
   hardware.opentabletdriver.enable = true;
   hardware.uinput.enable = true;
-  boot.kernelModules = [ "uinput" ];
+  boot.kernelModules = [ "uinput" "kvm-amd" ];
 
   imports = [
     ./greetd.nix
