@@ -27,6 +27,7 @@ in
     
     obsidian
     onlyoffice-desktopeditors
+    xournalpp
     cider-2
 
     supertuxkart
