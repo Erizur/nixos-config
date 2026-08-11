@@ -89,12 +89,11 @@ in {
       gst_all_1.gst-plugins-bad
       gst_all_1.gst-plugins-ugly
       gst_all_1.gst-libav
-      gst_all_1.gst-vaapi
 
       kdePackages.kcalc
       kdePackages.kolourpaint
       kdePackages.oxygen-sounds
-      #krita STILL BROKEN
+      krita
       gimp3
       inkscape
       aseprite
@@ -103,6 +102,7 @@ in {
       # virtual machinery
       dnsmasq
       virtio-win
+      distrobox
 
       qbittorrent
       memento
@@ -180,8 +180,6 @@ in {
         pkgs.pkgsi686Linux.gst_all_1.gst-plugins-ugly
         pkgs.gst_all_1.gst-libav
         pkgs.pkgsi686Linux.gst_all_1.gst-libav
-        pkgs.gst_all_1.gst-vaapi
-        pkgs.pkgsi686Linux.gst_all_1.gst-vaapi
       ];
     };
 

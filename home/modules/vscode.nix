@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 {
+	home.file = {
+		".local/share/vscode-paths/jdk21".source = pkgs.jdk21;
+		".local/share/vscode-paths/vscode-lldb".source = pkgs.vscode-extensions.vadimcn.vscode-lldb;
+		".config/Code/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nixcfg/home/vscode-settings.json";
+	};
+
 	programs.vscode = {
 		enable = true;
 		profiles.default = {
@@ -10,6 +16,7 @@
 				ms-python.python
                 ms-python.vscode-pylance
                 ms-python.debugpy
+                ms-python.black-formatter
 
                 llvm-vs-code-extensions.vscode-clangd
                 vadimcn.vscode-lldb
@@ -71,25 +78,6 @@
 				tomoki1207.pdf
 				enkia.tokyo-night
 			];
-
-			userSettings = {
-				"editor.formatOnSave" = false;
-				"editor.fontFamily" = "'JetBrains Mono Nerd Font', 'monospace', monospace";
-				"workbench.colorTheme" = "Tokyo Night Storm";
-				"workbench.iconTheme"= "vscode-icons";
-				"extensions.experimental.affinity" = {
-					"asvetliakov.vscode-neovim" = 1;
-				};
-				"C_Cpp.intelliSenseEngine" = "disabled";
-				"redhat.telemetry.enabled" = false;
-				"java.jdt.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
-				"spring-boot.ls.java.home" = "${pkgs.jdk21}/lib/openjdk";
-                "maven.terminal.useJavaHome" = true;
-                "extensions.autoCheckUpdates" = false;
-                "extensions.autoUpdate" = false;
-                "zig.zls.enabled" = "on";
-                #"lldb.library" = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
-			};
 		};
 	};
 }

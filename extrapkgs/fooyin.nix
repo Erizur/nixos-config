@@ -14,6 +14,7 @@
   libsndfile,
   libarchive,
   libopenmpt,
+  libpulseaudio,
   soundtouch,
   soxr,
   game-music-emu,
@@ -25,13 +26,13 @@
 
 clangStdenv.mkDerivation (finalAttrs: {
   pname = "fooyin";
-  version = "0.10.3";
+  version = "0.12.1";
 
   src = fetchFromGitHub {
     owner = "ludouzi";
     repo = "fooyin";
     tag = "v" + finalAttrs.version;
-    hash = "sha256-mrERtHhmfEfK79pSEYFILW9WebtKVhbuXdQ52WTGa5A=";
+    hash = "sha256-TdmMnfR4duRDIApOQ5U3H3KwTVnlPKZG0sM3obpSU2w=";
   };
 
   buildInputs = [
@@ -46,6 +47,7 @@ clangStdenv.mkDerivation (finalAttrs: {
     # output plugins
     alsa-lib
     pipewire
+    libpulseaudio
     SDL2
     # input plugins
     libebur128

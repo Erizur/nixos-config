@@ -1,16 +1,6 @@
 # Temporary local overlay tracking pr 492535 until it merges.
 inputs: final: prev: {
 
-  doctest = prev.doctest.overrideAttrs (_: {
-    version = "2.5.2";
-    src = prev.fetchFromGitHub {
-      owner = "doctest";
-      repo = "doctest";
-      rev = "v2.5.2";
-      hash = "sha256-4jW6xPFCFxk1l47EkSUVojhycrtluPhOc5Adf/25R7M=";
-    };
-  });
-
   wf-config = prev.wf-config.overrideAttrs (_: {
     version = "0.11.0-unstable-2026-02-20";
     src = prev.fetchFromGitHub {

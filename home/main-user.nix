@@ -49,7 +49,17 @@ in
     mame scummvm
   ];
 
+  xresources.properties = {
+    "Xcursor.size" = 24;
+    "Xcursor.theme" = "Oxygen-Zion";
+    "Xft.antialias" = 1;
+    "Xft.hinting" = 1;
+    "Xft.hintstyle" = "hintslight";
+    "Xft.rgba" = "none";
+  };
+
   home.pointerCursor = {
+          enable = true;
           gtk.enable = true;
           x11.enable = true;
           name = "Oxygen-Zion";

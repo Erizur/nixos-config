@@ -1,0 +1,22 @@
+{
+  "editor.fontFamily": "'JetBrains Mono Nerd Font', 'monospace', monospace",
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.iconTheme": "vscode-icons",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1,
+  },
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "redhat.telemetry.enabled": false,
+  "maven.terminal.useJavaHome": true,
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": "off",
+  "zig.zls.enabled": "on",
+
+  "java.jdt.ls.java.home": "/home/erizur/.local/share/vscode-paths/jdk21/lib/openjdk",
+  "spring-boot.ls.java.home": "/home/erizur/.local/share/vscode-paths/jdk21/lib/openjdk",
+
+  "lldb.library": "/home/erizur/.local/share/vscode-paths/vscode-lldb/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+  },
+}

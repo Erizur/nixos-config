@@ -26,7 +26,7 @@
       plugins = with pkgs; [networkmanager-openvpn];
     };
     firewall.enable = true;
-    firewall.trustedInterfaces = [ "tailscale0" "waydroid0" ];
+    firewall.trustedInterfaces = ["tailscale0" "waydroid0"];
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
@@ -204,15 +204,12 @@
       };
     };
 
-    docker = {
+    containers.enable = true;
+    podman = {
       enable = false;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-        daemon.settings = {
-          dns = ["1.1.1.1" "8.8.8.8"];
-          registry-mirrors = ["https://mirror.gcr.io"];
-        };
+      dockerCompat = true;
+      defaultNetwork.settings = {
+        dns_enabled = true;
       };
     };
   };
@@ -221,11 +218,12 @@
 
   hardware.opentabletdriver.enable = true;
   hardware.uinput.enable = true;
-  boot.kernelModules = [ "uinput" "kvm-amd" ];
+  boot.kernelModules = ["uinput" "kvm-amd"];
 
   imports = [
     ./greetd.nix
     ./lucyshell.nix
+    ./usr-fix.nix
     inputs.nix-gaming.nixosModules.wine
   ];
 
