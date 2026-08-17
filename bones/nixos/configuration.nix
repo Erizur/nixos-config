@@ -204,9 +204,13 @@
       };
     };
 
-    containers.enable = true;
+    containers = {
+      enable = true;
+      registries.search = [ "docker.io" "quay.io" ];
+    };
+
     podman = {
-      enable = false;
+      enable = true;
       dockerCompat = true;
       defaultNetwork.settings = {
         dns_enabled = true;
