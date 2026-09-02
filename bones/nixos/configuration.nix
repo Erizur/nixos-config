@@ -228,6 +228,7 @@
     ./greetd.nix
     ./lucyshell.nix
     ./usr-fix.nix
+    ./local.nix
     inputs.nix-gaming.nixosModules.wine
   ];
 
