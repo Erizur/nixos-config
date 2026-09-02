@@ -10,10 +10,10 @@
   nixGaming = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   # Enable tailscale
-  services.tailscale.enable =
-    if pkgs.stdenv.isLinux
-    then true
-    else false;
+  services.tailscale = {
+    enable = if pkgs.stdenv.isLinux then true else false;
+    extraUpFlags = [ "--accept-dns=false" ];
+  };
 
   # Flake support
   nix.settings.experimental-features = ["nix-command" "flakes"];
