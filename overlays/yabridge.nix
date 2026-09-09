@@ -7,7 +7,7 @@ let
     owner = "chriskohlhoff";
     repo = "asio";
     tag = "asio-1-34-2";
-    hash = prev.lib.fakeHash; # nix will tell you the real one on first build
+    hash = "sha256-B9tFXcmBn7n4wEdnfjw5o90fC/cG5+WMdu/K4T6Y+jI=";
   };
   bitsery = prev.fetchFromGitHub {
     owner = "fraillt"; repo = "bitsery"; tag = "v5.2.3";
@@ -43,7 +43,7 @@ in
       owner = "robbert-vdh";
       repo = "yabridge";
       rev = "ba7022df0aee1e91cde62d7f0e940d3bc43a82b0";
-      hash = prev.lib.fakeHash; # nix will tell you the real one on first build
+      hash = "sha256-0ju/mfmhutuuPezq1GhiAEiQV/gnfEbrhjX4ydxLX+A=";
     };
 
     # The 32-bit-drop patch is already merged upstream on this branch, so
