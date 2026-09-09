@@ -9,6 +9,8 @@
     services.lact.enable = true;
     hardware.amdgpu.opencl.enable = true;
 
+    boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
+
     programs.gamescope.enable = true;
     programs.gamemode.enable = true;
     programs.coolercontrol.enable = true;

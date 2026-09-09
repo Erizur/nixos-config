@@ -45,6 +45,8 @@ in
       ripplerx
       decent-sampler
       mucap
+      yabridge
+      yabridgectl
     ];
 
     security.pam.loginLimits = [

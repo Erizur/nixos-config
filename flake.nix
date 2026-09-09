@@ -79,7 +79,10 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    overlays = [(import ./overlays/wayfire-ecosystem.nix inputs)];
+    overlays = [
+      (import ./overlays/wayfire-ecosystem.nix inputs)
+      (import ./overlays/yabridge.nix)
+    ];
     pkgs = import nixpkgs { inherit system; overlays = overlays; };
   in {
     nixosConfigurations = {
