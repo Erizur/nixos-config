@@ -1,8 +1,9 @@
-final: prev:
+inputs: final: prev:
 let
   yabridgePatchDir = "${prev.path}/pkgs/by-name/ya/yabridge";
 
-  # subprojects/*.wrap — only asio's revision changed vs the 5.1.1 release
+  wineRuntime = inputs.nix-gaming.packages.${prev.stdenv.hostPlatform.system}.wine-tkg;
+
   asio = prev.fetchFromGitHub {
     owner = "chriskohlhoff";
     repo = "asio";
@@ -51,7 +52,7 @@ in
     patches = [
       (prev.replaceVars "${yabridgePatchDir}/hardcode-dependencies.patch" {
         libdbus = prev.dbus.lib;
-        wine = prev.wineWow64Packages.yabridge;
+        wine = wineRuntime;
       })
       "${yabridgePatchDir}/libyabridge-from-nix-profiles.patch"
     ];
@@ -67,6 +68,13 @@ in
         cp -R --no-preserve=mode,ownership ${tomlplusplus} tomlplusplus
         cp -R --no-preserve=mode,ownership ${vst3} vst3
       )
+    '';
+
+    postFixup = ''
+      for exe in "$out"/bin/*.exe; do
+        substituteInPlace "$exe" \
+          --replace-fail 'WINELOADER="wine"' 'WINELOADER="${wineRuntime}/bin/wine"'
+      done
     '';
   });
 }
