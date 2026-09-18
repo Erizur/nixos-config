@@ -38,11 +38,14 @@
                 msjsdiag.vscode-react-native
                 dsznajder.es7-react-js-snippets
                 expo.vscode-expo-tools
+                vitest.explorer
+                vue.volar
 
-                pkgs.vscode-extensions.ms-dotnettools.csharp
-                pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime 
-                pkgs.vscode-extensions.ms-dotnettools.csdevkit
-                pkgs.vscode-extensions.visualstudiotoolsforunity.vstuc
+                # apparently this is broken asf
+                # pkgs.vscode-extensions.ms-dotnettools.csharp
+                # pkgs.vscode-extensions.ms-dotnettools.vscode-dotnet-runtime
+                # pkgs.vscode-extensions.ms-dotnettools.csdevkit
+                # pkgs.vscode-extensions.visualstudiotoolsforunity.vstuc
 
 				bbenoist.nix
 				brettm12345.nixfmt-vscode
@@ -52,6 +55,7 @@
 				ms-toolsai.jupyter
 				ms-toolsai.jupyter-renderers
 				dbaeumer.vscode-eslint
+				editorconfig.editorconfig
                 
 				ms-vscode.live-server
 				mkhl.direnv
