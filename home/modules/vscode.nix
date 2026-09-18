@@ -81,7 +81,14 @@ let
 		openfl.lime-vscode-extension
 	];
 
-	writableProfileNames = [ "cpp-python" "rust-zig" "java-spring" "web" "haxe" ];
+	dotnetExtensions = with pkgs.vscode-extensions; [
+		ms-dotnettools.csharp
+		ms-dotnettools.vscode-dotnet-runtime
+		ms-dotnettools.csdevkit
+		visualstudiotoolsforunity.vstuc
+	];
+
+	writableProfileNames = [ "cpp-python" "rust-zig" "java-spring" "web" "haxe" "dotnet" "allofem" ];
 
 	settingsRepoDir = "${config.home.homeDirectory}/.nixcfg/home/vscode-settings";
 	defaultSettingsFile = "${config.home.homeDirectory}/.nixcfg/home/vscode-settings.json";
@@ -131,6 +138,8 @@ in
 			java-spring.extensions = commonExtensions ++ javaSpringExtensions;
 			web.extensions = commonExtensions ++ webExtensions;
 			haxe.extensions = commonExtensions ++ haxeExtensions;
+			dotnet.extensions = commonExtensions ++ dotnetExtensions;
+			allofem.extensions = commonExtensions ++ cppPythonExtensions ++ rustZigExtensions ++ javaSpringExtensions ++ webExtensions ++ haxeExtensions ++ dotnetExtensions;
 		};
 	};
 }
