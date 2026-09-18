@@ -246,6 +246,10 @@
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "d /tmp 1777 root root 30d"
+  ];
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";
